@@ -2,12 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Cloud, Sun, CloudRain, CloudSnow, CloudDrizzle, CloudFog, Wind, RefreshCw, MapPin, Mountain, Waves, AlertCircle } from 'lucide-react';
 
 const STATIONS = [
-  { id: 'mount-mitchell', name: 'Mount Mitchell Summit', region: 'High Country · Blue Ridge', elevation: '6,684 ft', type: 'mountain', latitude: 35.7648, longitude: -82.2651 },
-  { id: 'grandfather', name: 'Grandfather Mountain', region: 'Blue Ridge Parkway', elevation: '5,946 ft', type: 'mountain', latitude: 36.0859, longitude: -81.8468 },
-  { id: 'outer-banks', name: 'Cape Hatteras', region: 'Outer Banks · Dare County', elevation: '10 ft', type: 'coastal', latitude: 35.2510, longitude: -75.5280 },
-  { id: 'wrightsville', name: 'Wrightsville Beach', region: 'Cape Fear Coast', elevation: '15 ft', type: 'coastal', latitude: 34.2085, longitude: -77.7964 },
-  { id: 'triangle', name: 'Raleigh–Durham', region: 'Central Piedmont', elevation: '436 ft', type: 'piedmont', latitude: 35.7796, longitude: -78.6382 },
-  { id: 'charlotte', name: 'Charlotte & Lake Norman', region: 'Charlotte Metro', elevation: '761 ft', type: 'piedmont', latitude: 35.2271, longitude: -80.8431 }
+  { id: 'mount-mitchell', name: 'Mount Mitchell Summit', region: 'High Country · Blue Ridge', elevation: '6,684 ft', type: 'mountain', latitude: 35.7648, longitude: -82.2651, advisory: 'Highest peak east of the Mississippi. Summit temperatures can be much cooler than Asheville valley conditions.', referenceNote: 'Check official park notices and mountain weather before visiting.' },
+  { id: 'grandfather', name: 'Grandfather Mountain', region: 'Blue Ridge Parkway', elevation: '5,946 ft', type: 'mountain', latitude: 36.0859, longitude: -81.8468, advisory: 'Check the Mile High Swinging Bridge and Blue Ridge Parkway operating notices before travel.', referenceNote: 'Mountain access and parkway conditions can change quickly.' },
+  { id: 'outer-banks', name: 'Cape Hatteras', region: 'Outer Banks · Dare County', elevation: '10 ft', type: 'coastal', latitude: 35.2510, longitude: -75.5280, sampleSurf: '3–5 ft (legacy sample)', sampleTides: 'High 2:14 PM · Low 8:30 PM (legacy sample)', advisory: 'NCDOT Hatteras–Ocracoke Ferry route information and beach hazard notices belong here. Verify current schedules, closures, and rip-current advisories with official sources before travel.' },
+  { id: 'wrightsville', name: 'Wrightsville Beach', region: 'Cape Fear Coast', elevation: '15 ft', type: 'coastal', latitude: 34.2085, longitude: -77.7964, sampleSurf: '2–3 ft (legacy sample)', sampleTides: 'High 1:45 PM · Low 7:55 PM (legacy sample)', advisory: 'Beach, paddling, and Masonboro Island conditions should be checked against current local marine forecasts and official advisories.' },
+  { id: 'triangle', name: 'Raleigh–Durham', region: 'Central Piedmont', elevation: '436 ft', type: 'piedmont', latitude: 35.7796, longitude: -78.6382, advisory: 'Central Piedmont conditions for outdoor dining, events, and city exploration.' },
+  { id: 'charlotte', name: 'Charlotte & Lake Norman', region: 'Charlotte Metro', elevation: '761 ft', type: 'piedmont', latitude: 35.2271, longitude: -80.8431, advisory: 'Lake Norman boating and U.S. National Whitewater Center conditions require current operator notices.' }
 ];
 
 const WEATHER_CODES = {
@@ -168,6 +168,20 @@ export default function LiveWeatherConditions() {
                   <div style={{ marginTop: '0.8rem', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                     <MapPin size={12} style={{ display: 'inline', verticalAlign: 'middle' }} /> Observation: {formatTime(weather.observedAt)}
                   </div>
+                  {(station.sampleSurf || station.sampleTides) && (
+                    <div style={{ marginTop: '0.85rem', padding: '0.85rem', borderRadius: 'var(--radius-sm)', background: '#f0fdfa', border: '1px solid #99f6e4' }}>
+                      <strong style={{ display: 'block', color: '#115e59', fontSize: '0.85rem', marginBottom: '0.45rem' }}>Coastal surf & tide reference</strong>
+                      {station.sampleSurf && <div style={{ fontSize: '0.82rem', color: '#134e4a' }}>Surf: {station.sampleSurf}</div>}
+                      {station.sampleTides && <div style={{ fontSize: '0.82rem', color: '#134e4a' }}>Tides: {station.sampleTides}</div>}
+                      <div style={{ marginTop: '0.4rem', fontSize: '0.72rem', color: '#9a3412' }}>Legacy sample values — not current observations. Live marine and tide feeds will replace these when the source links are provided.</div>
+                    </div>
+                  )}
+                  {station.advisory && (
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem', marginTop: '0.8rem', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+                      <AlertCircle size={15} style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <span>{station.advisory}</span>
+                    </div>
+                  )}
                 </> : <div style={{ padding: '1.6rem 0', color: 'var(--text-secondary)' }}>{loading ? 'Loading live conditions…' : 'Conditions unavailable for this location.'}</div>}
               </article>
             );
@@ -177,7 +191,7 @@ export default function LiveWeatherConditions() {
         <div style={{ marginTop: '1.2rem', textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
           {lastUpdated ? 'Weather data refreshed ' + lastUpdated.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + '. ' : ''}
           Forecast data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>Open-Meteo</a>.
-          Coastal surf, tide predictions, and official hazard alerts are not included in these weather readings.
+          Surf, tide, ferry, and hazard information sections are retained as reference placeholders pending your source links; sample values are not live data.
         </div>
       </div>
     </section>
