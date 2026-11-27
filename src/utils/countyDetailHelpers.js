@@ -5,6 +5,12 @@ import restaurantsData from "../data/restaurants.json";
 import countyHistoryData from "../data/county-history.json";
 import { getAllCounties, makeSlug, formatNumber } from "./countyDirectoryHelpers";
 
+const normalizeCountyReference = (value) => String(value || "").toLowerCase()
+  .replace(/\\s+county$/i, "").replace(/[\\s_-]/g, "").trim();
+const belongsToCounty = (reference, county) => String(reference || "").split("/")
+  .some((part) => normalizeCountyReference(part) === normalizeCountyReference(county.rawCountyName)
+    || normalizeCountyReference(part) === normalizeCountyReference(county.County));
+
 export { formatNumber };
 
 // Get single county details by slug or name
@@ -24,19 +30,19 @@ export function getCountyDetails(slugOrName) {
 
   // Filter associated entities
   const cities = citiesData.filter(c => 
-    c.County && (c.County.toLowerCase().trim() === county.County.toLowerCase().trim() || c.County.toLowerCase().trim() === rawName)
+    belongsToCounty(c.County, county)
   );
 
   const attractions = attractionsData.filter(a => 
-    a.County && (a.County.toLowerCase().trim() === county.County.toLowerCase().trim() || a.County.toLowerCase().trim() === rawName)
+    belongsToCounty(a.County, county)
   );
 
   const hotels = hotelsData.filter(h => 
-    h.County && (h.County.toLowerCase().trim() === county.County.toLowerCase().trim() || h.County.toLowerCase().trim() === rawName)
+    belongsToCounty(h.County, county)
   );
 
   const restaurants = restaurantsData.filter(r => 
-    r.County && (r.County.toLowerCase().trim() === county.County.toLowerCase().trim() || r.County.toLowerCase().trim() === rawName)
+    belongsToCounty(r.County, county)
   );
 
   // Logistics & Travel Info
