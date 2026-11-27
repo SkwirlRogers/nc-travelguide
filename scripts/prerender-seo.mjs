@@ -12,7 +12,7 @@ const sitemap = await readFile(path.join(distDir, "sitemap.xml"), "utf8");
 
 const countyBySlug = new Map(counties.map((county) => [county.Slug, county]));
 const cityBySlug = new Map(cities.map((city) => [city.Slug, city]));
-const normalizeCounty = (value) => String(value || "").toLowerCase().replace(/\\s+county$/i, "").replace(/[\\s_-]/g, "").trim();
+const normalizeCounty = (value) => String(value || "").toLowerCase().replace(/\s+county$/i, "").replace(/[\s_-]/g, "").trim();
 const siteRoot = "https://nctravelguide.us.mw";
 const sectionPages = {
   "/": {
@@ -64,7 +64,7 @@ function escapeRegExp(value) {
 }
 
 function setMeta(html, attribute, key, value) {
-  const expression = new RegExp(`<meta\\s+${attribute}="${escapeRegExp(key)}"[^>]*>`, "i");
+  const expression = new RegExp(`<meta\s+${attribute}="${escapeRegExp(key)}"[^>]*>`, "i");
   const tag = `<meta ${attribute}="${key}" content="${escapeHtml(value)}" />`;
   return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\\n  </head>`);
 }
@@ -131,27 +131,27 @@ function countyFallback(county, slug, historyRecord = null) {
 
 function townFallback(town, countyRecords, relatedAttractions) {
   const countyLinks = countyRecords.map((county) =>
-    \`<li><a href="/counties/\${escapeHtml(county.Slug)}">\${escapeHtml(county.County)} county guide</a></li>\`
+    `<li><a href="/counties/${escapeHtml(county.Slug)}">${escapeHtml(county.County)} county guide</a></li>`
   ).join("");
   const attractionsHtml = relatedAttractions.map((item) =>
-    \`<li><strong>\${escapeHtml(item.Attractions)}</strong> — \${escapeHtml(item.Description || "")}</li>\`
+    `<li><strong>${escapeHtml(item.Attractions)}</strong> — ${escapeHtml(item.Description || "")}</li>`
   ).join("");
   const officialLink = /^https?:\/\//i.test(String(town["Tourism Website"] || ""))
     ? sourceLink(town["Tourism Website"], "Official community website") : "";
   const coordinates = Number.isFinite(Number(town.Latitude)) && Number.isFinite(Number(town.Longitude))
-    ? \`<p>Mapped coordinates: \${escapeHtml(town.Latitude)}, \${escapeHtml(town.Longitude)} · <a href="https://www.google.com/maps?q=\${encodeURIComponent(town.Latitude + "," + town.Longitude)}">View map</a></p>\` : "";
-  return \`<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f">
+    ? `<p>Mapped coordinates: ${escapeHtml(town.Latitude)}, ${escapeHtml(town.Longitude)} · <a href="https://www.google.com/maps?q=${encodeURIComponent(town.Latitude + "," + town.Longitude)}">View map</a></p>` : "";
+  return `<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f">
     <p><a href="/counties">All North Carolina counties</a></p>
-    <h1>\${escapeHtml(town.City)}, North Carolina</h1>
-    <p>\${escapeHtml(town.Description)}</p>
-    <h2>County connections</h2><ul>\${countyLinks}</ul>
-    \${officialLink ? \`<p>\${officialLink}</p>\` : ""}
-    \${coordinates}
-    \${town.Population ? \`<p>Population figure in source directory: \${escapeHtml(String(town.Population).replace(/\.00$/, ""))}</p>\` : ""}
-    \${attractionsHtml ? \`<h2>More to explore in the connected county or counties</h2><p>These directory entries are associated with the same county or counties; they are not necessarily within town limits.</p><ul>\${attractionsHtml}</ul>\` : ""}
+    <h1>${escapeHtml(town.City)}, North Carolina</h1>
+    <p>${escapeHtml(town.Description)}</p>
+    <h2>County connections</h2><ul>${countyLinks}</ul>
+    ${officialLink ? `<p>${officialLink}</p>` : ""}
+    ${coordinates}
+    ${town.Population ? `<p>Population figure in source directory: ${escapeHtml(String(town.Population).replace(/\.00$/, ""))}</p>` : ""}
+    ${attractionsHtml ? `<h2>More to explore in the connected county or counties</h2><p>These directory entries are associated with the same county or counties; they are not necessarily within town limits.</p><ul>${attractionsHtml}</ul>` : ""}
     <p>Directory note: descriptions, population figures, and municipal links come from the guide's source dataset. Confirm current details with local sources before traveling.</p>
-    \${fallbackNavigation()}
-  </main>\`;
+    ${fallbackNavigation()}
+  </main>`;
 }
 
 function routeDefinition(route) {
