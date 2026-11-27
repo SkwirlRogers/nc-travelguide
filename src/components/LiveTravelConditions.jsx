@@ -223,24 +223,58 @@ export default function LiveTravelConditions() {
             {tides.map(station => (
               <div key={station.id} style={{ padding: '0.8rem 0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
                 <strong style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>{station.name}</strong>
-                <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>{station.area} · Station {station.id} · local station time · feet MLLW</div>
+                <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>{station.area} · NOAA station {station.id} · local station time · feet above MLLW</div>
                 {station.predictions.length ? (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(105px, 1fr))', gap: '0.55rem', marginTop: '0.65rem' }}>
-                    {station.predictions.map((prediction, index) => (
-                      <div key={station.id + '-' + index} style={{ padding: '0.6rem', borderRadius: '8px', background: 'rgba(20, 184, 166, 0.08)' }}>
-                        <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)' }}>{prediction.type === 'H' ? 'High tide' : prediction.type === 'L' ? 'Low tide' : 'Tide'}</div>
-                        <strong style={{ fontSize: '0.9rem', color: 'var(--text-primary)' }}>{prediction.t}</strong>
-                        <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{prediction.v} ft</div>
-                      </div>
-                    ))}
+                  <div style={{ overflowX: 'auto', marginTop: '0.55rem' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem', textAlign: 'left' }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.14)' }}>
+                          <th scope="col" style={{ padding: '0.45rem 0.35rem' }}>Tide</th>
+                          <th scope="col" style={{ padding: '0.45rem 0.35rem' }}>Local time</th>
+                          <th scope="col" style={{ padding: '0.45rem 0.35rem', textAlign: 'right' }}>Height</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {station.predictions.map((prediction, index) => (
+                          <tr key={station.id + '-' + index} style={{ borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
+                            <td style={{ padding: '0.5rem 0.35rem', color: 'var(--text-primary)', fontWeight: 600 }}>{prediction.type === 'H' ? 'High' : prediction.type === 'L' ? 'Low' : 'Tide'}</td>
+                            <td style={{ padding: '0.5rem 0.35rem', color: 'var(--text-secondary)' }}>{prediction.t}</td>
+                            <td style={{ padding: '0.5rem 0.35rem', color: 'var(--text-primary)', textAlign: 'right', fontVariantNumeric: 'tabular-nums' }}>{prediction.v} ft</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
-                ) : <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>No tide predictions were returned for today.</p>}
+                ) : <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>No high/low tide predictions were returned for today.</p>}
               </div>
             ))}
             {tideStatus !== 'loaded' && <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Open NOAA's station map for current observations and predictions.</p>}
             <a href="https://tidesandcurrents.noaa.gov/map/index.html?region=North%20Carolina" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ marginTop: '0.8rem', fontSize: '0.8rem' }}>Open NOAA Tides & Currents <ExternalLink size={14} /></a>
           </article>
         </div>
+
+        <section aria-labelledby="drivenc-map-heading" style={{ marginTop: '2rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '0.9rem' }}>
+            <h3 id="drivenc-map-heading" style={{ fontSize: '1.45rem', marginBottom: '0.35rem' }}>Interactive NCDOT DriveNC / TIMS Map</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.84rem', maxWidth: '780px', margin: '0 auto' }}>
+              Official NCDOT dashboard showing current traveler-information incidents. The dashboard is hosted by ArcGIS and may load separately from this guide.
+            </p>
+          </div>
+          <div style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.14)', background: '#fff' }}>
+            <iframe
+              title="Official NCDOT DriveNC and TIMS current incidents dashboard"
+              src="https://ncdot.maps.arcgis.com/apps/opsdashboard/index.html#/d16841a31ea3487f803384f7233c6d53"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              style={{ display: 'block', width: '100%', height: 'min(72vh, 760px)', minHeight: '480px', border: 0 }}
+            />
+          </div>
+          <p style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem', flexWrap: 'wrap', marginTop: '0.7rem', fontSize: '0.8rem' }}>
+            <a href="https://ncdot.maps.arcgis.com/apps/opsdashboard/index.html#/d16841a31ea3487f803384f7233c6d53" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 600 }}>Open full NCDOT dashboard <ExternalLink size={13} style={{ verticalAlign: 'middle' }} /></a>
+            <a href="https://drivenc.gov" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 600 }}>Open DriveNC.gov <ExternalLink size={13} style={{ verticalAlign: 'middle' }} /></a>
+          </p>
+        </section>
 
         <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '1rem', lineHeight: 1.5 }}>
           Sources: North Carolina Department of Transportation TIMS/DriveNC and NOAA Center for Operational Oceanographic Products and Services.
