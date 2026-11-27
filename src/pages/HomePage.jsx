@@ -5,6 +5,7 @@ import InteractiveTravelHub from '../components/InteractiveTravelHub';
 import InteractiveNCMap from '../components/InteractiveNCMap';
 import LiveWeatherConditions from '../components/LiveWeatherConditions';
 import AudioStoryTrails from '../components/AudioStoryTrails';
+import NCEssentialsGuide from '../components/NCEssentialsGuide';
 
 export default function HomePage({ navigate, onToggleSave, isSaved }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -404,6 +405,9 @@ export default function HomePage({ navigate, onToggleSave, isSaved }) {
 
       {/* 5. Live Mountain Summit & Coastal Surf Conditions */}
       <LiveWeatherConditions />
+
+      {/* 5.5 North Carolina essentials, foodways, destinations, and public-data guide */}
+      <NCEssentialsGuide />
 
       {/* 5.5 Audio & Story Trails (America 250th / First in Flight / Civil Rights) */}
       <AudioStoryTrails />
