@@ -38,7 +38,7 @@ export default function App() {
   // Apply an archive-only visual theme without changing the rest of the travel guide.
   useEffect(() => {
     const path = currentPath.toLowerCase();
-    const isArchivePath = path === "/history" || path.startsWith("/history/") || path === "/aboriginal" || path.startsWith("/aboriginal/");
+    const isArchivePath = path === "/history" || path.startsWith("/history/") || path === "/aboriginal" || path.startsWith("/aboriginal/") || /^\/counties\/[^/]+\/history(?:\/|$)/.test(path);
     document.body.classList.toggle("dark-archive", isArchivePath);
     return () => document.body.classList.remove("dark-archive");
   }, [currentPath]);
