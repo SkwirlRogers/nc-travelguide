@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SavedItineraryModal from './components/SavedItineraryModal';
 import { getCountyDetails } from './utils/dataHelpers';
 
-import HomePage from './pages/HomePage';
-import RegionsPage from './pages/RegionsPage';
-import CountiesPage from './pages/CountiesPage';
-import CountyDetailPage from './pages/CountyDetailPage';
-import HistoryPage from './pages/HistoryPage';
-import TravelIdeasPage from './pages/TravelIdeasPage';
-import ExperiencesPage from './pages/ExperiencesPage';
+const HomePage = lazy(() => import('./pages/HomePage'));
+const RegionsPage = lazy(() => import('./pages/RegionsPage'));
+const CountiesPage = lazy(() => import('./pages/CountiesPage'));
+const CountyDetailPage = lazy(() => import('./pages/CountyDetailPage'));
+const HistoryPage = lazy(() => import('./pages/HistoryPage'));
+const TravelIdeasPage = lazy(() => import('./pages/TravelIdeasPage'));
+const ExperiencesPage = lazy(() => import('./pages/ExperiencesPage'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -302,7 +302,15 @@ export default function App() {
         onOpenSaved={() => setIsSavedOpen(true)}
       />
 
-      <main className="main-content">{renderPage()}</main>
+      <main className="main-content">
+        <Suspense fallback={
+          <div className="container" role="status" aria-live="polite" style={{ minHeight: '50vh', paddingTop: '4rem', paddingBottom: '4rem', color: 'var(--text-primary)' }}>
+            Loading this guide section…
+          </div>
+        }>
+          {renderPage()}
+        </Suspense>
+      </main>
 
       <Footer navigate={navigate} />
 
