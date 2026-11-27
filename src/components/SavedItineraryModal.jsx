@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { X, Heart, Trash2, MapPin, ExternalLink, Printer, Download, Calendar, Share2, Check, Clock } from 'lucide-react';
-import jsPDF from 'jspdf';
 
 export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRemoveItem, navigate }) {
   if (!isOpen) return null;
@@ -21,60 +20,58 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
   };
 
   const handleExportPDF = () => {
-    const doc = new jsPDF();
-    
-    // Header
-    doc.setFillColor(75, 156, 211); // Tar Heel Blue
-    doc.rect(0, 0, 210, 35, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(20);
-    doc.setFont('helvetica', 'bold');
-    doc.text('North Carolina Custom Trip Itinerary', 14, 20);
-    doc.setFontSize(10);
-    doc.text('Official NC TravelGuide • From the Blue Ridge Mountains to the Outer Banks', 14, 28);
+    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
 
-    doc.setTextColor(30, 41, 59);
-    let yPos = 48;
+    const daySections = [1, 2, 3].map((day) => {
+      const itemsForDay = savedItems.filter((item) => (dayAssignments[item.id] || 1) === day);
+      if (!itemsForDay.length) return '';
+      const rows = itemsForDay.map((item) => `
+        <li>
+          <strong>${escapeHtml(item.title)} (${escapeHtml(item.type || 'Attraction')})</strong>
+          <div>Location: ${escapeHtml(item.city || item.county || 'North Carolina')}, NC</div>
+          <div>Category: ${escapeHtml(item.category || 'Sightseeing')}</div>
+        </li>
+      `).join('');
+      return `<section><h2>Day ${day} Itinerary</h2><ol>${rows}</ol></section>`;
+    }).join('');
 
-    // Group items by day
-    [1, 2, 3].forEach((day) => {
-      const itemsForDay = savedItems.filter(item => (dayAssignments[item.id] || 1) === day);
-      if (itemsForDay.length > 0) {
-        doc.setFontSize(14);
-        doc.setFont('helvetica', 'bold');
-        doc.setTextColor(217, 119, 6);
-        doc.text(`DAY ${day} ITINERARY`, 14, yPos);
-        yPos += 8;
-
-        itemsForDay.forEach((item, index) => {
-          if (yPos > 270) {
-            doc.addPage();
-            yPos = 20;
-          }
-
-          doc.setFontSize(11);
-          doc.setFont('helvetica', 'bold');
-          doc.setTextColor(15, 23, 42);
-          doc.text(`${index + 1}. ${item.title} (${item.type || 'Attraction'})`, 16, yPos);
-          yPos += 5;
-
-          doc.setFontSize(9);
-          doc.setFont('helvetica', 'normal');
-          doc.setTextColor(100, 116, 139);
-          doc.text(`Location: ${item.city || item.county}, NC • Category: ${item.category || 'Sightseeing'}`, 18, yPos);
-          yPos += 8;
-        });
-
-        yPos += 6;
-      }
-    });
-
-    if (savedItems.length === 0) {
-      doc.setFontSize(12);
-      doc.text('No saved places in this itinerary.', 14, yPos);
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      window.alert('Please allow pop-ups for this site to export your itinerary as a PDF.');
+      return;
     }
 
-    doc.save('NC-Travel-Guide-Itinerary.pdf');
+    printWindow.document.write(`<!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NC TravelGuide — Custom Trip Itinerary</title>
+        <style>
+          body { font: 14px/1.55 Arial, sans-serif; color: #1e293b; margin: 36px; }
+          header { background: #4b9cd3; color: white; padding: 22px 26px; margin: -36px -36px 28px; }
+          h1 { margin: 0 0 6px; font-size: 22px; }
+          header p { margin: 0; font-size: 12px; }
+          h2 { color: #b45309; font-size: 16px; margin: 22px 0 10px; text-transform: uppercase; }
+          li { margin: 0 0 14px; padding-left: 4px; }
+          li div { color: #64748b; font-size: 12px; }
+          .empty { color: #64748b; }
+          @media print { body { margin: 18mm; } header { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+        </style>
+      </head>
+      <body>
+        <header>
+          <h1>North Carolina Custom Trip Itinerary</h1>
+          <p>NC TravelGuide • From the Blue Ridge Mountains to the Outer Banks</p>
+        </header>
+        ${daySections || '<p class="empty">No saved places in this itinerary.</p>'}
+      </body>
+      </html>`);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.onload = () => printWindow.print();
   };
 
   const currentDayItems = savedItems.filter(item => (dayAssignments[item.id] || 1) === activeDay);
@@ -305,7 +302,7 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
             </div>
 
             <button onClick={handleExportPDF} className="btn btn-primary" style={{ fontSize: '0.88rem', padding: '0.6rem 1.25rem' }}>
-              <Download size={16} /> Export Official PDF
+              <Download size={16} /> Save Itinerary as PDF
             </button>
           </div>
         )}
