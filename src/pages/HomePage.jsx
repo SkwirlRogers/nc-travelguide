@@ -4,6 +4,7 @@ import { getMacroRegions, getAllCounties, searchExperiences } from '../utils/dat
 import InteractiveTravelHub from '../components/InteractiveTravelHub';
 import InteractiveNCMap from '../components/InteractiveNCMap';
 import LiveWeatherConditions from '../components/LiveWeatherConditions';
+import LiveTravelConditions from '../components/LiveTravelConditions';
 import AudioStoryTrails from '../components/AudioStoryTrails';
 import NCEssentialsGuide from '../components/NCEssentialsGuide';
 
@@ -405,6 +406,7 @@ export default function HomePage({ navigate, onToggleSave, isSaved }) {
 
       {/* 5. Live Mountain Summit & Coastal Surf Conditions */}
       <LiveWeatherConditions />
+      <LiveTravelConditions />
 
       {/* 5.5 North Carolina essentials, foodways, destinations, and public-data guide */}
       <NCEssentialsGuide />
