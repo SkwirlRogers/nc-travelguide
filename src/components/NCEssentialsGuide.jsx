@@ -7,8 +7,9 @@ const sourceLinks = [
   { label: 'NC Wildlife Resources Commission', href: 'https://www.ncwildlife.gov/' },
   { label: 'NC State Parks', href: 'https://www.ncparks.gov/' },
   { label: 'Got to Be NC', href: 'https://gottobenc.com/' },
+  { label: 'Butterfields Candies (NC maker)', href: 'https://butterfieldscandies.com/' },
   { label: 'Made in NC', href: 'https://madeinnc.com/' },
-  { label: 'NC SBI crime statistics', href: 'https://www.ncsbi.gov/SSRV?report=/UCR/IndexOffensesByAgencyInCounty' },
+  { label: 'NC SBI annual crime reports', href: 'https://ncsbi.gov/Services/Crime-Statistics/Crime-in-North-Carolina-Annual-Summaries' },
   { label: 'FBI Crime Data Explorer', href: 'https://cde.ucr.cjis.gov/' },
   { label: 'U.S. Census migration data', href: 'https://www.census.gov/topics/population/migration.html' },
   { label: 'ReadyNC emergency information', href: 'https://www.readync.gov/' },
@@ -41,7 +42,7 @@ export default function NCEssentialsGuide() {
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
             <Candy size={25} color="#0d9488" />
             <h3 style={{ margin: '0.65rem 0 0.4rem', color: 'var(--text-primary)' }}>Local sweets & flavors</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Explore Red Bird puffed peppermints, Butterfield's candy buds, peanut and pecan brittles, regional toffees, and coastal saltwater taffy. Food traditions also include Eastern-style and Lexington-style barbecue, sweet potatoes, Cheerwine, and Pepsi.</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Explore Red Bird puffed peppermints, Butterfields' fruit-flavored hard candies, peanut and pecan brittles, regional toffees, and coastal saltwater taffy. Food traditions also include Eastern-style and Lexington-style barbecue, sweet potatoes, Cheerwine, and Pepsi.</p>
             <a href="https://gottobenc.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.65rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Discover NC-made products <ArrowUpRight size={14} /></a>
           </article>
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
@@ -53,7 +54,7 @@ export default function NCEssentialsGuide() {
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
             <TrendingUp size={25} color="#7c3aed" />
             <h3 style={{ margin: '0.65rem 0 0.4rem', color: 'var(--text-primary)' }}>Thinking about moving?</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Compare communities by housing, jobs, healthcare, schools, transportation, climate risks, and cost of living. Census migration tables can show where newcomers came from; statewide totals should not be confused with each county's pattern.</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Compare communities by housing, jobs, healthcare, schools, transportation, climate risks, and cost of living. In the 2024 Census ACS state-to-state flows, the largest origin states for people moving to NC were Florida (about 33,600), South Carolina (30,000), and Virginia (28,400). Statewide flows are not county-level patterns.</p>
             <a href="https://www.census.gov/topics/population/migration.html" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.65rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Explore Census migration data <ArrowUpRight size={14} /></a>
           </article>
         </div>
