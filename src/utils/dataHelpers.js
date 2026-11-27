@@ -5,6 +5,7 @@ import hotelsData from '../data/hotels.json';
 import restaurantsData from '../data/restaurants.json';
 import regionsData from '../data/regions.json';
 import subRegionsData from '../data/sub_regions.json';
+import countyHistoryData from '../data/county-history.json';
 
 // Helper to make clean URL slugs
 export function makeSlug(str) {
@@ -203,6 +204,13 @@ function generateCountyItineraries(county, attractions, restaurants) {
       ]
     }
   ];
+}
+
+
+// Retrieve the reviewed History Vault record for a county, if one is available.
+export function getCountyHistory(slugOrName) {
+  const targetSlug = makeSlug(slugOrName);
+  return countyHistoryData.counties?.[targetSlug] || null;
 }
 
 // Region summaries
