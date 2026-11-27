@@ -23,18 +23,57 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="alternate" type="application/json" href="/ai-index.json" title="Machine-readable site index" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "NC Travel Guide",
-        "url": "https://nctravelguide.us.mw/",
-        "description": "An independent travel guide to North Carolina's 100 counties, regions, attractions, accommodations, dining, and travel experiences.",
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "North Carolina",
-          "containedInPlace": { "@type": "Country", "name": "United States" }
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://nctravelguide.us.mw/#website",
+            "url": "https://nctravelguide.us.mw/",
+            "name": "North Carolina Travel Guide",
+            "alternateName": "NC Travel Guide",
+            "description": "An independent North Carolina travel and heritage guide covering all 100 counties, regional destinations, visitor experiences, travel planning, and state history.",
+            "inLanguage": "en-US",
+            "creator": { "@id": "https://nctravelguide.us.mw/#creator" },
+            "about": { "@id": "https://nctravelguide.us.mw/#north-carolina" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://nctravelguide.us.mw/#creator",
+            "name": "Skwirl Rogers",
+            "url": "https://www.amazon.com/author/skwirlrogers",
+            "jobTitle": "Independent researcher and guide creator",
+            "description": "Creator of the North Carolina Travel Guide, documenting North Carolina history, regional heritage, and visitor information.",
+            "knowsAbout": [
+              "North Carolina history",
+              "North Carolina regional heritage",
+              "North Carolina geography",
+              "North Carolina travel planning",
+              "Historical research"
+            ]
+          },
+          {
+            "@type": "Place",
+            "@id": "https://nctravelguide.us.mw/#north-carolina",
+            "name": "North Carolina",
+            "containedInPlace": {
+              "@type": "Country",
+              "name": "United States"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://nctravelguide.us.mw/#webpage",
+            "url": "https://nctravelguide.us.mw/",
+            "name": "North Carolina Travel Guide | Explore All 100 Counties",
+            "isPartOf": { "@id": "https://nctravelguide.us.mw/#website" },
+            "about": { "@id": "https://nctravelguide.us.mw/#north-carolina" },
+            "author": { "@id": "https://nctravelguide.us.mw/#creator" },
+            "inLanguage": "en-US"
+          }
+        ]
       }
     </script>
   </head>
