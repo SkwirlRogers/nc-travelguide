@@ -102,6 +102,7 @@ export default function App() {
       const tab = path.split("/")[3] || "guides";
       const tabNames = {
         guides: "Travel Guide",
+        history: "History Vault",
         visit: "Visit & Logistics",
         "things-to-do": "Things to Do",
         municipalities: "Towns & Municipalities",
