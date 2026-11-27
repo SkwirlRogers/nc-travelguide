@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { MapPin, Search, ArrowRight, Building, Users, Compass, ExternalLink } from 'lucide-react';
-import { getAllCounties, formatNumber, makeSlug } from '../utils/dataHelpers';
+import { getAllCounties, formatNumber, makeSlug } from '../utils/countyDirectoryHelpers';
 
 export default function CountiesPage({ navigate }) {
   const allCounties = useMemo(() => getAllCounties(), []);

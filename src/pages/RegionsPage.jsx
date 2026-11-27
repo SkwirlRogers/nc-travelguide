@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Compass, MapPin, ExternalLink, ArrowRight, Building, Search } from 'lucide-react';
-import { getMacroRegions } from '../utils/dataHelpers';
+import { getMacroRegions } from '../utils/regionHelpers';
 import subRegionsData from '../data/sub_regions.json';
 
 export default function RegionsPage({ navigate }) {
