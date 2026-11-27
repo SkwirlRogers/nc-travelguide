@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "editorialPolicy": "County history entries must be supported by named institutional, archival, community, or primary sources. Distinguish documented facts from interpretation. Do not publish Indigenous history summaries until the relevant community and institutional sources have been reviewed.",
+  "counties": {
+    "dare-county": {
+      "county": "Dare County",
+      "key_history": [
+        {
+          "period": "1584–1590",
+          "title": "Roanoke Island and the English colonial expeditions",
+          "summary": "Roanoke Island was the site of English voyages and settlement attempts in the 1580s. The 1587 group led by John White remained on the island after its planned journey to the Chesapeake did not proceed. White returned in 1590 and found the settlement no longer present; the colonists' fate remains unresolved.",
+          "source_name": "National Park Service — Fort Raleigh National Historic Site",
+          "source_url": "https://www.nps.gov/fora/learn/historyculture/the-lost-colony.htm"
+        },
+        {
+          "period": "1862–1867",
+          "title": "Roanoke Island Freedmen's Colony",
+          "summary": "After Union forces took Roanoke Island in February 1862, freedom seekers arrived and a community developed. The colony included homes, churches, schools, and other institutions. The federal government restored confiscated land after the war, and the colony was officially decommissioned by 1867. Its history is part of the island's story beyond the earlier English expeditions.",
+          "source_name": "National Park Service — The Freedmen's Colony on Roanoke Island",
+          "source_url": "https://www.nps.gov/articles/the-freedmen-s-colony-on-roanoke-island.htm"
+        }
+      ],
+      "archival_assets": [
+        {
+          "title": "Old Fort Raleigh entrance",
+          "url": "https://www.nps.gov/articles/000/images/Fort-Raleigh-entrance-ca.png",
+          "alt": "Archival photograph of the entrance to Old Fort Raleigh on Roanoke Island",
+          "source_name": "National Park Service",
+          "source_url": "https://www.nps.gov/articles/000/old-fort-raleigh-state-park.htm",
+          "caption": "A later archival photograph of the memorial landscape, not an image from the 1580s.",
+          "rights_note": "Confirm National Park Service image reuse terms before republication."
+        },
+        {
+          "title": "Roanoke Island Freedmen's Colony",
+          "url": "https://www.nps.gov/wrbr/planyourvisit/images/FORA-collage.jpg",
+          "alt": "National Park Service collage showing Freedmen's Colony earthworks and interpretive signage on Roanoke Island",
+          "source_name": "National Park Service",
+          "source_url": "https://www.nps.gov/wrbr/planyourvisit/nearbyattractions.htm",
+          "caption": "A modern interpretive collage connected with the Roanoke Island Freedmen's Colony.",
+          "rights_note": "Confirm National Park Service image reuse terms before republication."
+        }
+      ],
+      "indigenous_context": {
+        "status": "awaiting_dedicated_source_review",
+        "editorial_note": "Reserved for a separately researched Indigenous history treatment. Do not infer identity, continuity, or community affiliation from colonial labels alone. Add community-authored and institutional sources before publication."
+      }
+    }
+  }
+}
