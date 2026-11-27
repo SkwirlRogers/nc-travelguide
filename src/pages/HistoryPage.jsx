@@ -258,6 +258,31 @@ export default function HistoryPage({ navigate }) {
               <a href="https://www.nps.gov/articles/firstflight.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>National Park Service: The First Flight <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
             </div>
 
+                        {/* Research starting points */}
+            <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--accent-blue-light)' }}>
+              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Research starting points: archives, collections & local records</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                County histories are strongest when local records are compared with institutional collections and community-held materials. These research portals help locate documents, photographs, maps, newspapers, oral histories, and collection descriptions. A catalog entry is a lead for research, not proof of a historical claim by itself.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.85rem' }}>
+                <a href="https://archives.ncdcr.gov/researchers/digital-collections" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 650 }}>
+                  State Archives: Digital Collections <ExternalLink size={12} style={{ verticalAlign: 'middle' }} />
+                </a>
+                <a href="https://archives.ncdcr.gov/doc" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 650 }}>
+                  Discover Online Catalog (DOC) <ExternalLink size={12} style={{ verticalAlign: 'middle' }} />
+                </a>
+                <a href="https://www.ncpedia.org/primary-source-sets-and-collections" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 650 }}>
+                  NCpedia: Primary Source Collections <ExternalLink size={12} style={{ verticalAlign: 'middle' }} />
+                </a>
+                <a href="https://www.digitalnc.org/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 650 }}>
+                  DigitalNC: Community Heritage Collections <ExternalLink size={12} style={{ verticalAlign: 'middle' }} />
+                </a>
+                <a href="https://digital.lib.ecu.edu/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 650 }}>
+                  ECU Digital Collections <ExternalLink size={12} style={{ verticalAlign: 'middle' }} />
+                </a>
+              </div>
+            </div>
+
             {/* County research call to action */}
             <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--accent-amber)' }}>
               <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Keep exploring North Carolina's county histories</h3>
