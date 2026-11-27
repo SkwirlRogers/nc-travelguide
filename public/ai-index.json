@@ -1,0 +1,63 @@
+{
+  "name": "NC Travel Guide",
+  "canonical_url": "https://nctravelguide.us.mw/",
+  "alternate_urls": [
+    "https://www.nctravelguide.us.mw/"
+  ],
+  "description": "Independent North Carolina travel and heritage guide covering all 100 counties, regions, attractions, travel planning, and state history.",
+  "language": "en",
+  "last_updated": "2026-11-27",
+  "crawl_policy": {
+    "robots": "https://nctravelguide.us.mw/robots.txt",
+    "sitemap": "https://nctravelguide.us.mw/sitemap.xml",
+    "llms": "https://nctravelguide.us.mw/llms.txt"
+  },
+  "sections": [
+    {
+      "name": "Homepage",
+      "url": "https://nctravelguide.us.mw/",
+      "summary": "Statewide travel overview, regional navigation, featured destinations, live weather and travel conditions."
+    },
+    {
+      "name": "Regions",
+      "url": "https://nctravelguide.us.mw/regions",
+      "summary": "Four broad North Carolina travel regions."
+    },
+    {
+      "name": "Counties",
+      "url": "https://nctravelguide.us.mw/counties",
+      "summary": "Directory for all 100 North Carolina counties."
+    },
+    {
+      "name": "History",
+      "url": "https://nctravelguide.us.mw/history",
+      "summary": "North Carolina heritage, milestones, state symbols, and credited archival imagery."
+    },
+    {
+      "name": "Travel Ideas",
+      "url": "https://nctravelguide.us.mw/travel-ideas",
+      "summary": "Curated travel themes and itineraries."
+    },
+    {
+      "name": "Experiences",
+      "url": "https://nctravelguide.us.mw/experiences",
+      "summary": "Searchable visitor experiences and attractions."
+    }
+  ],
+  "data_sources": [
+    "https://www.visitnc.com/",
+    "https://www.ncpedia.org/",
+    "https://archives.ncdcr.gov/",
+    "https://drivenc.gov/",
+    "https://www.ncdot.gov/travel-maps/ferry-tickets-services/schedule/default.aspx",
+    "https://www.weather.gov/documentation/services-web-api",
+    "https://open-meteo.com/",
+    "https://tidesandcurrents.noaa.gov/",
+    "https://www.census.gov/"
+  ],
+  "notes": [
+    "Live conditions are time-sensitive; consult the linked official agency before travel.",
+    "Ferry links provide official schedules and service notices; verify route status directly with NCDOT.",
+    "Historical image rights vary by holding institution."
+  ]
+}
