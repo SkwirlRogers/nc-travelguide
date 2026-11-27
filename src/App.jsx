@@ -100,7 +100,7 @@ export default function App() {
     let countyHistoryRecord = null;
     let countyName = null;
     let townRecord = null;
-    const townMatch = path.match(/^\\/towns\\/([^/]+)/);
+    const townMatch = path.match(/^\/towns\/([^/]+)/);
     if (townMatch) {
       townRecord = citiesData.find((record) => record.Slug === townMatch[1]) || null;
       if (townRecord) {
