@@ -12,7 +12,7 @@ const [counties, cities, attractions, hotels, restaurants] = await Promise.all([
 ]);
 const makeSlug = (value) => String(value || "").toLowerCase().trim()
   .replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "");
-const normalize = (value) => String(value || "").toLowerCase().replace(/\\s+county$/i, "")
+const normalize = (value) => String(value || "").toLowerCase().replaceAll(" county", "")
   .replaceAll(" ", "").replaceAll("-", "").replaceAll("_", "").trim();
 const countForCounty = (rows, countyName, rawName) => rows.filter((item) =>
   String(item.County || "").split("/").some((reference) => {
