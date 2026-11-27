@@ -52,7 +52,7 @@ export default function App() {
         keywords: ["North Carolina travel", "North Carolina itineraries", "North Carolina destinations", "things to do in North Carolina"]
       }
     };
-    const path = currentPath.toLowerCase().replace(/\\/$/, "") || "/";
+    const path = currentPath.toLowerCase().replace(/\/+$/, "") || "/";
     const page = pageDefinitions[path];
     if (!page) return;
 
