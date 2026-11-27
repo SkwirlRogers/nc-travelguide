@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 const SavedItineraryModal = lazy(() => import('./components/SavedItineraryModal'));
 import countiesData from './data/counties.json';
+import citiesData from './data/cities.json';
 import countyHistoryData from './data/county-history.json';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -12,6 +13,7 @@ const CountyDetailPage = lazy(() => import('./pages/CountyDetailPage'));
 const HistoryPage = lazy(() => import('./pages/HistoryPage'));
 const TravelIdeasPage = lazy(() => import('./pages/TravelIdeasPage'));
 const ExperiencesPage = lazy(() => import('./pages/ExperiencesPage'));
+const TownDetailPage = lazy(() => import('./pages/TownDetailPage'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -97,6 +99,20 @@ export default function App() {
     let countyRecord = null;
     let countyHistoryRecord = null;
     let countyName = null;
+    let townRecord = null;
+    const townMatch = path.match(/^\\/towns\\/([^/]+)/);
+    if (townMatch) {
+      townRecord = citiesData.find((record) => record.Slug === townMatch[1]) || null;
+      if (townRecord) {
+        page = {
+          title: `${townRecord.City}, NC Visitor Guide | NC Travel Guide`,
+          description: townRecord.Description || `Explore ${townRecord.City}, North Carolina, with county connections, local resources, and regional travel context.`,
+          type: "City",
+          about: `${townRecord.City}, North Carolina`
+        };
+        canonicalPath = `/towns/${townMatch[1]}`;
+      }
+    }
 
     const countyMatch = path.match(/^\/counties\/([^/]+)/);
     if (countyMatch) {
@@ -127,7 +143,7 @@ export default function App() {
       }
     }
 
-    if (!pageDefinitions[path] && !countyMatch && path !== "/" && path !== "/index.html") {
+    if (!pageDefinitions[path] && !countyMatch && !townMatch && path !== "/" && path !== "/index.html") {
       page = defaultPage;
       canonicalPath = "/";
     }
@@ -280,7 +296,12 @@ export default function App() {
       return <TravelIdeasPage navigate={navigate} onToggleSave={handleToggleSave} isSaved={isSaved} />;
     }
 
-    // 6. Experiences Master Directory
+    // 6. Town and community profiles
+    if (path.startsWith('/towns/')) {
+      return <TownDetailPage townSlug={path.split('/')[2]} navigate={navigate} />;
+    }
+
+    // 7. Experiences Master Directory
     if (path === '/experiences' || path.startsWith('/experiences/')) {
       const initialQuery = searchParams.get('query') || '';
       return (
