@@ -3,12 +3,28 @@ import { MapPin, Navigation, Compass, Layers, ArrowRight } from 'lucide-react';
 import { getAllCounties } from '../utils/countyDirectoryHelpers';
 
 // Simplified representative coordinates/positions for key North Carolina counties across regions for SVG visualization
+const MACRO_REGIONS = ['Mountains', 'Central Piedmont', 'Sandhills / Inner Coastal', 'Atlantic Coastal'];
+
 const REGION_COLORS = {
-  'Mountain': '#f59e0b',
+  'Mountains': '#f59e0b',
   'Central Piedmont': '#3b82f6',
   'Atlantic Coastal': '#14b8a6',
-  'Inland-Inner Coastal': '#8b5cf6'
+  'Sandhills / Inner Coastal': '#8b5cf6'
 };
+
+// Keep the original county Region and Sub-Region values intact. These display
+// groups reconcile the four macro-regions while preserving cross-region counties.
+function getMacroRegions(county) {
+  switch (county.Region) {
+    case 'Mountain': return ['Mountains'];
+    case 'Central Piedmont': return ['Central Piedmont'];
+    case 'Atlantic Coastal': return ['Atlantic Coastal'];
+    case 'Inland-Inner Coastal': return ['Sandhills / Inner Coastal'];
+    case 'Mountain-Central Piedmont': return ['Mountains', 'Central Piedmont'];
+    case 'Piedmont-Mountain': return ['Central Piedmont', 'Mountains'];
+    default: return [];
+  }
+}
 
 export default function InteractiveNCMap({ navigate }) {
   const counties = getAllCounties();
@@ -17,7 +33,7 @@ export default function InteractiveNCMap({ navigate }) {
   const [filterQuery, setFilterQuery] = useState('');
 
   const filteredCounties = counties.filter(c => {
-    const matchesRegion = selectedRegion === 'ALL' || c.Region === selectedRegion;
+    const matchesRegion = selectedRegion === 'ALL' || getMacroRegions(c).includes(selectedRegion);
     const matchesQuery = !filterQuery || c.County.toLowerCase().includes(filterQuery.toLowerCase()) || 
       (c['Major Cities'] && c['Major Cities'].toLowerCase().includes(filterQuery.toLowerCase()));
     return matchesRegion && matchesQuery;
@@ -34,13 +50,13 @@ export default function InteractiveNCMap({ navigate }) {
             Explore All <span className="text-gradient-amber">100 NC Counties</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '650px', margin: '0 auto' }}>
-            Filter by macro-region or search any of North Carolina's 100 counties to instantly view regional hubs, population, and jump into deep guides.
+            Filter by one of four macro-regions or search any of North Carolina's 100 counties to instantly view regional hubs, population, and jump into deep guides.
           </p>
         </div>
 
         {/* Region Filter Buttons */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', justifyContent: 'center', marginBottom: '2rem' }}>
-          {['ALL', 'Mountain', 'Central Piedmont', 'Inland-Inner Coastal', 'Atlantic Coastal'].map((r) => {
+          {['ALL', ...MACRO_REGIONS].map((r) => {
             const active = selectedRegion === r;
             return (
               <button
@@ -111,11 +127,11 @@ export default function InteractiveNCMap({ navigate }) {
                 <path
                   d="M 40,110 L 180,60 L 260,130 L 220,230 L 100,230 L 40,170 Z"
                   fill="url(#mountainsGrad)"
-                  opacity={selectedRegion === 'ALL' || selectedRegion === 'Mountain' ? 0.95 : 0.3}
+                  opacity={selectedRegion === 'ALL' || selectedRegion === 'Mountains' ? 0.95 : 0.3}
                   stroke="#fff"
                   strokeWidth="3"
                   style={{ cursor: 'pointer', transition: 'all 0.3s ease' }}
-                  onClick={() => setSelectedRegion('Mountain')}
+                  onClick={() => setSelectedRegion('Mountains')}
                 />
 
                 {/* Central Piedmont Shape */}
@@ -133,11 +149,11 @@ export default function InteractiveNCMap({ navigate }) {
                 <path
                   d="M 510,50 L 660,65 L 670,220 L 530,260 L 410,240 L 530,170 Z"
                   fill="url(#innerCoastGrad)"
-                  opacity={selectedRegion === 'ALL' || selectedRegion === 'Inland-Inner Coastal' ? 0.95 : 0.3}
+                  opacity={selectedRegion === 'ALL' || selectedRegion === 'Sandhills / Inner Coastal' ? 0.95 : 0.3}
                   stroke="#fff"
                   strokeWidth="3"
                   style={{ cursor: 'pointer', transition: 'all 0.3s ease' }}
-                  onClick={() => setSelectedRegion('Inland-Inner Coastal')}
+                  onClick={() => setSelectedRegion('Sandhills / Inner Coastal')}
                 />
 
                 {/* Atlantic Coastal & Outer Banks Shape */}
@@ -161,9 +177,9 @@ export default function InteractiveNCMap({ navigate }) {
                 />
 
                 {/* Region Labels */}
-                <text x="130" y="150" fill="#fff" fontWeight="800" fontSize="16" textAnchor="middle">MOUNTAIN</text>
+                <text x="130" y="150" fill="#fff" fontWeight="800" fontSize="16" textAnchor="middle">MOUNTAINS</text>
                 <text x="360" y="140" fill="#fff" fontWeight="800" fontSize="16" textAnchor="middle">CENTRAL PIEDMONT</text>
-                <text x="590" y="150" fill="#fff" fontWeight="800" fontSize="15" textAnchor="middle">INNER COASTAL</text>
+                <text x="590" y="150" fill="#fff" fontWeight="800" fontSize="15" textAnchor="middle">SANDHILLS / INNER COASTAL</text>
                 <text x="760" y="150" fill="#fff" fontWeight="800" fontSize="15" textAnchor="middle">ATLANTIC COAST</text>
                 <text x="830" y="80" fill="#065f46" fontWeight="700" fontSize="12" textAnchor="middle">OUTER BANKS</text>
               </svg>
@@ -230,10 +246,10 @@ export default function InteractiveNCMap({ navigate }) {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <span className="badge" style={{
                       fontSize: '0.7rem',
-                      background: `${REGION_COLORS[c.Region] || '#3b82f6'}20`,
-                      color: REGION_COLORS[c.Region] || '#3b82f6'
+                      background: `${REGION_COLORS[getMacroRegions(c)[0]] || '#3b82f6'}20`,
+                      color: REGION_COLORS[getMacroRegions(c)[0]] || '#3b82f6'
                     }}>
-                      {c.Region}
+                      {getMacroRegions(c).join(' / ') || c.Region}
                     </span>
                     <ArrowRight size={15} color="var(--text-muted)" />
                   </div>
