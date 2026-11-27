@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Compass, Candy, ShieldCheck, TrendingUp, MapPin, Landmark } from 'lucide-react';
+import { ArrowUpRight, Compass, Candy, ShieldCheck, TrendingUp, Landmark } from 'lucide-react';
 
 const sourceLinks = [
   { label: 'Visit North Carolina', href: 'https://www.visitnc.com/' },
@@ -7,7 +7,10 @@ const sourceLinks = [
   { label: 'NC Wildlife Resources Commission', href: 'https://www.ncwildlife.gov/' },
   { label: 'NC State Parks', href: 'https://www.ncparks.gov/' },
   { label: 'Got to Be NC', href: 'https://gottobenc.com/' },
-  { label: 'Butterfields Candies (NC maker)', href: 'https://butterfieldscandies.com/' },
+  { label: 'Red Bird Candies (Lexington, NC)', href: 'https://redbirdcandies.com/' },
+  { label: 'Butterfields Candies (Nashville, NC)', href: 'https://butterfieldscandies.com/' },
+  { label: '2024 Census state-to-state migration tables', href: 'https://www.census.gov/data/tables/time-series/demo/geographic-mobility/state-to-state-migration.html' },
+  { label: 'NC barrier-island beaches', href: 'https://www.visitnc.com/coast' },
   { label: 'Made in NC', href: 'https://madeinnc.com/' },
   { label: 'NC SBI annual crime reports', href: 'https://ncsbi.gov/Services/Crime-Statistics/Crime-in-North-Carolina-Annual-Summaries' },
   { label: 'FBI Crime Data Explorer', href: 'https://cde.ucr.cjis.gov/' },
@@ -37,13 +40,17 @@ export default function NCEssentialsGuide() {
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
             <Landmark size={25} color="#b7791f" />
             <h3 style={{ margin: '0.65rem 0 0.4rem', color: 'var(--text-primary)' }}>A state of contrasts</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>North Carolina stretches from the Appalachian Mountains and Blue Ridge to the Piedmont and more than 300 miles of Atlantic coastline. Its story includes aviation, agriculture, universities, research, banking, motorsports, and coastal trade.</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>North Carolina stretches from the Appalachian Mountains and Blue Ridge to the Piedmont and Atlantic coast. Visit North Carolina describes 320 miles of barrier-island beaches along the state's coast. Its story also includes aviation, agriculture, universities, research, banking, motorsports, and coastal trade.</p>
           </article>
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
             <Candy size={25} color="#0d9488" />
             <h3 style={{ margin: '0.65rem 0 0.4rem', color: 'var(--text-primary)' }}>Local sweets & flavors</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Explore Red Bird puffed peppermints, Butterfields' fruit-flavored hard candies, peanut and pecan brittles, regional toffees, and coastal saltwater taffy. Food traditions also include Eastern-style and Lexington-style barbecue, sweet potatoes, Cheerwine, and Pepsi.</p>
-            <a href="https://gottobenc.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.65rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Discover NC-made products <ArrowUpRight size={14} /></a>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>North Carolina makers include Red Bird Candies in Lexington, known for its puffed peppermint mints, and Butterfields Candies in Nashville. Visitors also find coastal saltwater taffy, peanut and pecan brittles, and regional toffees. Food traditions include Eastern-style and Lexington-style barbecue, sweet potatoes, Cheerwine, and Pepsi.</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: '0.65rem' }}>
+              <a href="https://redbirdcandies.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Red Bird Candies <ArrowUpRight size={14} /></a>
+              <a href="https://butterfieldscandies.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Butterfields Candies <ArrowUpRight size={14} /></a>
+              <a href="https://gottobenc.com/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Discover NC-made products <ArrowUpRight size={14} /></a>
+            </div>
           </article>
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
             <ShieldCheck size={25} color="#2563eb" />
@@ -54,8 +61,8 @@ export default function NCEssentialsGuide() {
           <article className="glass-card" style={{ padding: '1.35rem', background: '#fff' }}>
             <TrendingUp size={25} color="#7c3aed" />
             <h3 style={{ margin: '0.65rem 0 0.4rem', color: 'var(--text-primary)' }}>Thinking about moving?</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Compare communities by housing, jobs, healthcare, schools, transportation, climate risks, and cost of living. In the 2024 Census ACS state-to-state flows, the largest origin states for people moving to NC were Florida (about 33,600), South Carolina (30,000), and Virginia (28,400). Statewide flows are not county-level patterns.</p>
-            <a href="https://www.census.gov/topics/population/migration.html" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.65rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Explore Census migration data <ArrowUpRight size={14} /></a>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>Compare communities by housing, jobs, healthcare, schools, transportation, climate risks, and cost of living. In the 2024 ACS 1-year state-to-state estimates, the leading origin states for people moving to North Carolina were Florida (about 33,600), South Carolina (about 30,000), and Virginia (about 28,400). These are survey estimates of prior-year residence, carry margins of error, and are statewide—not county-level—flows.</p>
+            <a href="https://www.census.gov/data/tables/time-series/demo/geographic-mobility/state-to-state-migration.html" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.65rem', color: 'var(--accent-blue-light)', fontWeight: 650, fontSize: '0.85rem' }}>Explore Census migration data <ArrowUpRight size={14} /></a>
           </article>
         </div>
 
