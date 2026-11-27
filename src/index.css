@@ -52,7 +52,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -283,7 +283,7 @@ body.dark-archive h3,
 body.dark-archive h4,
 body.dark-archive h5,
 body.dark-archive h6 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Playfair Display", Georgia, serif;
   color: #f3ead8;
 }
 
