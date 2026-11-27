@@ -200,6 +200,22 @@ export default function LiveTravelConditions() {
           </article>
 
           <article className="glass-card" style={{ padding: '1.3rem', background: '#fff' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.65rem' }}>
+              <AlertTriangle size={19} />
+              <h3 style={{ fontSize: '1.15rem' }}>North Carolina ferry status</h3>
+            </div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.84rem', lineHeight: 1.55, marginBottom: '0.85rem' }}>
+              Ferry schedules and service interruptions can change with weather, water levels, and operational conditions.
+              NCDOT provides route schedules and a free notification system for delays and cancellations.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+              <a href="https://www.ncdot.gov/travel-maps/ferry-tickets-services/schedule/default.aspx" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ fontSize: '0.8rem' }}>Official ferry schedules & status <ExternalLink size={14} /></a>
+              <a href="https://www.ncdot.gov/travel-maps/ferry-tickets-services/Pages/ferry-information-notification-system.aspx" target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ fontSize: '0.8rem' }}>FINS text/email alerts <ExternalLink size={14} /></a>
+            </div>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.72rem', marginTop: '0.7rem' }}>FINS alerts are sent by NCDOT for the specific routes a traveler selects; this guide does not claim a ferry route is operating until its official status is checked.</p>
+          </article>
+
+          <article className="glass-card" style={{ padding: '1.3rem', background: '#fff' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.8rem', marginBottom: '0.9rem' }}>
               <h3 style={{ fontSize: '1.15rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Waves size={19} /> NOAA tide predictions</h3>
               <span className="badge badge-teal">{statusText(tideStatus, tides.length, 'station', 'stations')}</span>
