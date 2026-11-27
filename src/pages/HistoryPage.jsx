@@ -71,7 +71,8 @@ export default function HistoryPage({ navigate }) {
                   <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                     The dogwood is North Carolina's official state flower. The showy white parts are four petal-like bracts surrounding a cluster of small true flowers; the tree grows throughout the state.
                   </p>
-                  <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_145/GS_145-1.html" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.78rem', fontWeight: 650 }}>Official flower statute & botanical reference <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
+                  <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_145/GS_145-1.html" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.78rem', fontWeight: 650 }}>Official flower statute <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
+                  <a href="https://plants.ces.ncsu.edu/plants/cornus-florida/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.78rem', fontWeight: 650, display: 'block', marginTop: '0.3rem' }}>NC State Extension: Flowering Dogwood <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
                 </div>
               </div>
             </div>
@@ -116,7 +117,7 @@ export default function HistoryPage({ navigate }) {
                 position: 'relative'
               }}>
                 <span className="badge badge-emerald" style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-                  Pine adopted 1963 · Longleaf emblem 2023
+                  Adopted 1963 · Emblem 2023
                 </span>
               </div>
               <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -162,7 +163,7 @@ export default function HistoryPage({ navigate }) {
             </figure>
             <figure className="glass-card" style={{ margin: 0, padding: 0, overflow: 'hidden', background: '#fff' }}>
               <img src="https://iiif.lib.ecu.edu/cantaloupe/iiif/2/00017035_0022.jp2/full/2000%2C/0/default.jpg" alt="Page from a historical petition by Croatan Indians preserved in East Carolina University digital collections" loading="lazy" style={{ width: '100%', height: '220px', objectFit: 'contain', display: 'block', background: '#f1eee7' }} />
-              <figcaption style={{ padding: '1rem' }}><strong style={{ color: 'var(--text-primary)' }}>A historical Croatan Indian petition</strong><p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, margin: '0.4rem 0' }}>A historical petition preserved in ECU's digital collection under the Croatan Indian title. Consult the collection record for its date and full context; this single document is not a complete account of Indigenous life.</p><a href="https://digital.lib.ecu.edu/17035" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.82rem', fontWeight: 650 }}>East Carolina University Digital Collections ↗</a></figcaption>
+              <figcaption style={{ padding: '1rem' }}><strong style={{ color: 'var(--text-primary)' }}>A historical Croatan Indian petition</strong><p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, margin: '0.4rem 0' }}>A petition page preserved in ECU's digital collection under the Croatan Indian title. Consult the collection record for its date, provenance, and full context; this single document is not a complete account of Indigenous life.</p><a href="https://digital.lib.ecu.edu/17035" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.82rem', fontWeight: 650 }}>East Carolina University Digital Collections ↗</a></figcaption>
             </figure>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5, textAlign: 'center', marginTop: '0.9rem' }}>Image credits and collection records are linked with each photograph. Rights and reuse terms vary by institution; verify permissions before republication or commercial reuse.</p>
@@ -174,7 +175,7 @@ export default function HistoryPage({ navigate }) {
             <h2 style={{ fontSize: '2rem' }}>
               Historic Milestones & <span className="text-gradient-amber">Community Histories</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)' }}>Key historical moments that shaped American independence and global innovation.</p>
+            <p style={{ color: 'var(--text-secondary)' }}>Explore distinct histories of settlement, community formation, self-government, emancipation, and innovation.</p>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '850px', margin: '0 auto' }}>
@@ -188,18 +189,35 @@ export default function HistoryPage({ navigate }) {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 The 1587 expedition was England's second major colonizing attempt at Roanoke. Virginia Dare was born there—the first English child born in the New World. When John White returned in 1590, the settlement was no longer present and the colonists' fate remained unresolved.
               </p>
+              <a href="https://www.nps.gov/fora/learn/historyculture/the-lost-colony.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650, display: 'inline-block', marginTop: '0.6rem' }}>National Park Service: The Lost Colony <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
               <button onClick={() => navigate('/counties/dare-county/history')} style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: 'var(--accent-amber-light)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                 Explore Dare County History Vault <ArrowRight size={14} />
               </button>
             </div>
 
+            {/* Colonial-era communities and government */}
+            <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--accent-amber)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+                <span className="badge badge-amber">1766–1770 · Forsyth & Craven Counties</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Piedmont & Coastal Plain</span>
+              </div>
+              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Old Salem & Tryon Palace</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                Salem was founded in 1766 as the central town of the Moravian Wachovia settlement. Tryon Palace opened in New Bern in 1770 as colonial North Carolina's first permanent capitol building. These are distinct stories: a Moravian community in the Piedmont and the colony's center of royal government on the coast.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: '0.65rem' }}>
+                <a href="https://www.oldsalem.org/oldsalemresearch/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>Old Salem research & history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
+                <a href="https://www.tryonpalace.org/the-palace-historic-homes/tryon-palace/palace-history" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>Tryon Palace official history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
+              </div>
+            </div>
+
             {/* Milestone 2 */}
             <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--accent-blue)' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span className="badge badge-blue">1775–1776 • Halifax & Mecklenburg</span>
+                <span className="badge badge-blue">1775–1776 · Mecklenburg & Halifax</span>
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>"First in Freedom"</span>
               </div>
-              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Halifax Resolves & Mecklenburg Declaration</h3>
+              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Mecklenburg Resolves & Halifax Resolves</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 Mecklenburg County adopted the Mecklenburg Resolves on May 31, 1775. The separate Mecklenburg Declaration, said to date to May 20, 1775, is not accepted as authentic by most modern scholars. On April 12, 1776, the Fourth Provincial Congress adopted the Halifax Resolves, authorizing North Carolina's delegates to vote for independence—the first official colonial action of its kind.
               </p>
@@ -225,45 +243,28 @@ export default function HistoryPage({ navigate }) {
               <a href="https://www.nps.gov/articles/the-freedmen-s-colony-on-roanoke-island.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>National Park Service: Freedmen's Colony history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
             </div>
 
-            {/* Colonial-era communities and government */}
-            <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--accent-amber)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span className="badge badge-amber">1766–1770 · Forsyth & Craven Counties</span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Piedmont & Coastal Plain</span>
-              </div>
-              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Old Salem & Tryon Palace</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                Salem was founded in 1766 as the central town of the Moravian Wachovia settlement. Tryon Palace opened in New Bern in 1770 as colonial North Carolina's first permanent capitol building. These are distinct stories: a Moravian community in the Piedmont and the colony's center of royal government on the coast.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: '0.65rem' }}>
-                <a href="https://www.oldsalem.org/oldsalemresearch/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>Old Salem research & history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
-                <a href="https://www.tryonpalace.org/the-palace-historic-homes/tryon-palace/palace-history" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>Tryon Palace official history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
-              </div>
-            </div>
-
             {/* Milestone 3 */}
             <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid #34d399' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                 <span className="badge badge-emerald">1903 • Kill Devil Hills</span>
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>"First in Flight"</span>
               </div>
-              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>First Powered Airplane Flight by Wright Brothers</h3>
+              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>The Wright Brothers' First Powered Flight</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
                 On December 17, 1903, Orville Wright piloted the Wright Flyer at Kill Devil Hills. The flight demonstrated a controllable, heavier-than-air machine taking off from a level surface under its own power and landing at the same height.
               </p>
               <a href="https://www.nps.gov/articles/firstflight.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>National Park Service: The First Flight <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
             </div>
 
-            {/* Milestone 4 */}
-            <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid #f87171' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span className="badge badge-crimson">Colonial & America 250th</span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Forsyth & Craven Counties</span>
-              </div>
-              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Old Salem & Colonial Governor's Palace</h3>
+            {/* County research call to action */}
+            <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--accent-amber)' }}>
+              <h3 style={{ fontSize: '1.35rem', marginBottom: '0.4rem' }}>Keep exploring North Carolina's county histories</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
-                Experience living history in Old Salem Historic District (Winston-Salem) and Tryon Palace (New Bern), NC's first colonial capitol. Join statewide celebrations for America's 250th anniversary!
+                The History Vault is being expanded county by county as archival records, community histories, and institutional sources are reviewed. Entries are labeled as research-in-progress when a sourced history is not yet available.
               </p>
+              <button onClick={() => navigate('/counties')} className="btn btn-primary" style={{ marginTop: '0.75rem' }}>
+                Browse all 100 counties <ArrowRight size={14} />
+              </button>
             </div>
           </div>
         </div>
