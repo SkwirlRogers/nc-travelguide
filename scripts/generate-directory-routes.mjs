@@ -1,0 +1,71 @@
+import { readFile, writeFile } from "node:fs/promises";
+import path from "node:path";
+
+const root = process.cwd();
+const readJson = async (file) => JSON.parse(await readFile(path.join(root, file), "utf8"));
+const [cities, counties, macroRegions, aiIndex] = await Promise.all([
+  readJson("src/data/cities.json"),
+  readJson("src/data/counties.json"),
+  readJson("src/data/macro-regions.json"),
+  readJson("public/ai-index.json")
+]);
+const normalize = (value) => String(value || "").toLowerCase()
+  .replace(/\s+county$/i, "").replace(/[\s_-]/g, "").trim();
+const countyByName = new Map(counties.map((county) => [normalize(county.County), county]));
+const getMacroRegions = (county) => {
+  const label = county?.Region;
+  if (macroRegions.cross_region_labels[label]) return macroRegions.cross_region_labels[label];
+  return macroRegions.macro_regions
+    .filter((region) => region.direct_region_labels.includes(label))
+    .map((region) => region.name);
+};
+const seenSlugs = new Set();
+const eligible = [];
+const skipped = [];
+
+for (const town of cities) {
+  const slug = String(town.Slug || "").trim();
+  const refs = String(town.County || "").split("/").map((part) => part.trim()).filter(Boolean);
+  const countyRecords = refs.map((ref) => countyByName.get(normalize(ref))).filter(Boolean);
+  const valid = slug && !seenSlugs.has(slug)
+    && String(town.City || "").trim()
+    && String(town.Description || "").trim().length >= 40
+    && /^https?:\/\//i.test(String(town["Tourism Website"] || ""))
+    && Number.isFinite(Number(town.Latitude))
+    && Number.isFinite(Number(town.Longitude))
+    && refs.length > 0 && countyRecords.length === refs.length;
+  if (!valid) {
+    skipped.push({ name: town.City, slug, county: town.County });
+    continue;
+  }
+  seenSlugs.add(slug);
+  const regions = [...new Set(countyRecords.flatMap(getMacroRegions))];
+  eligible.push({
+    name: town.City,
+    slug,
+    county_names: countyRecords.map((county) => county.County),
+    macro_regions: regions,
+    url: "https://nctravelguide.us.mw/towns/" + slug,
+    official_website: town["Tourism Website"]
+  });
+}
+if (skipped.length) {
+  console.warn("[generate-directory-routes] Skipped " + skipped.length + " town records failing profile quality gates.");
+}
+const sitemapPath = path.join(root, "public/sitemap.xml");
+let sitemap = await readFile(sitemapPath, "utf8");
+const existing = new Set([...sitemap.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/g)].map((match) => match[1]));
+const newUrls = eligible.map((town) => town.url).filter((url) => !existing.has(url));
+if (newUrls.length) {
+  sitemap = sitemap.replace("</urlset>", newUrls.map((url) => "  <url><loc>" + url + "</loc></url>").join("\n") + "\n</urlset>");
+  await writeFile(sitemapPath, sitemap, "utf8");
+}
+aiIndex.town_directory = {
+  url: "https://nctravelguide.us.mw/towns",
+  profile_count: eligible.length,
+  description: "Town and community profiles linked to their source county records, regional context, coordinates, descriptions, and official municipal websites."
+};
+aiIndex.town_pages = eligible;
+aiIndex.last_updated = new Date().toISOString().slice(0, 10);
+await writeFile(path.join(root, "public/ai-index.json"), JSON.stringify(aiIndex, null, 2) + "\n");
+console.log("[generate-directory-routes] " + eligible.length + " town profiles qualified; " + newUrls.length + " sitemap URLs added; " + skipped.length + " records skipped.");
