@@ -913,7 +913,10 @@
     "https://www.weather.gov/documentation/services-web-api",
     "https://open-meteo.com/",
     "https://tidesandcurrents.noaa.gov/",
-    "https://www.census.gov/"
+    "https://www.census.gov/",
+    "https://sites.ncleg.gov/library/april-12-1776-the-halifax-resolves/",
+    "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_145.html",
+    "https://plants.ces.ncsu.edu/plants/cornus-florida/"
   ],
   "notes": [
     "Live conditions are time-sensitive; consult the linked official agency before travel.",
