@@ -21,6 +21,7 @@ const macroRegion = (label) => macroRegionData.cross_region_labels[label]
   || macroRegionData.macro_regions.filter((region) => region.direct_region_labels.includes(label)).map((region) => region.name);
 
 const entities = [];
+const entityIds = new Set();
 const audit = {
   generated_at: new Date().toISOString(),
   source_files: ["counties.json", "cities.json", "attractions.json", "hotels.json", "restaurants.json"],
@@ -38,7 +39,12 @@ function addEntity({ type, sourceFile, sourceRow, name, slug, countyName, descri
   const regions = unique(countyRecords.map((county) => county.Region));
   const macroRegions = unique(countyRecords.flatMap((county) => [].concat(macroRegion(county.Region) || [])));
   const subRegions = unique(countyRecords.map((county) => county["Sub-Region"]));
-  const id = type.toLowerCase() + ":" + (slug || slugify(name));
+  const id = [type.toLowerCase(), slug || slugify(name), slugify(countyName), slugify(city), slugify(address)].join(":");
+  if (entityIds.has(id)) {
+    audit.checks.duplicate_entity_ids.push(id);
+    return;
+  }
+  entityIds.add(id);
   const isBorderReference = /\b(border|nc border)\b/i.test(String(countyName || ""));
   const entity = {
     id, type, name: String(name || "").trim(), slug: slug || slugify(name),
@@ -116,6 +122,8 @@ for (const entity of entities) {
 }
 audit.counts = {
   total_entities: entities.length,
+  source_records: counties.length + cities.length + attractions.length + hotels.length + restaurants.length,
+  deduplicated_duplicate_rows: audit.checks.duplicate_entity_ids.length,
   by_type: entities.reduce((counts, entity) => {
     counts[entity.type] = (counts[entity.type] || 0) + 1;
     return counts;

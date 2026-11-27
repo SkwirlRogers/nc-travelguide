@@ -14,12 +14,18 @@ const makeSlug = (value) => String(value || "").toLowerCase().trim()
   .replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "");
 const normalize = (value) => String(value || "").toLowerCase().replaceAll(" county", "")
   .replaceAll(" ", "").replaceAll("-", "").replaceAll("_", "").trim();
-const countForCounty = (rows, countyName, rawName) => rows.filter((item) =>
-  String(item.County || "").split("/").some((reference) => {
-    const value = normalize(reference);
-    return value && (value === normalize(countyName) || value === normalize(rawName));
-  })
-).length;
+const countForCounty = (rows, countyName, rawName) => {
+  const matches = rows.filter((item) =>
+    String(item.County || "").split("/").some((reference) => {
+      const value = normalize(reference);
+      return value && (value === normalize(countyName) || value === normalize(rawName));
+    })
+  );
+  const uniqueLocations = new Set(matches.map((item) => [
+    item.Slug || "", item.County || "", item.City || "", item.Address || ""
+  ].map((value) => String(value).toLowerCase().trim()).join("|")));
+  return uniqueLocations.size;
+};
 
 const stats = {};
 for (const county of counties) {
