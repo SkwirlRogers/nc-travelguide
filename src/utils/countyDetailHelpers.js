@@ -6,7 +6,7 @@ import countyHistoryData from "../data/county-history.json";
 import { getAllCounties, makeSlug, formatNumber } from "./countyDirectoryHelpers";
 
 const normalizeCountyReference = (value) => String(value || "").toLowerCase()
-  .replace(/\\s+county$/i, "").replace(/[\\s_-]/g, "").trim();
+  .replaceAll(" county", "").replaceAll(" ", "").replaceAll("-", "").replaceAll("_", "").trim();
 const belongsToCounty = (reference, county) => String(reference || "").split("/")
   .some((part) => normalizeCountyReference(part) === normalizeCountyReference(county.rawCountyName)
     || normalizeCountyReference(part) === normalizeCountyReference(county.County));
