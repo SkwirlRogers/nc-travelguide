@@ -257,3 +257,58 @@ button {
 .animate-fade-in {
   animation: fadeIn 0.4s ease forwards;
 }
+
+
+/* Dark archive treatment: scoped to History and future Aboriginal-history routes. */
+body.dark-archive {
+  --bg-dark: #1a1a1a;
+  --bg-card: rgba(39, 35, 29, 0.96);
+  --bg-card-hover: #302a20;
+  --bg-card-border: rgba(205, 176, 123, 0.32);
+  --bg-card-border-glow: rgba(205, 176, 123, 0.24);
+  --text-primary: #f3ead8;
+  --text-secondary: #d2c4aa;
+  --text-muted: #a99a80;
+  --accent-amber: #c9a66b;
+  --accent-amber-light: #e3c58e;
+  --accent-amber-bg: rgba(201, 166, 107, 0.14);
+  background-color: #1a1a1a;
+  color: #f3ead8;
+  color-scheme: dark;
+}
+
+body.dark-archive h1,
+body.dark-archive h2,
+body.dark-archive h3,
+body.dark-archive h4,
+body.dark-archive h5,
+body.dark-archive h6 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #f3ead8;
+}
+
+body.dark-archive .glass-panel,
+body.dark-archive .glass-card {
+  background: rgba(39, 35, 29, 0.96);
+  border-color: rgba(205, 176, 123, 0.32);
+  color: #f3ead8;
+}
+
+body.dark-archive .glass-card:hover {
+  border-color: rgba(227, 197, 142, 0.62);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38);
+}
+
+body.dark-archive .badge-amber {
+  color: #e3c58e;
+  border-color: rgba(201, 166, 107, 0.48);
+  background: rgba(201, 166, 107, 0.14);
+}
+
+body.dark-archive a {
+  text-decoration-color: rgba(227, 197, 142, 0.55);
+}
+
+body.dark-archive .main-content {
+  background: #1a1a1a;
+}
