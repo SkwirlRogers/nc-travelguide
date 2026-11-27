@@ -117,10 +117,10 @@ export default function ExperiencesPage({ initialQuery = '', navigate, onToggleS
                 }}
               >
                 <option value="all" style={{ background: '#0e172a' }}>All Regions</option>
-                <option value="Mountain" style={{ background: '#0e172a' }}>Mountain Region</option>
+                <option value="Mountains" style={{ background: '#0e172a' }}>Mountains</option>
                 <option value="Central Piedmont" style={{ background: '#0e172a' }}>Central Piedmont</option>
                 <option value="Atlantic Coastal" style={{ background: '#0e172a' }}>Atlantic Coastal</option>
-                <option value="Sandhills" style={{ background: '#0e172a' }}>Sandhills / Inland Coastal</option>
+                <option value="Sandhills / Inner Coastal" style={{ background: '#0e172a' }}>Sandhills / Inner Coastal</option>
               </select>
             </div>
 
