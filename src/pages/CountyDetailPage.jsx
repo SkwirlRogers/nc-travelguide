@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Users, Building, ExternalLink, Calendar, Compass, Plane, Sun, Utensils, Hotel, ArrowLeft, Heart, Star, Navigation, Search } from 'lucide-react';
-import { getCountyDetails, formatNumber } from '../utils/dataHelpers';
+import { MapPin, Users, Building, ExternalLink, Calendar, Compass, Plane, Sun, Utensils, Hotel, ArrowLeft, Heart, Star, Navigation, Search, History } from 'lucide-react';
+import { getCountyDetails, getCountyHistory, formatNumber } from '../utils/dataHelpers';
 
 export default function CountyDetailPage({ countySlug, subTab = 'guides', navigate, onToggleSave, isSaved }) {
   const county = getCountyDetails(countySlug);
+  const countyHistory = getCountyHistory(countySlug);
   const [activeTab, setActiveTab] = useState(subTab || 'guides');
 
   useEffect(() => {
@@ -92,6 +93,7 @@ export default function CountyDetailPage({ countySlug, subTab = 'guides', naviga
           }}>
             {[
               { id: 'guides', label: 'All Guides & Itineraries', icon: Compass, count: county.itineraries.length },
+              { id: 'history', label: 'History Vault', icon: History, count: countyHistory?.key_history?.length || 0 },
               { id: 'visit', label: 'Visit & Logistics', icon: Calendar },
               { id: 'things-to-do', label: 'Things to Do', icon: MapPin, count: county.attractions.length },
               { id: 'municipalities', label: 'Municipalities & Towns', icon: Building, count: county.cities.length },
@@ -208,6 +210,73 @@ export default function CountyDetailPage({ countySlug, subTab = 'guides', naviga
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* TAB: COUNTY HISTORY VAULT */}
+          {activeTab === 'history' && (
+            <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div className="glass-panel" style={{ padding: '1.75rem', border: '1px solid rgba(201, 166, 107, 0.4)' }}>
+                <span className="badge badge-amber" style={{ marginBottom: '0.65rem' }}>Source-led county research</span>
+                <h2 style={{ fontSize: '1.8rem', marginBottom: '0.45rem' }}>{county.rawCountyName} County History Vault</h2>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.65 }}>
+                  A growing, county-by-county research collection. Historical summaries and archival items are published only when a source or holding institution can be identified. This is a developing collection, not a claim that every county's history is complete.
+                </p>
+              </div>
+
+              {countyHistory?.key_history?.length ? (
+                <section aria-label={county.rawCountyName + ' historical records'} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {countyHistory.key_history.map((record, index) => (
+                    <article key={record.title + index} className="glass-panel" style={{ padding: '1.5rem' }}>
+                      <span className="badge badge-blue" style={{ marginBottom: '0.65rem' }}>{record.period}</span>
+                      <h3 style={{ fontSize: '1.35rem', marginBottom: '0.45rem' }}>{record.title}</h3>
+                      <p style={{ color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '0.75rem' }}>{record.summary}</p>
+                      <a href={record.source_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.86rem', fontWeight: 650 }}>
+                        Source: {record.source_name} <ExternalLink size={13} style={{ verticalAlign: 'middle' }} />
+                      </a>
+                    </article>
+                  ))}
+                </section>
+              ) : (
+                <div className="glass-panel" style={{ padding: '1.5rem' }}>
+                  <h3 style={{ fontSize: '1.2rem', marginBottom: '0.45rem' }}>Research collection in progress</h3>
+                  <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                    County-specific historical entries are being assembled. No unsourced timeline or archival item is being presented as fact.
+                  </p>
+                </div>
+              )}
+
+              {countyHistory?.archival_assets?.length > 0 && (
+                <section aria-label={county.rawCountyName + ' archival collection'}>
+                  <h3 style={{ fontSize: '1.45rem', marginBottom: '1rem' }}>Archival photographs & collection records</h3>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: '1rem' }}>
+                    {countyHistory.archival_assets.map((asset, index) => (
+                      <figure key={asset.title + index} className="glass-card" style={{ margin: 0, overflow: 'hidden' }}>
+                        <img src={asset.url} alt={asset.alt} loading="lazy" style={{ width: '100%', height: '210px', objectFit: 'cover', display: 'block' }} />
+                        <figcaption style={{ padding: '1rem' }}>
+                          <strong>{asset.title}</strong>
+                          <p style={{ color: 'var(--text-secondary)', fontSize: '0.84rem', lineHeight: 1.5, margin: '0.4rem 0' }}>{asset.caption}</p>
+                          <a href={asset.source_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>
+                            {asset.source_name} collection record <ExternalLink size={12} style={{ verticalAlign: 'middle' }} />
+                          </a>
+                          <p style={{ color: 'var(--text-muted)', fontSize: '0.72rem', lineHeight: 1.45, marginTop: '0.5rem' }}>{asset.rights_note}</p>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              <aside className="glass-panel" style={{ padding: '1.35rem', borderLeft: '4px solid var(--accent-amber)' }}>
+                <h3 style={{ fontSize: '1.15rem', marginBottom: '0.4rem' }}>Indigenous history research note</h3>
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  {countyHistory?.indigenous_context?.editorial_note || 'Indigenous history will be documented in a dedicated, source-reviewed phase. Community-authored and institutional sources will be prioritized; no identity or continuity claims are inferred from colonial records alone.'}
+                </p>
+              </aside>
+
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', lineHeight: 1.5 }}>
+                Image rights and reuse conditions vary by institution. Follow each holding institution's terms before reuse or republication.
+              </p>
             </div>
           )}
 
