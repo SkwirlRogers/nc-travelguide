@@ -28,14 +28,6 @@ function readableDate(value) {
   return Number.isNaN(date.getTime()) ? 'Update time unavailable' : date.toLocaleString();
 }
 
-function severityLabel(value) {
-  const number = Number(value);
-  if (number >= 3) return 'High impact';
-  if (number === 2) return 'Medium impact';
-  if (number === 1) return 'Low impact';
-  return 'Impact not classified';
-}
-
 function normalizeIncidents(payload) {
   const rows = payload?.features || payload?.value || payload?.incidents || [];
   return rows.map((row, index) => {
@@ -52,7 +44,6 @@ function normalizeIncidents(payload) {
       detour: a.Detour || a.detour || '',
       lanes: a.LanesAffected || a.lanesAffected || '',
       fullClosure: ['yes', 'true', '1'].includes(String(a.IsFullClosure ?? '').toLowerCase()),
-      severity: a.Severity ?? a.severity,
       updated: a.LastUpdateDateTime || a.lastUpdateDateTime,
       link: a.DriveNCLink || a.driveNCLink || 'https://drivenc.gov'
     };
@@ -64,7 +55,7 @@ async function fetchIncidents() {
     where: '1=1',
     outFields: INCIDENT_FIELDS,
     returnGeometry: 'false',
-    orderByFields: 'Severity DESC,LastUpdateDateTime DESC',
+    orderByFields: 'LastUpdateDateTime DESC',
     resultRecordCount: '100',
     f: 'json'
   });
@@ -179,7 +170,7 @@ export default function LiveTravelConditions() {
                   <div key={item.id} style={{ padding: '0.8rem 0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.6rem', alignItems: 'flex-start' }}>
                       <strong style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>{item.road || item.type}</strong>
-                      <span className="badge badge-amber">{severityLabel(item.severity)}</span>
+                      <span className="badge badge-amber">{item.fullClosure ? 'Full closure' : 'Travel notice'}</span>
                     </div>
                     <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginTop: '0.25rem' }}>
                       {[item.county && item.county + ' County', item.direction, item.location].filter(Boolean).join(' · ')}
