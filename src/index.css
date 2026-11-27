@@ -312,3 +312,41 @@ body.dark-archive a {
 body.dark-archive .main-content {
   background: #1a1a1a;
 }
+
+
+/* Archive chrome: keep navigation and footer inside the same reading environment. */
+body.dark-archive header.glass-panel {
+  background: rgba(26, 26, 26, 0.94) !important;
+  border-bottom: 1px solid rgba(205, 176, 123, 0.28);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+}
+
+body.dark-archive footer {
+  background: #211f1b !important;
+  border-top-color: rgba(205, 176, 123, 0.28) !important;
+  color: #d2c4aa !important;
+}
+
+body.dark-archive footer h4,
+body.dark-archive footer strong {
+  color: #f3ead8;
+}
+
+body.dark-archive footer a,
+body.dark-archive footer button {
+  color: #d2c4aa !important;
+}
+
+body.dark-archive footer a:hover,
+body.dark-archive footer button:hover {
+  color: #e3c58e !important;
+}
+
+body.dark-archive .badge-blue,
+body.dark-archive .badge-teal,
+body.dark-archive .badge-emerald,
+body.dark-archive .badge-crimson {
+  color: #e3c58e;
+  border-color: rgba(201, 166, 107, 0.42);
+  background: rgba(201, 166, 107, 0.13);
+}
