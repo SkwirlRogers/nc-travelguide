@@ -350,3 +350,43 @@ body.dark-archive .badge-crimson {
   border-color: rgba(201, 166, 107, 0.42);
   background: rgba(201, 166, 107, 0.13);
 }
+
+
+/* Keyboard, touch, and reduced-motion resilience. */
+.btn,
+.desktop-nav button,
+.mobile-menu-btn {
+  min-height: 44px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent-amber);
+  outline-offset: 3px;
+}
+
+body.dark-archive button:focus-visible,
+body.dark-archive a:focus-visible,
+body.dark-archive input:focus-visible,
+body.dark-archive select:focus-visible,
+body.dark-archive textarea:focus-visible {
+  outline-color: var(--accent-amber-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
