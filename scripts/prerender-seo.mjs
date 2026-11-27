@@ -90,7 +90,6 @@ function countyFallback(county, slug, historyRecord = null) {
   const name = county.County;
   const details = [
     `<p><strong>Region:</strong> ${escapeHtml(county.Region)} · <strong>Sub-region:</strong> ${escapeHtml(county["Sub-Region"])}</p>`,
-    county.Population ? `<p><strong>Population reference:</strong> ${escapeHtml(county.Population)}</p>` : "",
     county["Major Cities"] ? `<p><strong>Major towns and cities:</strong> ${escapeHtml(county["Major Cities"])}</p>` : "",
     county["Tourism Website"] ? `<p><strong>Official county tourism resource:</strong> ${sourceLink(county["Tourism Website"], county["Tourism Website"])}</p>` : ""
   ].join("");
@@ -162,10 +161,10 @@ function routeDefinition(route) {
     const isHistory = parts[2] === "history" && Boolean(historyRecord);
     const name = county.County;
     const title = isHistory
-      ? `${name} History Vault | NC Travel Guide`
+      ? `${name}, NC History Vault | NC Travel Guide`
       : `${name}, NC Travel Guide | NC Travel Guide`;
     const description = isHistory
-      ? `Explore ${name}'s source-reviewed historical records, archival assets, and institutional references in the North Carolina History Vault.`
+      ? (historyRecord.seo_description || `Explore ${name}'s source-reviewed historical records, archival assets, and institutional references in the North Carolina History Vault.`)
       : `Plan a visit to ${name}, North Carolina. Explore local attractions, towns, travel ideas, lodging, dining, regional context, and visitor information.`;
     return {
       title,
@@ -245,4 +244,7 @@ for (const route of routes) {
   }
   written += 1;
 }
-console.log(`[prerender-seo] Wrote static HTML and route metadata for ${written} sitemap routes.`);
+if (written !== routes.length) {
+  throw new Error(`[prerender-seo] Generated ${written} of ${routes.length} sitemap routes.`);
+}
+console.log(`[prerender-seo] Wrote static HTML and route metadata for all ${written} sitemap routes.`);

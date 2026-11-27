@@ -254,7 +254,7 @@ export default function LiveTravelConditions() {
           <div style={{ borderRadius: '14px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.14)', background: '#fff' }}>
             <iframe
               title="Official NCDOT DriveNC and TIMS current incidents dashboard"
-              src="https://ncdot.maps.arcgis.com/apps/opsdashboard/index.html#/d16841a31ea3487f803384f7233c6d53"
+              src="https://ncdot.maps.arcgis.com/apps/dashboards/index.html#/d16841a31ea3487f803384f7233c6d53"
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
@@ -262,7 +262,7 @@ export default function LiveTravelConditions() {
             />
           </div>
           <p style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem', flexWrap: 'wrap', marginTop: '0.7rem', fontSize: '0.8rem' }}>
-            <a href="https://ncdot.maps.arcgis.com/apps/opsdashboard/index.html#/d16841a31ea3487f803384f7233c6d53" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 600 }}>Open full NCDOT dashboard <ExternalLink size={13} style={{ verticalAlign: 'middle' }} /></a>
+            <a href="https://ncdot.maps.arcgis.com/apps/dashboards/index.html#/d16841a31ea3487f803384f7233c6d53" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 600 }}>Open full NCDOT dashboard <ExternalLink size={13} style={{ verticalAlign: 'middle' }} /></a>
             <a href="https://drivenc.gov" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontWeight: 600 }}>Open DriveNC.gov <ExternalLink size={13} style={{ verticalAlign: 'middle' }} /></a>
           </p>
         </section>

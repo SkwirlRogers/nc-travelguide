@@ -1,8 +1,8 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import SavedItineraryModal from './components/SavedItineraryModal';
-import { getCountyDetails } from './utils/dataHelpers';
+const SavedItineraryModal = lazy(() => import('./components/SavedItineraryModal'));
+import { getCountyDetails, getCountyHistory } from './utils/dataHelpers';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RegionsPage = lazy(() => import('./pages/RegionsPage'));
@@ -98,6 +98,7 @@ export default function App() {
     const countyMatch = path.match(/^\/counties\/([^/]+)/);
     if (countyMatch) {
       countyRecord = getCountyDetails(countyMatch[1]);
+      const countyHistoryRecord = getCountyHistory(countyMatch[1]);
       const countyName = countyRecord?.rawCountyName || countyMatch[1].replace(/-county$/i, "").replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
       const tab = path.split("/")[3] || "guides";
       const tabNames = {
@@ -115,11 +116,11 @@ export default function App() {
         about: `${countyName} County, North Carolina travel and visitor information`,
         keywords: [`${countyName} County NC`, `${countyName} County travel guide`, `${countyName} County attractions`]
       };
-      canonicalPath = tab === "history" && countyMatch[1] === "dare-county"
+      canonicalPath = tab === "history" && countyHistoryRecord
         ? path
         : `/counties/${countyMatch[1]}`;
-      if (tab === "history" && countyMatch[1] === "dare-county") {
-        page.description = "Explore Dare County's Roanoke Island history, including the 1580s English expeditions and the Civil War-era Freedmen's Colony, with National Park Service sources and archival records.";
+      if (tab === "history" && countyHistoryRecord) {
+        page.description = countyHistoryRecord.seo_description || `Explore source-reviewed historical records and archival references for ${countyName} County, North Carolina.`;
       }
     }
 
@@ -314,13 +315,17 @@ export default function App() {
 
       <Footer navigate={navigate} />
 
-      <SavedItineraryModal
-        isOpen={isSavedOpen}
-        onClose={() => setIsSavedOpen(false)}
-        savedItems={savedItems}
-        onRemoveItem={handleRemoveSavedItem}
-        navigate={navigate}
-      />
+      {isSavedOpen && (
+        <Suspense fallback={<div role="status" aria-live="polite" style={{ position: 'fixed', inset: 0, zIndex: 2000, display: 'grid', placeItems: 'center', background: 'rgba(0,0,0,0.55)', color: '#fff' }}>Opening saved itinerary…</div>}>
+          <SavedItineraryModal
+            isOpen={isSavedOpen}
+            onClose={() => setIsSavedOpen(false)}
+            savedItems={savedItems}
+            onRemoveItem={handleRemoveSavedItem}
+            navigate={navigate}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

@@ -208,6 +208,8 @@ export default function HistoryPage({ navigate }) {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: '0.65rem' }}>
                 <a href="https://www.oldsalem.org/oldsalemresearch/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>Old Salem research & history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
                 <a href="https://www.tryonpalace.org/the-palace-historic-homes/tryon-palace/palace-history" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>Tryon Palace official history <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
+                <a href="/counties/forsyth-county/history" style={{ color: 'var(--accent-amber-light)', fontSize: '0.8rem', fontWeight: 650 }}>Explore Forsyth County History Vault <ArrowRight size={12} style={{ verticalAlign: 'middle' }} /></a>
+                <a href="/counties/craven-county/history" style={{ color: 'var(--accent-amber-light)', fontSize: '0.8rem', fontWeight: 650 }}>Explore Craven County History Vault <ArrowRight size={12} style={{ verticalAlign: 'middle' }} /></a>
               </div>
             </div>
 
@@ -225,7 +227,7 @@ export default function HistoryPage({ navigate }) {
                 <a href="https://sites.ncleg.gov/library/april-12-1776-the-halifax-resolves/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>NC General Assembly: Halifax Resolves <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
                 <a href="https://www.ncpedia.org/mecklenburg-declaration" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.8rem', fontWeight: 650 }}>NCpedia: Mecklenburg Declaration evidence <ExternalLink size={12} style={{ verticalAlign: 'middle' }} /></a>
               </div>
-              <button onClick={() => navigate('/counties/halifax-county')} style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: 'var(--accent-blue-light)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <button onClick={() => navigate('/counties/halifax-county/history')} style={{ marginTop: '0.75rem', fontSize: '0.85rem', color: 'var(--accent-blue-light)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                 Explore Halifax County History <ArrowRight size={14} />
               </button>
             </div>

@@ -44,6 +44,60 @@
         "status": "awaiting_dedicated_source_review",
         "editorial_note": "Reserved for a separately researched Indigenous history treatment. Do not infer identity, continuity, or community affiliation from colonial labels alone. Add community-authored and institutional sources before publication."
       }
+    },
+    "halifax-county": {
+      "county": "Halifax County",
+      "seo_description": "Explore the Halifax Resolves of April 12, 1776, and their role in North Carolina's path to independence, with a source from the North Carolina General Assembly.",
+      "key_history": [
+        {
+          "period": "April 12, 1776",
+          "title": "The Halifax Resolves",
+          "summary": "The Fourth Provincial Congress meeting at Halifax adopted the Halifax Resolves, instructing North Carolina's delegates to the Continental Congress to concur with the other colonies in declaring independence from Great Britain. It was the first official action by a colony authorizing its delegates to vote for independence.",
+          "source_name": "North Carolina General Assembly — Halifax Resolves",
+          "source_url": "https://sites.ncleg.gov/library/april-12-1776-the-halifax-resolves/"
+        }
+      ],
+      "archival_assets": [],
+      "indigenous_context": {
+        "status": "awaiting_dedicated_source_review",
+        "editorial_note": "Reserved for a separately researched Indigenous history treatment. Do not infer identity, continuity, or community affiliation from colonial labels alone. Add community-authored and institutional sources before publication."
+      }
+    },
+    "forsyth-county": {
+      "county": "Forsyth County",
+      "seo_description": "Explore Salem's 1766 founding as the central town of the Moravian Wachovia settlement, with research and history from Old Salem Museums & Gardens.",
+      "key_history": [
+        {
+          "period": "1766",
+          "title": "Salem and the Moravian Wachovia settlement",
+          "summary": "Salem was founded in 1766 as the central town of the Moravian Wachovia settlement. Old Salem Museums & Gardens preserves and interprets the community's history through historic sites, collections, and research resources.",
+          "source_name": "Old Salem Museums & Gardens — Research & History",
+          "source_url": "https://www.oldsalem.org/oldsalemresearch/"
+        }
+      ],
+      "archival_assets": [],
+      "indigenous_context": {
+        "status": "awaiting_dedicated_source_review",
+        "editorial_note": "Reserved for a separately researched Indigenous history treatment. Do not infer identity, continuity, or community affiliation from colonial labels alone. Add community-authored and institutional sources before publication."
+      }
+    },
+    "craven-county": {
+      "county": "Craven County",
+      "seo_description": "Explore Tryon Palace in New Bern, completed in 1770 as colonial North Carolina's first permanent capitol building, with the site's official history.",
+      "key_history": [
+        {
+          "period": "1770",
+          "title": "Tryon Palace and colonial government",
+          "summary": "Tryon Palace opened in New Bern in 1770 and served as the residence of royal governors and a center of colonial government. It became colonial North Carolina's first permanent capitol building; the site is now interpreted by Tryon Palace as a historic place.",
+          "source_name": "Tryon Palace — Official Palace History",
+          "source_url": "https://www.tryonpalace.org/the-palace-historic-homes/tryon-palace/palace-history"
+        }
+      ],
+      "archival_assets": [],
+      "indigenous_context": {
+        "status": "awaiting_dedicated_source_review",
+        "editorial_note": "Reserved for a separately researched Indigenous history treatment. Do not infer identity, continuity, or community affiliation from colonial labels alone. Add community-authored and institutional sources before publication."
+      }
     }
   }
 }

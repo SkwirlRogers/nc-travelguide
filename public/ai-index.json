@@ -854,7 +854,10 @@
   "history_vault": {
     "status": "pilot",
     "current_detailed_counties": [
-      "Dare County"
+      "Dare County",
+      "Halifax County",
+      "Forsyth County",
+      "Craven County"
     ],
     "editorial_policy": "Publish county history entries only when they have identifiable institutional, archival, community, or primary sources. Other county pages may show a research-in-progress state; do not infer that their histories are absent or complete.",
     "dare_county": {
@@ -871,7 +874,33 @@
           "source": "https://www.nps.gov/articles/the-freedmen-s-colony-on-roanoke-island.htm"
         }
       ]
-    }
+    },
+    "county_pages": [
+      {
+        "county": "Dare County",
+        "url": "https://nctravelguide.us.mw/counties/dare-county/history",
+        "record_count": 2,
+        "focus": "Roanoke Island English expeditions and the Freedmen's Colony"
+      },
+      {
+        "county": "Halifax County",
+        "url": "https://nctravelguide.us.mw/counties/halifax-county/history",
+        "record_count": 1,
+        "focus": "The Halifax Resolves of April 12, 1776"
+      },
+      {
+        "county": "Forsyth County",
+        "url": "https://nctravelguide.us.mw/counties/forsyth-county/history",
+        "record_count": 1,
+        "focus": "Salem and the Moravian Wachovia settlement, founded 1766"
+      },
+      {
+        "county": "Craven County",
+        "url": "https://nctravelguide.us.mw/counties/craven-county/history",
+        "record_count": 1,
+        "focus": "Tryon Palace and colonial government, 1770"
+      }
+    ]
   },
   "data_sources": [
     "https://www.visitnc.com/",
