@@ -66,7 +66,7 @@ function setMeta(html, attribute, key, value) {
 }
 
 function setCanonical(html, url) {
-  const expression = /<link\\s+rel="canonical"[^>]*>/i;
+  const expression = /<link\s+rel="canonical"[^>]*>/i;
   const tag = `<link rel="canonical" href="${escapeHtml(url)}" />`;
   return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\\n  </head>`);
 }
@@ -183,7 +183,7 @@ function routeDefinition(route) {
 function renderStaticRoute(route, definition) {
   let html = baseHtml;
   const canonicalUrl = siteRoot + definition.canonicalPath;
-  html = html.replace(/<title>[\\s\\S]*?<\\/title>/i, `<title>${escapeHtml(definition.title)}</title>`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(definition.title)}</title>`);
   html = setMeta(html, "name", "description", definition.description);
   html = setMeta(html, "property", "og:title", definition.title);
   html = setMeta(html, "property", "og:description", definition.description);
@@ -192,14 +192,14 @@ function renderStaticRoute(route, definition) {
   html = setMeta(html, "name", "twitter:description", definition.description);
   html = setCanonical(html, canonicalUrl);
 
-  const schemaScript = html.match(/<script type="application\\/ld\\+json">([\\s\\S]*?)<\\/script>/i);
+  const schemaScript = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
   if (schemaScript) {
     const schema = JSON.parse(schemaScript[1]);
     const graph = Array.isArray(schema["@graph"]) ? schema["@graph"] : [];
     const filteredGraph = route === "/"
       ? graph
       : graph.filter((node) => !(node["@type"] === "WebPage" && node.url === siteRoot + "/"));
-    filteredGraph.push({
+    if (route !== "/") filteredGraph.push({
       "@type": definition.type,
       "@id": canonicalUrl + "#webpage",
       "url": canonicalUrl,
@@ -217,7 +217,7 @@ function renderStaticRoute(route, definition) {
   }
 
   const rootStart = html.indexOf('<div id="root">');
-  const rootEnd = html.indexOf('</div>\\n    <script type="module"', rootStart);
+  const rootEnd = html.indexOf("</div>\n    <script type=\"module\"", rootStart);
   if (rootStart >= 0 && rootEnd > rootStart) {
     const rootClose = rootEnd + "</div>".length;
     html = html.slice(0, rootStart) + '<div id="root">' + definition.fallbackHtml + '</div>' + html.slice(rootClose);
@@ -226,8 +226,8 @@ function renderStaticRoute(route, definition) {
   return html;
 }
 
-const routes = [...sitemap.matchAll(/<loc>(https:\\/\\/[^<]+)<\\/loc>/g)]
-  .map((match) => new URL(match[1]).pathname.replace(/\\/$/, "") || "/");
+const routes = [...sitemap.matchAll(/<loc>(https:\/\/[^<]+)<\/loc>/g)]
+  .map((match) => new URL(match[1]).pathname.replace(/\/$/, "") || "/");
 let written = 0;
 for (const route of routes) {
   const definition = routeDefinition(route);
