@@ -1,0 +1,121 @@
+[
+  {
+    "Region": "Central Piedmont",
+    "Slug": "central-piedmont",
+    "Sub-Region": "The Triangle",
+    "Major Cities": "Raleigh, Durham, Chapel Hill, Cary",
+    "Tourism Website": "https://researchtriangle.org"
+  },
+  {
+    "Region": "Central Piedmont",
+    "Slug": "central-piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Major Cities": "Charlotte, Concord, Gastonia",
+    "Tourism Website": "https://www.charlottesgotalot.com"
+  },
+  {
+    "Region": "Central Piedmont",
+    "Slug": "central-piedmont",
+    "Sub-Region": "The Triad",
+    "Major Cities": "Greensboro, Winston-Salem, High Point",
+    "Tourism Website": "https://www.ptrc.org"
+  },
+  {
+    "Region": "Atlantic Coastal",
+    "Slug": "atlantic-coastal",
+    "Sub-Region": "Outer Banks",
+    "Major Cities": "Nags Head, Kill Devil Hills, Kitty Hawk",
+    "Tourism Website": "https://www.outerbanks.org"
+  },
+  {
+    "Region": "Atlantic Coastal",
+    "Slug": "atlantic-coastal",
+    "Sub-Region": "Crystal Coast",
+    "Major Cities": "Morehead City, Beaufort, Atlantic Beach",
+    "Tourism Website": "https://www.crystalcoastnc.org"
+  },
+  {
+    "Region": "Atlantic Coastal",
+    "Slug": "atlantic-coastal",
+    "Sub-Region": "Cape Fear Coast",
+    "Major Cities": "Wilmington, Carolina Beach, Kure Beach",
+    "Tourism Website": "https://www.wilmingtonandbeaches.com"
+  },
+  {
+    "Region": "Atlantic Coastal",
+    "Slug": "atlantic-coastal",
+    "Sub-Region": "Brunswick Islands",
+    "Major Cities": "Southport, Oak Island, Sunset Beach",
+    "Tourism Website": "https://www.ncbrunswick.com"
+  },
+  {
+    "Region": "Atlantic Coastal",
+    "Slug": "atlantic-coastal",
+    "Sub-Region": "Inner Banks",
+    "Major Cities": "Washington, New Bern, Edenton",
+    "Tourism Website": "www.visitnc.com"
+  },
+  {
+    "Region": "Mountain",
+    "Slug": "mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Major Cities": "Asheville, Boone, Blowing Rock",
+    "Tourism Website": "https://www.blueridgeheritage.com"
+  },
+  {
+    "Region": "Mountain",
+    "Slug": "mountain",
+    "Sub-Region": "High Country",
+    "Major Cities": "Boone, Banner Elk, Blowing Rock",
+    "Tourism Website": "https://highcountryhost.com"
+  },
+  {
+    "Region": "Mountain",
+    "Slug": "mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Major Cities": "Bryson City, Cherokee, Waynesville",
+    "Tourism Website": "https://www.visitsmokies.org"
+  },
+  {
+    "Region": "Mountain",
+    "Slug": "mountain",
+    "Sub-Region": "Foothills",
+    "Major Cities": "Morganton, Hickory, Lenoir",
+    "Tourism Website": "https://frcnc.gov"
+  },
+  {
+    "Region": "Inland-Inner Coastal",
+    "Slug": "inland-inner-coastal",
+    "Sub-Region": "Sandhills",
+    "Major Cities": "Pinehurst, Southern Pines",
+    "Tourism Website": "https://www.homeofgolf.com"
+  },
+  {
+    "Region": "Mountain-Central Piedmont",
+    "Slug": "mountain-central-piedmont",
+    "Sub-Region": "Yadkin Valley",
+    "Major Cities": "Mount Airy, Elkin",
+    "Tourism Website": "https://www.yadkinvalley.org"
+  },
+  {
+    "Region": "Piedmont-Mountain",
+    "Slug": "piedmont-mountain",
+    "Sub-Region": "Uwharrie Lakes",
+    "Major Cities": "Troy, Albemarle",
+    "Tourism Website": "https://www.discoveruwharrie.com"
+  },
+  {
+    "Region": "Central Piedmont",
+    "Slug": "central-piedmont",
+    "Sub-Region": "Lake Norman Region",
+    "Major Cities": "Mooresville, Cornelius",
+    "Tourism Website": "https://www.visitlakenorman.org"
+  },
+  {
+    "Region": "Central Piedmont",
+    "Slug": "central-piedmont",
+    "Sub-Region": "Research Triangle Park",
+    "Major Cities": "RTP, Durham, Morrisville",
+    "Tourism Website": "https://www.rtp.org"
+  }
+]

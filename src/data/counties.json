@@ -1,0 +1,902 @@
+[
+  {
+    "County": "Alamance County",
+    "Slug": "alamance-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "189,886",
+    "Major Cities": "Burlington, Graham",
+    "Tourism Website": "https://www.alamance-nc.com"
+  },
+  {
+    "County": "Alexander County",
+    "Slug": "alexander-county",
+    "Region": "Mountain",
+    "Sub-Region": "Foothills",
+    "Population": "37,225",
+    "Major Cities": "Taylorsville",
+    "Tourism Website": "https://www.alexandercountync.gov"
+  },
+  {
+    "County": "Alleghany County",
+    "Slug": "alleghany-county",
+    "Region": "Mountain",
+    "Sub-Region": "High Country",
+    "Population": "11,200",
+    "Major Cities": "Sparta",
+    "Tourism Website": "https://www.alleghanycounty-nc.gov"
+  },
+  {
+    "County": "Anson County",
+    "Slug": "anson-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "22,534",
+    "Major Cities": "Wadesboro",
+    "Tourism Website": "https://www.ansoncountync.gov"
+  },
+  {
+    "County": "Ashe County",
+    "Slug": "ashe-county",
+    "Region": "Mountain",
+    "Sub-Region": "High Country",
+    "Population": "27,662",
+    "Major Cities": "West Jefferson, Jefferson",
+    "Tourism Website": "https://www.ashecountygov.com"
+  },
+  {
+    "County": "Avery County",
+    "Slug": "avery-county",
+    "Region": "Mountain",
+    "Sub-Region": "High Country",
+    "Population": "18,011",
+    "Major Cities": "Newland, Banner Elk",
+    "Tourism Website": "https://www.averycountync.gov"
+  },
+  {
+    "County": "Beaufort County",
+    "Slug": "beaufort-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "44,908",
+    "Major Cities": "Washington, Belhaven",
+    "Tourism Website": "https://www.co.beaufort.nc.us"
+  },
+  {
+    "County": "Bertie County",
+    "Slug": "bertie-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "16,791",
+    "Major Cities": "Windsor",
+    "Tourism Website": "https://www.co.bertie.nc.us"
+  },
+  {
+    "County": "Bladen County",
+    "Slug": "bladen-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Cape Fear Coast",
+    "Population": "30,321",
+    "Major Cities": "Elizabethtown",
+    "Tourism Website": "https://www.bladencountync.gov"
+  },
+  {
+    "County": "Brunswick County",
+    "Slug": "brunswick-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Brunswick Islands",
+    "Population": "181,626",
+    "Major Cities": "Leland, Southport, Shallotte",
+    "Tourism Website": "https://www.brunswickcountync.gov"
+  },
+  {
+    "County": "Buncombe County",
+    "Slug": "buncombe-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "284,052",
+    "Major Cities": "Asheville, Black Mountain",
+    "Tourism Website": "https://www.buncombecounty.org"
+  },
+  {
+    "County": "Burke County",
+    "Slug": "burke-county",
+    "Region": "Mountain",
+    "Sub-Region": "Foothills",
+    "Population": "89,341",
+    "Major Cities": "Morganton, Valdese",
+    "Tourism Website": "https://www.burkenc.org"
+  },
+  {
+    "County": "Cabarrus County",
+    "Slug": "cabarrus-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "253,559",
+    "Major Cities": "Concord, Kannapolis",
+    "Tourism Website": "https://www.cabarruscounty.us"
+  },
+  {
+    "County": "Caldwell County",
+    "Slug": "caldwell-county",
+    "Region": "Mountain",
+    "Sub-Region": "Foothills",
+    "Population": "81,059",
+    "Major Cities": "Lenoir, Hudson",
+    "Tourism Website": "https://www.caldwellcountync.org"
+  },
+  {
+    "County": "Camden County",
+    "Slug": "camden-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Outer Banks",
+    "Population": "11,500",
+    "Major Cities": "Camden",
+    "Tourism Website": "https://www.camdencountync.gov"
+  },
+  {
+    "County": "Carteret County",
+    "Slug": "carteret-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Crystal Coast",
+    "Population": "71,353",
+    "Major Cities": "Morehead City, Beaufort",
+    "Tourism Website": "https://www.carteretcountync.gov"
+  },
+  {
+    "County": "Caswell County",
+    "Slug": "caswell-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "22,131",
+    "Major Cities": "Yanceyville",
+    "Tourism Website": "https://www.caswellcountync.gov"
+  },
+  {
+    "County": "Catawba County",
+    "Slug": "catawba-county",
+    "Region": "Mountain-Central Piedmont",
+    "Sub-Region": "Yadkin Valley",
+    "Population": "171,252",
+    "Major Cities": "Hickory, Newton, Conover",
+    "Tourism Website": "https://www.catawbacountync.gov"
+  },
+  {
+    "County": "Chatham County",
+    "Slug": "chatham-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "87,638",
+    "Major Cities": "Pittsboro, Siler City",
+    "Tourism Website": "https://www.chathamcountync.gov"
+  },
+  {
+    "County": "Cherokee County",
+    "Slug": "cherokee-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "31,215",
+    "Major Cities": "Murphy, Andrews",
+    "Tourism Website": "https://www.cherokeecounty-nc.gov"
+  },
+  {
+    "County": "Chowan County",
+    "Slug": "chowan-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "13,885",
+    "Major Cities": "Edenton",
+    "Tourism Website": "https://www.chowancounty-nc.gov"
+  },
+  {
+    "County": "Clay County",
+    "Slug": "clay-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "11,800",
+    "Major Cities": "Hayesville",
+    "Tourism Website": "https://www.claycountync.gov"
+  },
+  {
+    "County": "Cleveland County",
+    "Slug": "cleveland-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "103,460",
+    "Major Cities": "Shelby, Kings Mountain",
+    "Tourism Website": "https://www.clevelandcountync.gov"
+  },
+  {
+    "County": "Columbus County",
+    "Slug": "columbus-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Cape Fear Coast",
+    "Population": "49,882",
+    "Major Cities": "Whiteville, Tabor City",
+    "Tourism Website": "https://www.columbusco.org"
+  },
+  {
+    "County": "Craven County",
+    "Slug": "craven-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "105,843",
+    "Major Cities": "New Bern, Havelock",
+    "Tourism Website": "https://www.cravencountync.gov"
+  },
+  {
+    "County": "Cumberland County",
+    "Slug": "cumberland-county",
+    "Region": "Inland-Inner Coastal",
+    "Sub-Region": "Sandhills",
+    "Population": "338,468",
+    "Major Cities": "Fayetteville, Hope Mills",
+    "Tourism Website": "https://www.cumberlandcountync.gov"
+  },
+  {
+    "County": "Currituck County",
+    "Slug": "currituck-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Outer Banks",
+    "Population": "33,616",
+    "Major Cities": "Corolla, Moyock",
+    "Tourism Website": "https://www.currituckcountync.gov"
+  },
+  {
+    "County": "Dare County",
+    "Slug": "dare-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Outer Banks",
+    "Population": "38,187",
+    "Major Cities": "Nags Head, Kill Devil Hills",
+    "Tourism Website": "https://www.darenc.gov"
+  },
+  {
+    "County": "Davidson County",
+    "Slug": "davidson-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "183,653",
+    "Major Cities": "Lexington, Thomasville",
+    "Tourism Website": "https://www.davidsoncountync.gov"
+  },
+  {
+    "County": "Davie County",
+    "Slug": "davie-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "46,961",
+    "Major Cities": "Mocksville",
+    "Tourism Website": "https://www.daviecountync.gov"
+  },
+  {
+    "County": "Duplin County",
+    "Slug": "duplin-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "51,979",
+    "Major Cities": "Wallace, Kenansville",
+    "Tourism Website": "https://www.duplincountync.com"
+  },
+  {
+    "County": "Durham County",
+    "Slug": "durham-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "356,408",
+    "Major Cities": "Durham",
+    "Tourism Website": "https://www.dconc.gov"
+  },
+  {
+    "County": "Edgecombe County",
+    "Slug": "edgecombe-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "49,480",
+    "Major Cities": "Tarboro, Rocky Mount",
+    "Tourism Website": "https://www.edgecombecountync.gov"
+  },
+  {
+    "County": "Forsyth County",
+    "Slug": "forsyth-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "406,759",
+    "Major Cities": "Winston-Salem, Kernersville",
+    "Tourism Website": "https://www.forsyth.cc"
+  },
+  {
+    "County": "Franklin County",
+    "Slug": "franklin-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "85,129",
+    "Major Cities": "Louisburg, Wake Forest",
+    "Tourism Website": "https://www.franklincountync.gov"
+  },
+  {
+    "County": "Gaston County",
+    "Slug": "gaston-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "249,724",
+    "Major Cities": "Gastonia, Belmont",
+    "Tourism Website": "https://www.gastongov.com"
+  },
+  {
+    "County": "Gates County",
+    "Slug": "gates-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "10,400",
+    "Major Cities": "Gatesville",
+    "Tourism Website": "https://www.gatescounty.gov"
+  },
+  {
+    "County": "Graham County",
+    "Slug": "graham-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "8,200",
+    "Major Cities": "Robbinsville",
+    "Tourism Website": "https://www.grahamcounty.org"
+  },
+  {
+    "County": "Granville County",
+    "Slug": "granville-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "61,908",
+    "Major Cities": "Oxford, Butner",
+    "Tourism Website": "https://www.granvillecounty.org"
+  },
+  {
+    "County": "Greene County",
+    "Slug": "greene-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "20,725",
+    "Major Cities": "Snow Hill",
+    "Tourism Website": "https://www.greenecountync.gov"
+  },
+  {
+    "County": "Guilford County",
+    "Slug": "guilford-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "570,688",
+    "Major Cities": "Greensboro, High Point",
+    "Tourism Website": "https://www.guilfordcountync.gov"
+  },
+  {
+    "County": "Halifax County",
+    "Slug": "halifax-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "46,840",
+    "Major Cities": "Roanoke Rapids, Halifax",
+    "Tourism Website": "https://www.halifaxnc.com"
+  },
+  {
+    "County": "Harnett County",
+    "Slug": "harnett-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "154,704",
+    "Major Cities": "Dunn, Lillington",
+    "Tourism Website": "https://www.harnett.org"
+  },
+  {
+    "County": "Haywood County",
+    "Slug": "haywood-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "63,300",
+    "Major Cities": "Waynesville, Maggie Valley",
+    "Tourism Website": "https://www.haywoodcountync.gov"
+  },
+  {
+    "County": "Henderson County",
+    "Slug": "henderson-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "123,161",
+    "Major Cities": "Hendersonville",
+    "Tourism Website": "https://www.hendersoncountync.gov"
+  },
+  {
+    "County": "Hertford County",
+    "Slug": "hertford-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "19,039",
+    "Major Cities": "Ahoskie, Murfreesboro",
+    "Tourism Website": "https://www.hertfordcountync.gov"
+  },
+  {
+    "County": "Hoke County",
+    "Slug": "hoke-county",
+    "Region": "Inland-Inner Coastal",
+    "Sub-Region": "Sandhills",
+    "Population": "56,972",
+    "Major Cities": "Raeford",
+    "Tourism Website": "https://www.hokecounty.gov"
+  },
+  {
+    "County": "Hyde County",
+    "Slug": "hyde-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Outer Banks",
+    "Population": "4,600",
+    "Major Cities": "Ocracoke",
+    "Tourism Website": "https://www.hydecountync.gov"
+  },
+  {
+    "County": "Iredell County",
+    "Slug": "iredell-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Lake Norman Region",
+    "Population": "218,461",
+    "Major Cities": "Statesville, Mooresville",
+    "Tourism Website": "https://www.co.iredell.nc.us"
+  },
+  {
+    "County": "Jackson County",
+    "Slug": "jackson-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "45,743",
+    "Major Cities": "Sylva, Cashiers",
+    "Tourism Website": "https://www.jacksonnc.org"
+  },
+  {
+    "County": "Johnston County",
+    "Slug": "johnston-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "264,666",
+    "Major Cities": "Smithfield, Clayton",
+    "Tourism Website": "https://www.johnstonnc.com"
+  },
+  {
+    "County": "Jones County",
+    "Slug": "jones-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "9,100",
+    "Major Cities": "Trenton",
+    "Tourism Website": "https://www.jonescountync.gov"
+  },
+  {
+    "County": "Lee County",
+    "Slug": "lee-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "70,769",
+    "Major Cities": "Sanford",
+    "Tourism Website": "https://www.leecountync.gov"
+  },
+  {
+    "County": "Lenoir County",
+    "Slug": "lenoir-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "56,062",
+    "Major Cities": "Kinston",
+    "Tourism Website": "https://www.lenoircountync.gov"
+  },
+  {
+    "County": "Lincoln County",
+    "Slug": "lincoln-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "101,261",
+    "Major Cities": "Lincolnton",
+    "Tourism Website": "https://www.lincolncounty.org"
+  },
+  {
+    "County": "Macon County",
+    "Slug": "macon-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "45,871",
+    "Major Cities": "Marion, Old Fort",
+    "Tourism Website": "https://www.mcdowellgov.com"
+  },
+  {
+    "County": "Madison County",
+    "Slug": "madison-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "39,291",
+    "Major Cities": "Franklin, Highlands",
+    "Tourism Website": "https://www.maconnc.org"
+  },
+  {
+    "County": "Martin County",
+    "Slug": "martin-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "22,978",
+    "Major Cities": "Marshall, Mars Hill",
+    "Tourism Website": "https://www.madisoncountync.gov"
+  },
+  {
+    "County": "McDowell County",
+    "Slug": "mcdowell-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "21,601",
+    "Major Cities": "Williamston",
+    "Tourism Website": "https://www.martincountyncgov.com"
+  },
+  {
+    "County": "Mecklenburg County",
+    "Slug": "mecklenburg-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "1,266,399",
+    "Major Cities": "Charlotte, Huntersville",
+    "Tourism Website": "https://www.mecknc.gov"
+  },
+  {
+    "County": "Mitchell County",
+    "Slug": "mitchell-county",
+    "Region": "Mountain",
+    "Sub-Region": "High Country",
+    "Population": "15,084",
+    "Major Cities": "Bakersville, Spruce Pine",
+    "Tourism Website": "https://www.mitchellcounty.org"
+  },
+  {
+    "County": "Montgomery County",
+    "Slug": "montgomery-county",
+    "Region": "Piedmont-Mountain",
+    "Sub-Region": "Uwharrie Lakes",
+    "Population": "26,610",
+    "Major Cities": "Troy",
+    "Tourism Website": "https://www.montgomerycountync.com"
+  },
+  {
+    "County": "Moore County",
+    "Slug": "moore-county",
+    "Region": "Inland-Inner Coastal",
+    "Sub-Region": "Sandhills",
+    "Population": "111,107",
+    "Major Cities": "Pinehurst, Southern Pines",
+    "Tourism Website": "https://www.moorecountync.gov"
+  },
+  {
+    "County": "Nash County",
+    "Slug": "nash-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "100,378",
+    "Major Cities": "Rocky Mount, Nashville",
+    "Tourism Website": "https://www.nashcountync.gov"
+  },
+  {
+    "County": "NewHanover County",
+    "Slug": "newhanover-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Cape Fear Coast",
+    "Population": "249,891",
+    "Major Cities": "Wilmington, Carolina Beach",
+    "Tourism Website": "https://www.nhcgov.com"
+  },
+  {
+    "County": "Northampton County",
+    "Slug": "northampton-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "16,330",
+    "Major Cities": "Jackson",
+    "Tourism Website": "https://www.northamptonnc.com"
+  },
+  {
+    "County": "Onslow County",
+    "Slug": "onslow-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Crystal Coast",
+    "Population": "216,494",
+    "Major Cities": "Jacksonville, Swansboro",
+    "Tourism Website": "https://www.onslowcountync.gov"
+  },
+  {
+    "County": "Orange County",
+    "Slug": "orange-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "154,153",
+    "Major Cities": "Chapel Hill, Hillsborough",
+    "Tourism Website": "https://www.orangecountync.gov"
+  },
+  {
+    "County": "Pamlico County",
+    "Slug": "pamlico-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "12,750",
+    "Major Cities": "Bayboro, Oriental",
+    "Tourism Website": "https://www.pamlicocounty.org"
+  },
+  {
+    "County": "Pasquotank County",
+    "Slug": "pasquotank-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "41,894",
+    "Major Cities": "Elizabeth City",
+    "Tourism Website": "https://www.pasquotankcountync.org"
+  },
+  {
+    "County": "Pender County",
+    "Slug": "pender-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Cape Fear Coast",
+    "Population": "73,519",
+    "Major Cities": "Burgaw, Surf City",
+    "Tourism Website": "https://www.pendercountync.gov"
+  },
+  {
+    "County": "Perquimans County",
+    "Slug": "perquimans-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "13,646",
+    "Major Cities": "Hertford",
+    "Tourism Website": "https://www.perquimanscountync.gov"
+  },
+  {
+    "County": "Person County",
+    "Slug": "person-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "40,765",
+    "Major Cities": "Roxboro",
+    "Tourism Website": "https://www.personcountync.gov"
+  },
+  {
+    "County": "Pitt County",
+    "Slug": "pitt-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "184,437",
+    "Major Cities": "Greenville",
+    "Tourism Website": "https://www.pittcountync.gov"
+  },
+  {
+    "County": "Polk County",
+    "Slug": "polk-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "20,900",
+    "Major Cities": "Columbus, Tryon",
+    "Tourism Website": "https://www.polknc.gov"
+  },
+  {
+    "County": "Randolph County",
+    "Slug": "randolph-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "149,885",
+    "Major Cities": "Asheboro",
+    "Tourism Website": "https://www.randolphcountync.gov"
+  },
+  {
+    "County": "Richmond County",
+    "Slug": "richmond-county",
+    "Region": "Inland-Inner Coastal",
+    "Sub-Region": "Sandhills",
+    "Population": "41,964",
+    "Major Cities": "Rockingham, Hamlet",
+    "Tourism Website": "https://www.richmondnc.com"
+  },
+  {
+    "County": "Robeson County",
+    "Slug": "robeson-county",
+    "Region": "Inland-Inner Coastal",
+    "Sub-Region": "Sandhills",
+    "Population": "120,462",
+    "Major Cities": "Lumberton",
+    "Tourism Website": "https://www.robesoncounty.org"
+  },
+  {
+    "County": "Rockingham County",
+    "Slug": "rockingham-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "95,275",
+    "Major Cities": "Eden, Reidsville",
+    "Tourism Website": "https://www.rockinghamcountync.gov"
+  },
+  {
+    "County": "Rowan County",
+    "Slug": "rowan-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "156,386",
+    "Major Cities": "Salisbury",
+    "Tourism Website": "https://www.rowancountync.gov"
+  },
+  {
+    "County": "Rutherford County",
+    "Slug": "rutherford-county",
+    "Region": "Mountain",
+    "Sub-Region": "Foothills",
+    "Population": "66,023",
+    "Major Cities": "Forest City, Lake Lure",
+    "Tourism Website": "https://www.rutherfordcountync.gov"
+  },
+  {
+    "County": "Sampson County",
+    "Slug": "sampson-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "61,728",
+    "Major Cities": "Clinton",
+    "Tourism Website": "https://www.sampsonnc.com"
+  },
+  {
+    "County": "Scotland County",
+    "Slug": "scotland-county",
+    "Region": "Inland-Inner Coastal",
+    "Sub-Region": "Sandhills",
+    "Population": "34,374",
+    "Major Cities": "Laurinburg",
+    "Tourism Website": "https://www.scotlandcounty.org"
+  },
+  {
+    "County": "Stanly County",
+    "Slug": "stanly-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "70,342",
+    "Major Cities": "Albemarle",
+    "Tourism Website": "https://www.stanlycountync.gov"
+  },
+  {
+    "County": "Stokes County",
+    "Slug": "stokes-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triad",
+    "Population": "46,599",
+    "Major Cities": "Danbury",
+    "Tourism Website": "https://www.co.stokes.nc.us"
+  },
+  {
+    "County": "Surry County",
+    "Slug": "surry-county",
+    "Region": "Mountain-Central Piedmont",
+    "Sub-Region": "Yadkin Valley",
+    "Population": "71,727",
+    "Major Cities": "Mount Airy, Dobson",
+    "Tourism Website": "https://www.co.surry.nc.us"
+  },
+  {
+    "County": "Swain County",
+    "Slug": "swain-county",
+    "Region": "Mountain",
+    "Sub-Region": "Smoky Mountains",
+    "Population": "13,989",
+    "Major Cities": "Bryson City",
+    "Tourism Website": "https://www.swaincountync.gov"
+  },
+  {
+    "County": "Transylvania County",
+    "Slug": "transylvania-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "34,441",
+    "Major Cities": "Brevard",
+    "Tourism Website": "https://www.transylvaniacounty.org"
+  },
+  {
+    "County": "Tyrrell County",
+    "Slug": "tyrrell-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Outer Banks",
+    "Population": "3,200",
+    "Major Cities": "Columbia",
+    "Tourism Website": "https://www.tyrrellcounty.org"
+  },
+  {
+    "County": "Union County",
+    "Slug": "union-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "Charlotte Metro",
+    "Population": "275,138",
+    "Major Cities": "Monroe, Waxhaw",
+    "Tourism Website": "https://www.unioncountync.gov"
+  },
+  {
+    "County": "Vance County",
+    "Slug": "vance-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "42,353",
+    "Major Cities": "Henderson",
+    "Tourism Website": "https://www.vancecounty.org"
+  },
+  {
+    "County": "Wake County",
+    "Slug": "wake-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "1,290,544",
+    "Major Cities": "Raleigh, Cary, Apex",
+    "Tourism Website": "https://www.wake.gov"
+  },
+  {
+    "County": "Warren County",
+    "Slug": "warren-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "19,719",
+    "Major Cities": "Warrenton",
+    "Tourism Website": "https://www.warrencountync.com"
+  },
+  {
+    "County": "Washington County",
+    "Slug": "washington-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "11,000",
+    "Major Cities": "Plymouth",
+    "Tourism Website": "https://www.washconc.org"
+  },
+  {
+    "County": "Watauga County",
+    "Slug": "watauga-county",
+    "Region": "Mountain",
+    "Sub-Region": "High Country",
+    "Population": "54,151",
+    "Major Cities": "Boone, Blowing Rock",
+    "Tourism Website": "https://www.wataugacounty.org"
+  },
+  {
+    "County": "Wayne County",
+    "Slug": "wayne-county",
+    "Region": "Atlantic Coastal",
+    "Sub-Region": "Inner Banks",
+    "Population": "121,874",
+    "Major Cities": "Goldsboro",
+    "Tourism Website": "https://www.waynegov.com"
+  },
+  {
+    "County": "Wilkes County",
+    "Slug": "wilkes-county",
+    "Region": "Mountain",
+    "Sub-Region": "High Country",
+    "Population": "66,524",
+    "Major Cities": "Wilkesboro",
+    "Tourism Website": "https://www.wilkescounty.net"
+  },
+  {
+    "County": "Wilson County",
+    "Slug": "wilson-county",
+    "Region": "Central Piedmont",
+    "Sub-Region": "The Triangle",
+    "Population": "80,662",
+    "Major Cities": "Wilson",
+    "Tourism Website": "https://www.wilsoncountync.gov"
+  },
+  {
+    "County": "Yadkin County",
+    "Slug": "yadkin-county",
+    "Region": "Mountain-Central Piedmont",
+    "Sub-Region": "Yadkin Valley",
+    "Population": "38,389",
+    "Major Cities": "Yadkinville",
+    "Tourism Website": "https://www.yadkincountync.gov"
+  },
+  {
+    "County": "Yancey County",
+    "Slug": "yancey-county",
+    "Region": "Mountain",
+    "Sub-Region": "Blue Ridge Mountains",
+    "Population": "19,099",
+    "Major Cities": "Burnsville",
+    "Tourism Website": "https://www.yanceycountync.gov"
+  }
+]
