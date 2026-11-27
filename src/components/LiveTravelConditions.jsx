@@ -159,7 +159,7 @@ export default function LiveTravelConditions() {
           <article className="glass-card" style={{ padding: '1.3rem', background: '#fff' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.8rem', marginBottom: '0.9rem' }}>
               <h3 style={{ fontSize: '1.15rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Car size={19} /> NCDOT road incidents</h3>
-              <span className="badge badge-blue">{statusText(roadStatus, incidents.length, 'record', 'records')}</span>
+              <span className="badge badge-blue" role="status" aria-live="polite">{statusText(roadStatus, incidents.length, 'record', 'records')}</span>
             </div>
             {roadStatus === 'loaded' && (
               <>
@@ -209,7 +209,7 @@ export default function LiveTravelConditions() {
           <article className="glass-card" style={{ padding: '1.3rem', background: '#fff' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.8rem', marginBottom: '0.9rem' }}>
               <h3 style={{ fontSize: '1.15rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Waves size={19} /> NOAA tide predictions</h3>
-              <span className="badge badge-teal">{statusText(tideStatus, tides.length, 'station', 'stations')}</span>
+              <span className="badge badge-teal" role="status" aria-live="polite">{statusText(tideStatus, tides.length, 'station', 'stations')}</span>
             </div>
             {tides.map(station => (
               <div key={station.id} style={{ padding: '0.8rem 0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
@@ -217,7 +217,7 @@ export default function LiveTravelConditions() {
                 <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>{station.area} · NOAA station {station.id} · local station time · feet · MLLW datum</div>
                 {station.predictions.length ? (
                   <div style={{ overflowX: 'auto', marginTop: '0.55rem' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem', textAlign: 'left' }}>
+                    <table aria-label={`High and low tide predictions for ${station.name}`} style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem', textAlign: 'left' }}>
                       <thead>
                         <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.14)' }}>
                           <th scope="col" style={{ padding: '0.45rem 0.35rem' }}>Tide</th>
