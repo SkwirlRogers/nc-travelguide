@@ -53,6 +53,8 @@ Historical claims should be read with their cited source and context. The guide 
 - [US Census Bureau](https://www.census.gov/)
 
 ## Machine-readable discovery
+- [Place entity index](https://nctravelguide.us.mw/place-entities.json): Structured records for counties, municipalities, attractions, lodging, and restaurants. External links are recorded, not independently verified.
+- [Data quality report](https://nctravelguide.us.mw/data-quality-report.json): Automated checks for missing county relationships, duplicate IDs, descriptions, and external links.
 - [XML sitemap](https://nctravelguide.us.mw/sitemap.xml)
 - [AI-readable site index](https://nctravelguide.us.mw/ai-index.json)
 - [Robots policy](https://nctravelguide.us.mw/robots.txt)
