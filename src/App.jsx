@@ -34,15 +34,8 @@ export default function App() {
     }
   }, [savedItems]);
 
-  // Keep route titles, descriptions, canonical URLs, and social previews in sync.
+  // Keep route metadata and structured data aligned with the active SPA page.
   useEffect(() => {
-    const defaultPage = {
-      title: "North Carolina Travel Guide | Explore All 100 Counties",
-      description: "Plan your North Carolina trip with a guide to all 100 counties, regions, attractions, local dining, history, and travel ideas.",
-      type: "WebPage",
-      about: "North Carolina travel, destinations, and regional heritage",
-      keywords: ["North Carolina travel guide", "North Carolina destinations", "100 counties"]
-    };
     const pageDefinitions = {
       "/regions": {
         title: "North Carolina Regions & Sub-Regions | NC Travel Guide",
@@ -80,30 +73,20 @@ export default function App() {
         keywords: ["North Carolina attractions", "things to do in North Carolina", "North Carolina hotels", "North Carolina restaurants"]
       }
     };
-
     const path = currentPath.toLowerCase().replace(/\/+$/, "") || "/";
-    let page = pageDefinitions[path] || defaultPage;
-    let canonicalPath = path;
-    const countyMatch = path.match(/^\/counties\/([^/]+)/);
-    if (countyMatch) {
-      const countyName = countyMatch[1].replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
-      const tab = path.split("/")[3] || "guides";
-      const tabNames = {
-        guides: "Travel Guide",
-        visit: "Visit & Logistics",
-        "things-to-do": "Things to Do",
-        municipalities: "Towns & Municipalities",
-        "stay-and-eat": "Places to Stay & Eat"
-      };
+    let page = pageDefinitions[path];
+    if (path.startsWith("/counties/")) {
+      const slug = path.split("/")[2] || "";
+      const countyName = slug.replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
       page = {
-        title: `${countyName} County, NC ${tabNames[tab] || "Travel Guide"} | NC Travel Guide`,
-        description: `Plan a visit to ${countyName} County, North Carolina. Find local attractions, towns, travel ideas, lodging, dining, and visitor information.`,
+        title: `${countyName} County, NC Travel Guide | NC Travel Guide`,
+        description: `Plan a visit to ${countyName} County, North Carolina. Explore local attractions, towns, travel ideas, lodging, dining, and visitor information.`,
         type: "CollectionPage",
         about: `${countyName} County, North Carolina travel and visitor information`,
         keywords: [`${countyName} County NC`, `${countyName} County travel guide`, `${countyName} County attractions`]
       };
-      canonicalPath = `/counties/${countyMatch[1]}`;
     }
+    if (!page) return;
 
     document.title = page.title;
     let descriptionTag = document.querySelector('meta[name="description"]');
@@ -129,32 +112,30 @@ export default function App() {
       canonicalTag.rel = "canonical";
       document.head.appendChild(canonicalTag);
     }
-    const canonicalUrl = `https://nctravelguide.us.mw${canonicalPath}`;
+    const canonicalUrl = `https://nctravelguide.us.mw${path.startsWith("/counties/") ? path.split("/").slice(0, 3).join("/") : path}`;
     canonicalTag.setAttribute("href", canonicalUrl);
     updateMeta('meta[property="og:url"]', canonicalUrl);
 
     const existingSchema = document.getElementById("nc-travel-guide-route-schema");
     if (existingSchema) existingSchema.remove();
-    if (path !== "/" && path !== "/index.html") {
-      const schema = {
-        "@context": "https://schema.org",
-        "@type": page.type,
-        "@id": `${canonicalUrl}#webpage`,
-        "url": canonicalUrl,
-        "name": page.title,
-        "description": page.description,
-        "isPartOf": { "@id": "https://nctravelguide.us.mw/#website" },
-        "author": { "@id": "https://nctravelguide.us.mw/#creator" },
-        "about": { "@type": "Thing", "name": page.about },
-        "keywords": page.keywords.join(", "),
-        "inLanguage": "en-US"
-      };
-      const script = document.createElement("script");
-      script.id = "nc-travel-guide-route-schema";
-      script.type = "application/ld+json";
-      script.textContent = JSON.stringify(schema);
-      document.head.appendChild(script);
-    }
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": page.type,
+      "@id": `${canonicalUrl}#webpage`,
+      "url": canonicalUrl,
+      "name": page.title,
+      "description": page.description,
+      "isPartOf": { "@id": "https://nctravelguide.us.mw/#website" },
+      "author": { "@id": "https://nctravelguide.us.mw/#creator" },
+      "about": { "@type": "Thing", "name": page.about },
+      "keywords": page.keywords.join(", "),
+      "inLanguage": "en-US"
+    };
+    const script = document.createElement("script");
+    script.id = "nc-travel-guide-route-schema";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
 
     return () => {
       const activeSchema = document.getElementById("nc-travel-guide-route-schema");
