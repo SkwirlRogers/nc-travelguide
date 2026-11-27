@@ -132,6 +132,35 @@ export default function HistoryPage({ navigate }) {
           </div>
         </div>
 
+
+        {/* Archival photographs and primary-source records */}
+        <section aria-labelledby="history-photo-heading" style={{ marginBottom: '4rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+            <div className="badge badge-blue" style={{ marginBottom: '0.7rem' }}><History size={15} /> Historic photographs & archival records</div>
+            <h2 id="history-photo-heading" style={{ fontSize: '2rem' }}>See the <span className="text-gradient-amber">History</span></h2>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '760px', margin: '0 auto', lineHeight: 1.65 }}>A growing visual collection of North Carolina places, people, and documents. Each caption identifies what the image shows and links to its holding institution or collection record.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.1rem' }}>
+            <figure className="glass-card" style={{ margin: 0, padding: 0, overflow: 'hidden', background: '#fff' }}>
+              <img src="https://www.nps.gov/articles/000/images/Fort-Raleigh-entrance-ca.png" alt="Historic photograph of the entrance to Old Fort Raleigh on Roanoke Island" loading="lazy" style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
+              <figcaption style={{ padding: '1rem' }}><strong style={{ color: 'var(--text-primary)' }}>Old Fort Raleigh entrance</strong><p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, margin: '0.4rem 0' }}>A later archival photograph of the memorial landscape—not an image from the 1580s.</p><a href="https://www.nps.gov/articles/000/old-fort-raleigh-state-park.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.82rem', fontWeight: 650 }}>National Park Service image & context ↗</a></figcaption>
+            </figure>
+            <figure className="glass-card" style={{ margin: 0, padding: 0, overflow: 'hidden', background: '#fff' }}>
+              <img src="https://cdn4.picryl.com/photo/1901/01/01/visitors-and-fellow-campers-in-the-wrights-work-shed-at-kitty-hawk-north-carolina-1024.jpg" alt="Wright brothers' work shed at Kitty Hawk, photographed around 1901" loading="lazy" style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
+              <figcaption style={{ padding: '1rem' }}><strong style={{ color: 'var(--text-primary)' }}>The Wrights' Kitty Hawk work shed</strong><p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, margin: '0.4rem 0' }}>A photograph from the brothers' early aviation experiments on the Outer Banks.</p><a href="https://loc.getarchive.net/media/visitors-and-fellow-campers-in-the-wrights-work-shed-at-kitty-hawk-north-carolina" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.82rem', fontWeight: 650 }}>Open image record ↗</a></figcaption>
+            </figure>
+            <figure className="glass-card" style={{ margin: 0, padding: 0, overflow: 'hidden', background: '#fff' }}>
+              <img src="https://www.nps.gov/wrbr/planyourvisit/images/FORA-collage.jpg" alt="National Park Service collage showing Freedmen's Colony earthworks and interpretive sign on Roanoke Island" loading="lazy" style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
+              <figcaption style={{ padding: '1rem' }}><strong style={{ color: 'var(--text-primary)' }}>Freedmen's Colony of Roanoke Island</strong><p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, margin: '0.4rem 0' }}>The Civil War-era Freedmen's Colony is part of the island's history beyond the 16th-century English settlement.</p><a href="https://www.nps.gov/wrbr/planyourvisit/nearbyattractions.htm" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.82rem', fontWeight: 650 }}>National Park Service context ↗</a></figcaption>
+            </figure>
+            <figure className="glass-card" style={{ margin: 0, padding: 0, overflow: 'hidden', background: '#fff' }}>
+              <img src="https://iiif.lib.ecu.edu/cantaloupe/iiif/2/00017035_0022.jp2/full/2000%2C/0/default.jpg" alt="Page from a historical petition by Croatan Indians preserved in East Carolina University digital collections" loading="lazy" style={{ width: '100%', height: '220px', objectFit: 'contain', display: 'block', background: '#f1eee7' }} />
+              <figcaption style={{ padding: '1rem' }}><strong style={{ color: 'var(--text-primary)' }}>A historical Croatan Indian petition</strong><p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', lineHeight: 1.5, margin: '0.4rem 0' }}>A later written record documenting Indigenous people asserting community identity and educational rights. It is one document, not a complete account of Indigenous life.</p><a href="https://digital.lib.ecu.edu/17035" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue-light)', fontSize: '0.82rem', fontWeight: 650 }}>East Carolina University Digital Collections ↗</a></figcaption>
+            </figure>
+          </div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', lineHeight: 1.5, textAlign: 'center', marginTop: '0.9rem' }}>Image credits and collection records are linked with each photograph. Rights and reuse terms vary by institution; verify permissions before republication or commercial reuse.</p>
+        </section>
+
         {/* Historic Milestones Timeline */}
         <div style={{ marginBottom: '4rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
