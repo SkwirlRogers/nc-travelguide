@@ -22,8 +22,8 @@ const macroRegion = (region) => ({
   "Central Piedmont": "Central Piedmont",
   "Atlantic Coastal": "Atlantic Coastal",
   "Inland-Inner Coastal": "Sandhills / Inner Coastal",
-  "Mountain-Central Piedmont": "Mountains / Central Piedmont",
-  "Piedmont-Mountain": "Central Piedmont / Mountains"
+  "Mountain-Central Piedmont": ["Mountains", "Central Piedmont"],
+  "Piedmont-Mountain": ["Central Piedmont", "Mountains"]
 }[region] || null);
 
 const entities = [];
@@ -42,7 +42,7 @@ function addEntity({ type, sourceFile, sourceRow, name, slug, countyName, descri
   const countyRecords = countyReferences.map((value) => countyByName.get(normalize(value))).filter(Boolean);
   const unique = (values) => [...new Set(values.filter(Boolean))];
   const regions = unique(countyRecords.map((county) => county.Region));
-  const macroRegions = unique(countyRecords.map((county) => macroRegion(county.Region)));
+  const macroRegions = unique(countyRecords.flatMap((county) => [].concat(macroRegion(county.Region) || [])));
   const subRegions = unique(countyRecords.map((county) => county["Sub-Region"]));
   const id = type.toLowerCase() + ":" + (slug || slugify(name));
   const isBorderReference = /\b(border|nc border)\b/i.test(String(countyName || ""));
