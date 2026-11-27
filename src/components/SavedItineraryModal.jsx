@@ -1,22 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, Heart, Trash2, MapPin, ExternalLink, Printer, Download, Calendar, Share2, Check, Clock } from 'lucide-react';
 
 export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRemoveItem, navigate }) {
-  if (!isOpen) return null;
-
   const [activeDay, setActiveDay] = useState(1);
   const [copied, setCopied] = useState(false);
-  // Custom day assignments for saved items
-  const [dayAssignments, setDayAssignments] = useState({});
+  const [tripStartDate, setTripStartDate] = useState(() => {
+    const saved = localStorage.getItem('nc_travel_trip_start');
+    return saved || new Date().toLocaleDateString('en-CA');
+  });
+  // Keep day assignments when the planner is closed or the page is refreshed.
+  const [dayAssignments, setDayAssignments] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('nc_travel_day_assignments') || '{}'); }
+    catch { return {}; }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('nc_travel_day_assignments', JSON.stringify(dayAssignments));
+  }, [dayAssignments]);
+
+  useEffect(() => {
+    localStorage.setItem('nc_travel_trip_start', tripStartDate);
+  }, [tripStartDate]);
 
   const assignDay = (itemId, day) => {
     setDayAssignments(prev => ({ ...prev, [itemId]: day }));
   };
 
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+  const handleShare = async () => {
+    const lines = ['North Carolina Trip Plan', 'Start date: ' + tripStartDate, ''];
+    [1, 2, 3].forEach(day => {
+      lines.push('DAY ' + day);
+      const items = savedItems.filter(item => (dayAssignments[item.id] || 1) === day);
+      if (!items.length) lines.push('  No places assigned');
+      items.forEach(item => lines.push('  • ' + item.title + ' — ' + (item.city || item.county || 'North Carolina') + ', NC' + (item.targetLink ? ' | ' + item.targetLink : '')));
+      lines.push('');
+    });
+    try {
+      await navigator.clipboard.writeText(lines.join('\n'));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      window.alert('Clipboard access was blocked. Use Print or Save as PDF to share your trip plan.');
+    }
   };
 
   const handleExportPDF = () => {
@@ -24,6 +49,7 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     })[char]);
 
+    const start = new Date(tripStartDate + 'T12:00:00');
     const daySections = [1, 2, 3].map((day) => {
       const itemsForDay = savedItems.filter((item) => (dayAssignments[item.id] || 1) === day);
       if (!itemsForDay.length) return '';
@@ -34,7 +60,9 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
           <div>Category: ${escapeHtml(item.category || 'Sightseeing')}</div>
         </li>
       `).join('');
-      return `<section><h2>Day ${day} Itinerary</h2><ol>${rows}</ol></section>`;
+      const dayDate = new Date(start);
+      dayDate.setDate(start.getDate() + day - 1);
+      return `<section><h2>Day ${day} · ${escapeHtml(dayDate.toLocaleDateString())}</h2><ol>${rows}</ol></section>`;
     }).join('');
 
     const printWindow = window.open('', '_blank');
@@ -64,7 +92,7 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
       <body>
         <header>
           <h1>North Carolina Custom Trip Itinerary</h1>
-          <p>NC TravelGuide • From the Blue Ridge Mountains to the Outer Banks</p>
+          <p>Starting ${new Date(tripStartDate + 'T12:00:00').toLocaleDateString()} · NC Travel Guide • From the Blue Ridge Mountains to the Outer Banks</p>
         </header>
         ${daySections || '<p class="empty">No saved places in this itinerary.</p>'}
       </body>
@@ -75,6 +103,7 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
   };
 
   const currentDayItems = savedItems.filter(item => (dayAssignments[item.id] || 1) === activeDay);
+  if (!isOpen) return null;
 
   return (
     <div style={{
@@ -156,7 +185,7 @@ export default function SavedItineraryModal({ isOpen, onClose, savedItems, onRem
               ))}
             </div>
             <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-              <Clock size={14} /> Estimated 3-Day Trip Sequence
+              <Clock size={14} /> 3-Day Trip · Day dates follow your start date
             </div>
           </div>
         )}
