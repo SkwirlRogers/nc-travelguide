@@ -21,17 +21,22 @@
     {
       "name": "Regions",
       "url": "https://nctravelguide.us.mw/regions",
-      "summary": "Four broad North Carolina travel regions."
+      "summary": "Four broad North Carolina travel regions and their sub-regions."
     },
     {
       "name": "Counties",
       "url": "https://nctravelguide.us.mw/counties",
-      "summary": "Directory for all 100 North Carolina counties."
+      "summary": "Directory for all 100 North Carolina counties, with county-specific travel hubs."
     },
     {
       "name": "History",
       "url": "https://nctravelguide.us.mw/history",
-      "summary": "North Carolina heritage, milestones, state symbols, and credited archival imagery."
+      "summary": "North Carolina heritage, sourced historic milestones, state symbols, and credited archival imagery."
+    },
+    {
+      "name": "Dare County History Vault",
+      "url": "https://nctravelguide.us.mw/counties/dare-county/history",
+      "summary": "Source-reviewed Roanoke Island history entries and archival collection records; a pilot in the expanding county History Vault."
     },
     {
       "name": "Travel Ideas",
@@ -44,10 +49,836 @@
       "summary": "Searchable visitor experiences and attractions."
     }
   ],
+  "county_pages": [
+    {
+      "name": "Alamance County",
+      "slug": "alamance-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/alamance-county",
+      "tourism_website": "https://www.alamance-nc.com"
+    },
+    {
+      "name": "Alexander County",
+      "slug": "alexander-county",
+      "region": "Mountain",
+      "sub_region": "Foothills",
+      "url": "https://nctravelguide.us.mw/counties/alexander-county",
+      "tourism_website": "https://www.alexandercountync.gov"
+    },
+    {
+      "name": "Alleghany County",
+      "slug": "alleghany-county",
+      "region": "Mountain",
+      "sub_region": "High Country",
+      "url": "https://nctravelguide.us.mw/counties/alleghany-county",
+      "tourism_website": "https://www.alleghanycounty-nc.gov"
+    },
+    {
+      "name": "Anson County",
+      "slug": "anson-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/anson-county",
+      "tourism_website": "https://www.ansoncountync.gov"
+    },
+    {
+      "name": "Ashe County",
+      "slug": "ashe-county",
+      "region": "Mountain",
+      "sub_region": "High Country",
+      "url": "https://nctravelguide.us.mw/counties/ashe-county",
+      "tourism_website": "https://www.ashecountygov.com"
+    },
+    {
+      "name": "Avery County",
+      "slug": "avery-county",
+      "region": "Mountain",
+      "sub_region": "High Country",
+      "url": "https://nctravelguide.us.mw/counties/avery-county",
+      "tourism_website": "https://www.averycountync.gov"
+    },
+    {
+      "name": "Beaufort County",
+      "slug": "beaufort-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/beaufort-county",
+      "tourism_website": "https://www.co.beaufort.nc.us"
+    },
+    {
+      "name": "Bertie County",
+      "slug": "bertie-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/bertie-county",
+      "tourism_website": "https://www.co.bertie.nc.us"
+    },
+    {
+      "name": "Bladen County",
+      "slug": "bladen-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Cape Fear Coast",
+      "url": "https://nctravelguide.us.mw/counties/bladen-county",
+      "tourism_website": "https://www.bladencountync.gov"
+    },
+    {
+      "name": "Brunswick County",
+      "slug": "brunswick-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Brunswick Islands",
+      "url": "https://nctravelguide.us.mw/counties/brunswick-county",
+      "tourism_website": "https://www.brunswickcountync.gov"
+    },
+    {
+      "name": "Buncombe County",
+      "slug": "buncombe-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/buncombe-county",
+      "tourism_website": "https://www.buncombecounty.org"
+    },
+    {
+      "name": "Burke County",
+      "slug": "burke-county",
+      "region": "Mountain",
+      "sub_region": "Foothills",
+      "url": "https://nctravelguide.us.mw/counties/burke-county",
+      "tourism_website": "https://www.burkenc.org"
+    },
+    {
+      "name": "Cabarrus County",
+      "slug": "cabarrus-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/cabarrus-county",
+      "tourism_website": "https://www.cabarruscounty.us"
+    },
+    {
+      "name": "Caldwell County",
+      "slug": "caldwell-county",
+      "region": "Mountain",
+      "sub_region": "Foothills",
+      "url": "https://nctravelguide.us.mw/counties/caldwell-county",
+      "tourism_website": "https://www.caldwellcountync.org"
+    },
+    {
+      "name": "Camden County",
+      "slug": "camden-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Outer Banks",
+      "url": "https://nctravelguide.us.mw/counties/camden-county",
+      "tourism_website": "https://www.camdencountync.gov"
+    },
+    {
+      "name": "Carteret County",
+      "slug": "carteret-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Crystal Coast",
+      "url": "https://nctravelguide.us.mw/counties/carteret-county",
+      "tourism_website": "https://www.carteretcountync.gov"
+    },
+    {
+      "name": "Caswell County",
+      "slug": "caswell-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/caswell-county",
+      "tourism_website": "https://www.caswellcountync.gov"
+    },
+    {
+      "name": "Catawba County",
+      "slug": "catawba-county",
+      "region": "Mountain-Central Piedmont",
+      "sub_region": "Yadkin Valley",
+      "url": "https://nctravelguide.us.mw/counties/catawba-county",
+      "tourism_website": "https://www.catawbacountync.gov"
+    },
+    {
+      "name": "Chatham County",
+      "slug": "chatham-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/chatham-county",
+      "tourism_website": "https://www.chathamcountync.gov"
+    },
+    {
+      "name": "Cherokee County",
+      "slug": "cherokee-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/cherokee-county",
+      "tourism_website": "https://www.cherokeecounty-nc.gov"
+    },
+    {
+      "name": "Chowan County",
+      "slug": "chowan-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/chowan-county",
+      "tourism_website": "https://www.chowancounty-nc.gov"
+    },
+    {
+      "name": "Clay County",
+      "slug": "clay-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/clay-county",
+      "tourism_website": "https://www.claycountync.gov"
+    },
+    {
+      "name": "Cleveland County",
+      "slug": "cleveland-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/cleveland-county",
+      "tourism_website": "https://www.clevelandcountync.gov"
+    },
+    {
+      "name": "Columbus County",
+      "slug": "columbus-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Cape Fear Coast",
+      "url": "https://nctravelguide.us.mw/counties/columbus-county",
+      "tourism_website": "https://www.columbusco.org"
+    },
+    {
+      "name": "Craven County",
+      "slug": "craven-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/craven-county",
+      "tourism_website": "https://www.cravencountync.gov"
+    },
+    {
+      "name": "Cumberland County",
+      "slug": "cumberland-county",
+      "region": "Inland-Inner Coastal",
+      "sub_region": "Sandhills",
+      "url": "https://nctravelguide.us.mw/counties/cumberland-county",
+      "tourism_website": "https://www.cumberlandcountync.gov"
+    },
+    {
+      "name": "Currituck County",
+      "slug": "currituck-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Outer Banks",
+      "url": "https://nctravelguide.us.mw/counties/currituck-county",
+      "tourism_website": "https://www.currituckcountync.gov"
+    },
+    {
+      "name": "Dare County",
+      "slug": "dare-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Outer Banks",
+      "url": "https://nctravelguide.us.mw/counties/dare-county",
+      "tourism_website": "https://www.darenc.gov"
+    },
+    {
+      "name": "Davidson County",
+      "slug": "davidson-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/davidson-county",
+      "tourism_website": "https://www.davidsoncountync.gov"
+    },
+    {
+      "name": "Davie County",
+      "slug": "davie-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/davie-county",
+      "tourism_website": "https://www.daviecountync.gov"
+    },
+    {
+      "name": "Duplin County",
+      "slug": "duplin-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/duplin-county",
+      "tourism_website": "https://www.duplincountync.com"
+    },
+    {
+      "name": "Durham County",
+      "slug": "durham-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/durham-county",
+      "tourism_website": "https://www.dconc.gov"
+    },
+    {
+      "name": "Edgecombe County",
+      "slug": "edgecombe-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/edgecombe-county",
+      "tourism_website": "https://www.edgecombecountync.gov"
+    },
+    {
+      "name": "Forsyth County",
+      "slug": "forsyth-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/forsyth-county",
+      "tourism_website": "https://www.forsyth.cc"
+    },
+    {
+      "name": "Franklin County",
+      "slug": "franklin-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/franklin-county",
+      "tourism_website": "https://www.franklincountync.gov"
+    },
+    {
+      "name": "Gaston County",
+      "slug": "gaston-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/gaston-county",
+      "tourism_website": "https://www.gastongov.com"
+    },
+    {
+      "name": "Gates County",
+      "slug": "gates-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/gates-county",
+      "tourism_website": "https://www.gatescounty.gov"
+    },
+    {
+      "name": "Graham County",
+      "slug": "graham-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/graham-county",
+      "tourism_website": "https://www.grahamcounty.org"
+    },
+    {
+      "name": "Granville County",
+      "slug": "granville-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/granville-county",
+      "tourism_website": "https://www.granvillecounty.org"
+    },
+    {
+      "name": "Greene County",
+      "slug": "greene-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/greene-county",
+      "tourism_website": "https://www.greenecountync.gov"
+    },
+    {
+      "name": "Guilford County",
+      "slug": "guilford-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/guilford-county",
+      "tourism_website": "https://www.guilfordcountync.gov"
+    },
+    {
+      "name": "Halifax County",
+      "slug": "halifax-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/halifax-county",
+      "tourism_website": "https://www.halifaxnc.com"
+    },
+    {
+      "name": "Harnett County",
+      "slug": "harnett-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/harnett-county",
+      "tourism_website": "https://www.harnett.org"
+    },
+    {
+      "name": "Haywood County",
+      "slug": "haywood-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/haywood-county",
+      "tourism_website": "https://www.haywoodcountync.gov"
+    },
+    {
+      "name": "Henderson County",
+      "slug": "henderson-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/henderson-county",
+      "tourism_website": "https://www.hendersoncountync.gov"
+    },
+    {
+      "name": "Hertford County",
+      "slug": "hertford-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/hertford-county",
+      "tourism_website": "https://www.hertfordcountync.gov"
+    },
+    {
+      "name": "Hoke County",
+      "slug": "hoke-county",
+      "region": "Inland-Inner Coastal",
+      "sub_region": "Sandhills",
+      "url": "https://nctravelguide.us.mw/counties/hoke-county",
+      "tourism_website": "https://www.hokecounty.gov"
+    },
+    {
+      "name": "Hyde County",
+      "slug": "hyde-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Outer Banks",
+      "url": "https://nctravelguide.us.mw/counties/hyde-county",
+      "tourism_website": "https://www.hydecountync.gov"
+    },
+    {
+      "name": "Iredell County",
+      "slug": "iredell-county",
+      "region": "Central Piedmont",
+      "sub_region": "Lake Norman Region",
+      "url": "https://nctravelguide.us.mw/counties/iredell-county",
+      "tourism_website": "https://www.co.iredell.nc.us"
+    },
+    {
+      "name": "Jackson County",
+      "slug": "jackson-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/jackson-county",
+      "tourism_website": "https://www.jacksonnc.org"
+    },
+    {
+      "name": "Johnston County",
+      "slug": "johnston-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/johnston-county",
+      "tourism_website": "https://www.johnstonnc.com"
+    },
+    {
+      "name": "Jones County",
+      "slug": "jones-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/jones-county",
+      "tourism_website": "https://www.jonescountync.gov"
+    },
+    {
+      "name": "Lee County",
+      "slug": "lee-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/lee-county",
+      "tourism_website": "https://www.leecountync.gov"
+    },
+    {
+      "name": "Lenoir County",
+      "slug": "lenoir-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/lenoir-county",
+      "tourism_website": "https://www.lenoircountync.gov"
+    },
+    {
+      "name": "Lincoln County",
+      "slug": "lincoln-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/lincoln-county",
+      "tourism_website": "https://www.lincolncounty.org"
+    },
+    {
+      "name": "Macon County",
+      "slug": "macon-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/macon-county",
+      "tourism_website": "https://www.mcdowellgov.com"
+    },
+    {
+      "name": "Madison County",
+      "slug": "madison-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/madison-county",
+      "tourism_website": "https://www.maconnc.org"
+    },
+    {
+      "name": "Martin County",
+      "slug": "martin-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/martin-county",
+      "tourism_website": "https://www.madisoncountync.gov"
+    },
+    {
+      "name": "McDowell County",
+      "slug": "mcdowell-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/mcdowell-county",
+      "tourism_website": "https://www.martincountyncgov.com"
+    },
+    {
+      "name": "Mecklenburg County",
+      "slug": "mecklenburg-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/mecklenburg-county",
+      "tourism_website": "https://www.mecknc.gov"
+    },
+    {
+      "name": "Mitchell County",
+      "slug": "mitchell-county",
+      "region": "Mountain",
+      "sub_region": "High Country",
+      "url": "https://nctravelguide.us.mw/counties/mitchell-county",
+      "tourism_website": "https://www.mitchellcounty.org"
+    },
+    {
+      "name": "Montgomery County",
+      "slug": "montgomery-county",
+      "region": "Piedmont-Mountain",
+      "sub_region": "Uwharrie Lakes",
+      "url": "https://nctravelguide.us.mw/counties/montgomery-county",
+      "tourism_website": "https://www.montgomerycountync.com"
+    },
+    {
+      "name": "Moore County",
+      "slug": "moore-county",
+      "region": "Inland-Inner Coastal",
+      "sub_region": "Sandhills",
+      "url": "https://nctravelguide.us.mw/counties/moore-county",
+      "tourism_website": "https://www.moorecountync.gov"
+    },
+    {
+      "name": "Nash County",
+      "slug": "nash-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/nash-county",
+      "tourism_website": "https://www.nashcountync.gov"
+    },
+    {
+      "name": "NewHanover County",
+      "slug": "newhanover-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Cape Fear Coast",
+      "url": "https://nctravelguide.us.mw/counties/newhanover-county",
+      "tourism_website": "https://www.nhcgov.com"
+    },
+    {
+      "name": "Northampton County",
+      "slug": "northampton-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/northampton-county",
+      "tourism_website": "https://www.northamptonnc.com"
+    },
+    {
+      "name": "Onslow County",
+      "slug": "onslow-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Crystal Coast",
+      "url": "https://nctravelguide.us.mw/counties/onslow-county",
+      "tourism_website": "https://www.onslowcountync.gov"
+    },
+    {
+      "name": "Orange County",
+      "slug": "orange-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/orange-county",
+      "tourism_website": "https://www.orangecountync.gov"
+    },
+    {
+      "name": "Pamlico County",
+      "slug": "pamlico-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/pamlico-county",
+      "tourism_website": "https://www.pamlicocounty.org"
+    },
+    {
+      "name": "Pasquotank County",
+      "slug": "pasquotank-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/pasquotank-county",
+      "tourism_website": "https://www.pasquotankcountync.org"
+    },
+    {
+      "name": "Pender County",
+      "slug": "pender-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Cape Fear Coast",
+      "url": "https://nctravelguide.us.mw/counties/pender-county",
+      "tourism_website": "https://www.pendercountync.gov"
+    },
+    {
+      "name": "Perquimans County",
+      "slug": "perquimans-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/perquimans-county",
+      "tourism_website": "https://www.perquimanscountync.gov"
+    },
+    {
+      "name": "Person County",
+      "slug": "person-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/person-county",
+      "tourism_website": "https://www.personcountync.gov"
+    },
+    {
+      "name": "Pitt County",
+      "slug": "pitt-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/pitt-county",
+      "tourism_website": "https://www.pittcountync.gov"
+    },
+    {
+      "name": "Polk County",
+      "slug": "polk-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/polk-county",
+      "tourism_website": "https://www.polknc.gov"
+    },
+    {
+      "name": "Randolph County",
+      "slug": "randolph-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/randolph-county",
+      "tourism_website": "https://www.randolphcountync.gov"
+    },
+    {
+      "name": "Richmond County",
+      "slug": "richmond-county",
+      "region": "Inland-Inner Coastal",
+      "sub_region": "Sandhills",
+      "url": "https://nctravelguide.us.mw/counties/richmond-county",
+      "tourism_website": "https://www.richmondnc.com"
+    },
+    {
+      "name": "Robeson County",
+      "slug": "robeson-county",
+      "region": "Inland-Inner Coastal",
+      "sub_region": "Sandhills",
+      "url": "https://nctravelguide.us.mw/counties/robeson-county",
+      "tourism_website": "https://www.robesoncounty.org"
+    },
+    {
+      "name": "Rockingham County",
+      "slug": "rockingham-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/rockingham-county",
+      "tourism_website": "https://www.rockinghamcountync.gov"
+    },
+    {
+      "name": "Rowan County",
+      "slug": "rowan-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/rowan-county",
+      "tourism_website": "https://www.rowancountync.gov"
+    },
+    {
+      "name": "Rutherford County",
+      "slug": "rutherford-county",
+      "region": "Mountain",
+      "sub_region": "Foothills",
+      "url": "https://nctravelguide.us.mw/counties/rutherford-county",
+      "tourism_website": "https://www.rutherfordcountync.gov"
+    },
+    {
+      "name": "Sampson County",
+      "slug": "sampson-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/sampson-county",
+      "tourism_website": "https://www.sampsonnc.com"
+    },
+    {
+      "name": "Scotland County",
+      "slug": "scotland-county",
+      "region": "Inland-Inner Coastal",
+      "sub_region": "Sandhills",
+      "url": "https://nctravelguide.us.mw/counties/scotland-county",
+      "tourism_website": "https://www.scotlandcounty.org"
+    },
+    {
+      "name": "Stanly County",
+      "slug": "stanly-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/stanly-county",
+      "tourism_website": "https://www.stanlycountync.gov"
+    },
+    {
+      "name": "Stokes County",
+      "slug": "stokes-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triad",
+      "url": "https://nctravelguide.us.mw/counties/stokes-county",
+      "tourism_website": "https://www.co.stokes.nc.us"
+    },
+    {
+      "name": "Surry County",
+      "slug": "surry-county",
+      "region": "Mountain-Central Piedmont",
+      "sub_region": "Yadkin Valley",
+      "url": "https://nctravelguide.us.mw/counties/surry-county",
+      "tourism_website": "https://www.co.surry.nc.us"
+    },
+    {
+      "name": "Swain County",
+      "slug": "swain-county",
+      "region": "Mountain",
+      "sub_region": "Smoky Mountains",
+      "url": "https://nctravelguide.us.mw/counties/swain-county",
+      "tourism_website": "https://www.swaincountync.gov"
+    },
+    {
+      "name": "Transylvania County",
+      "slug": "transylvania-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/transylvania-county",
+      "tourism_website": "https://www.transylvaniacounty.org"
+    },
+    {
+      "name": "Tyrrell County",
+      "slug": "tyrrell-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Outer Banks",
+      "url": "https://nctravelguide.us.mw/counties/tyrrell-county",
+      "tourism_website": "https://www.tyrrellcounty.org"
+    },
+    {
+      "name": "Union County",
+      "slug": "union-county",
+      "region": "Central Piedmont",
+      "sub_region": "Charlotte Metro",
+      "url": "https://nctravelguide.us.mw/counties/union-county",
+      "tourism_website": "https://www.unioncountync.gov"
+    },
+    {
+      "name": "Vance County",
+      "slug": "vance-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/vance-county",
+      "tourism_website": "https://www.vancecounty.org"
+    },
+    {
+      "name": "Wake County",
+      "slug": "wake-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/wake-county",
+      "tourism_website": "https://www.wake.gov"
+    },
+    {
+      "name": "Warren County",
+      "slug": "warren-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/warren-county",
+      "tourism_website": "https://www.warrencountync.com"
+    },
+    {
+      "name": "Washington County",
+      "slug": "washington-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/washington-county",
+      "tourism_website": "https://www.washconc.org"
+    },
+    {
+      "name": "Watauga County",
+      "slug": "watauga-county",
+      "region": "Mountain",
+      "sub_region": "High Country",
+      "url": "https://nctravelguide.us.mw/counties/watauga-county",
+      "tourism_website": "https://www.wataugacounty.org"
+    },
+    {
+      "name": "Wayne County",
+      "slug": "wayne-county",
+      "region": "Atlantic Coastal",
+      "sub_region": "Inner Banks",
+      "url": "https://nctravelguide.us.mw/counties/wayne-county",
+      "tourism_website": "https://www.waynegov.com"
+    },
+    {
+      "name": "Wilkes County",
+      "slug": "wilkes-county",
+      "region": "Mountain",
+      "sub_region": "High Country",
+      "url": "https://nctravelguide.us.mw/counties/wilkes-county",
+      "tourism_website": "https://www.wilkescounty.net"
+    },
+    {
+      "name": "Wilson County",
+      "slug": "wilson-county",
+      "region": "Central Piedmont",
+      "sub_region": "The Triangle",
+      "url": "https://nctravelguide.us.mw/counties/wilson-county",
+      "tourism_website": "https://www.wilsoncountync.gov"
+    },
+    {
+      "name": "Yadkin County",
+      "slug": "yadkin-county",
+      "region": "Mountain-Central Piedmont",
+      "sub_region": "Yadkin Valley",
+      "url": "https://nctravelguide.us.mw/counties/yadkin-county",
+      "tourism_website": "https://www.yadkincountync.gov"
+    },
+    {
+      "name": "Yancey County",
+      "slug": "yancey-county",
+      "region": "Mountain",
+      "sub_region": "Blue Ridge Mountains",
+      "url": "https://nctravelguide.us.mw/counties/yancey-county",
+      "tourism_website": "https://www.yanceycountync.gov"
+    }
+  ],
+  "history_vault": {
+    "status": "pilot",
+    "current_detailed_counties": [
+      "Dare County"
+    ],
+    "editorial_policy": "Publish county history entries only when they have identifiable institutional, archival, community, or primary sources. Other county pages may show a research-in-progress state; do not infer that their histories are absent or complete.",
+    "dare_county": {
+      "url": "https://nctravelguide.us.mw/counties/dare-county/history",
+      "records": [
+        {
+          "period": "1584–1590",
+          "title": "Roanoke Island and the English colonial expeditions",
+          "source": "https://www.nps.gov/fora/learn/historyculture/the-lost-colony.htm"
+        },
+        {
+          "period": "1862–1867",
+          "title": "Roanoke Island Freedmen's Colony",
+          "source": "https://www.nps.gov/articles/the-freedmen-s-colony-on-roanoke-island.htm"
+        }
+      ]
+    }
+  },
   "data_sources": [
     "https://www.visitnc.com/",
     "https://www.ncpedia.org/",
     "https://archives.ncdcr.gov/",
+    "https://www.nps.gov/",
+    "https://digital.lib.ecu.edu/",
     "https://drivenc.gov/",
     "https://www.ncdot.gov/travel-maps/ferry-tickets-services/schedule/default.aspx",
     "https://www.weather.gov/documentation/services-web-api",
@@ -58,6 +889,8 @@
   "notes": [
     "Live conditions are time-sensitive; consult the linked official agency before travel.",
     "Ferry links provide official schedules and service notices; verify route status directly with NCDOT.",
-    "Historical image rights vary by holding institution."
+    "Tide predictions are forecasts, not live water-level observations.",
+    "Historical image rights vary by holding institution.",
+    "The county History Vault is being expanded as source-reviewed research is completed."
   ]
 }

@@ -6,25 +6,30 @@ Canonical website: https://nctravelguide.us.mw/
 Alternate host: https://www.nctravelguide.us.mw/
 
 ## Start here
-- [Homepage](https://nctravelguide.us.mw/): Overview of North Carolina destinations, regions, attractions, travel resources, and live conditions.
-- [Regions](https://nctravelguide.us.mw/regions): Explore North Carolina's mountain, central Piedmont, inner coastal/Sandhills, and Atlantic coastal regions.
+- [Homepage](https://nctravelguide.us.mw/): Statewide destination overview, regions, visitor resources, and live conditions.
+- [Regions](https://nctravelguide.us.mw/regions): Explore North Carolina's mountain, central Piedmont, Sandhills/inner coastal, and Atlantic coastal regions.
 - [All 100 Counties](https://nctravelguide.us.mw/counties): County directory and county-level travel information.
-- [North Carolina History](https://nctravelguide.us.mw/history): State heritage, historic milestones, archival photographs, and historical resources.
+- [North Carolina History](https://nctravelguide.us.mw/history): State heritage, sourced historic milestones, state symbols, and credited archival photographs.
+- [Dare County History Vault](https://nctravelguide.us.mw/counties/dare-county/history): Source-reviewed Roanoke Island and Freedmen's Colony entries with National Park Service references.
 - [Travel Ideas](https://nctravelguide.us.mw/travel-ideas): Curated travel themes, itineraries, and destination ideas.
 - [Experiences Directory](https://nctravelguide.us.mw/experiences): Searchable attractions and visitor experiences.
-- [Person County](https://nctravelguide.us.mw/counties/person-county): County guide.
+
+## County coverage
+The guide has travel hubs for all 100 North Carolina counties. Use the [AI-readable site index](https://nctravelguide.us.mw/ai-index.json) for the complete county-name, region, sub-region, tourism-website, and canonical-URL directory.
+
+The detailed county History Vault is a pilot and currently has source-reviewed entries for Dare County. Other county history collections are research-in-progress; do not infer that a county has no history or that an empty History Vault is complete.
 
 ## Live and operational travel information
 - The homepage includes live weather and National Weather Service alerts for selected North Carolina destinations, using Open-Meteo and NWS sources.
 - The homepage includes a live NCDOT incident feed and NOAA tide predictions where those feeds are available.
+- Tide predictions are forecasts, not live water-level observations.
 - Ferry schedules and service notices link to official NCDOT resources. Check NCDOT directly for current operating status.
 - Road, weather, tide, and ferry conditions change. Verify time-sensitive conditions with the linked official agencies before travel.
 
-## Coverage
-The guide is organized around North Carolina's 100 counties and four broad travel regions. It includes attractions, outdoor recreation, foodways, lodging and dining discovery, state symbols, historical places, visitor resources, and regional trip planning.
-
 ## Historical and editorial context
 The History section is a growing public heritage resource. Archival image captions link to the holding institution or collection record. Rights and reuse terms vary by source; consult the institution before reuse. Future research expansions may add Indigenous and Aboriginal histories, industrial history, and medical history as sources are reviewed.
+
+Historical claims should be read with their cited source and context. The guide distinguishes the well-documented Halifax Resolves from the disputed Mecklenburg Declaration tradition.
 
 ## Primary and official sources
 - [Visit North Carolina](https://www.visitnc.com/)
@@ -34,6 +39,8 @@ The History section is a growing public heritage resource. Archival image captio
 - [North Carolina Wildlife Resources Commission](https://www.ncwildlife.gov/)
 - [DriveNC](https://drivenc.gov/)
 - [NCDOT Ferries](https://www.ncdot.gov/travel-maps/ferry-tickets-services/schedule/default.aspx)
+- [National Park Service](https://www.nps.gov/)
+- [ECU Digital Collections](https://digital.lib.ecu.edu/)
 - [National Weather Service API](https://www.weather.gov/documentation/services-web-api)
 - [Open-Meteo](https://open-meteo.com/)
 - [NOAA Tides and Currents](https://tidesandcurrents.noaa.gov/)
