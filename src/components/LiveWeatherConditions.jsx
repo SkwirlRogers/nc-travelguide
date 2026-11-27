@@ -31,6 +31,18 @@ function formatTime(value) {
   return new Date(value).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 }
 
+async function loadStationAlerts(station) {
+  const url = new URL('https://api.weather.gov/alerts/active');
+  url.searchParams.set('point', station.latitude + ',' + station.longitude);
+  const response = await fetch(url.toString(), { headers: { Accept: 'application/geo+json' } });
+  if (!response.ok) throw new Error('NWS alerts returned ' + response.status);
+  const data = await response.json();
+  return (data.features || []).map(feature => ({
+    id: feature.id, event: feature.properties?.event || 'Weather alert',
+    headline: feature.properties?.headline || '', severity: feature.properties?.severity || 'Unknown',
+    area: feature.properties?.areaDesc || station.name, expires: feature.properties?.expires || null, url: feature.id
+  }));
+}
 async function loadStationWeather(station) {
   const params = new URLSearchParams({
     latitude: station.latitude,
@@ -74,16 +86,23 @@ export default function LiveWeatherConditions() {
   const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [error, setError] = useState('');
+  const [alerts, setAlerts] = useState([]);
+  const [alertsStatus, setAlertsStatus] = useState('loading');
 
   const refreshWeather = useCallback(async () => {
     setLoading(true);
     setError('');
     const results = await Promise.allSettled(STATIONS.map(loadStationWeather));
+    const alertResults = await Promise.allSettled(STATIONS.map(loadStationAlerts));
     const next = {};
     results.forEach((result, index) => {
       if (result.status === 'fulfilled') next[STATIONS[index].id] = result.value;
     });
     setConditions(next);
+    const alertMap = new Map();
+    alertResults.forEach(result => { if (result.status === 'fulfilled') result.value.forEach(alert => alertMap.set(alert.id, alert)); });
+    setAlerts(Array.from(alertMap.values()));
+    setAlertsStatus(alertResults.some(result => result.status === 'fulfilled') ? 'loaded' : 'unavailable');
     setLastUpdated(new Date());
     if (!Object.keys(next).length) setError('Live weather is temporarily unavailable. Please try again shortly.');
     else if (Object.keys(next).length < STATIONS.length) setError('Some locations could not be refreshed. Available locations are shown below.');
@@ -132,6 +151,20 @@ export default function LiveWeatherConditions() {
           </button>
         </div>
 
+        <section aria-label="National Weather Service alerts" style={{ margin: '0 0 1.25rem', padding: '1rem 1.1rem', borderRadius: '12px', background: alerts.length ? '#fff7ed' : '#f8fafc', border: '1px solid ' + (alerts.length ? '#fed7aa' : '#e2e8f0') }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.8rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <strong style={{ color: 'var(--text-primary)' }}>Official NWS alerts for featured destinations</strong>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{alertsStatus === 'loading' ? 'Checking official feed…' : alertsStatus === 'unavailable' ? 'NWS feed temporarily unavailable' : alerts.length ? alerts.length + ' active alert(s)' : 'No active alerts returned for these points'}</span>
+          </div>
+          {alerts.map(alert => <article key={alert.id} style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+            <strong style={{ color: alert.severity === 'Extreme' || alert.severity === 'Severe' ? '#b91c1c' : '#9a3412' }}>{alert.event}</strong>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{alert.area} · {alert.severity}</div>
+            {alert.headline && <p style={{ fontSize: '0.84rem', marginTop: '0.3rem' }}>{alert.headline}</p>}
+            {alert.expires && <div style={{ fontSize: '0.75rem' }}>Expires: {new Date(alert.expires).toLocaleString()}</div>}
+            <a href={alert.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.78rem', textDecoration: 'underline' }}>Open official NWS alert</a>
+          </article>)}
+          <div style={{ marginTop: '0.6rem', fontSize: '0.72rem', color: 'var(--text-secondary)' }}>Alerts are queried for the six featured destination coordinates. Follow local emergency instructions.</div>
+        </section>
         {error && <div role="status" style={{ margin: '0 0 1rem', padding: '0.8rem 1rem', borderRadius: '10px', background: '#fff7ed', color: '#9a3412', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <AlertCircle size={17} /> {error}
         </div>}
@@ -191,7 +224,7 @@ export default function LiveWeatherConditions() {
 
         <div style={{ marginTop: '1.2rem', textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
           {lastUpdated ? 'Weather data refreshed ' + lastUpdated.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + '. ' : ''}
-          Forecast data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>Open-Meteo</a>.
+          Forecast data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>Open-Meteo</a>; official alerts provided by <a href="https://www.weather.gov/documentation/services-web-api" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>National Weather Service</a>.
           Surf, tide, ferry, and hazard information sections are retained as reference placeholders pending your source links; sample values are not live data.
         </div>
       </div>
