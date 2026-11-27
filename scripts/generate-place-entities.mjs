@@ -15,6 +15,8 @@ const slugify = (value) => String(value || "").toLowerCase().trim()
   .replace(/[^a-z0-9\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "");
 const isHttpUrl = (value) => /^https?:\/\//i.test(String(value || "").trim());
 const countyByName = new Map(counties.map((county) => [normalize(county.County), county]));
+// Known source-label variations; raw values remain available as county_reference.
+countyByName.set("new hanover", counties.find((county) => normalize(county.County) === "newhanover"));
 const macroRegion = (region) => ({
   "Mountain": "Mountains",
   "Central Piedmont": "Central Piedmont",
@@ -36,15 +38,24 @@ const audit = {
 };
 
 function addEntity({ type, sourceFile, sourceRow, name, slug, countyName, description, category, address, city, externalUrl, latitude, longitude }) {
-  const county = countyByName.get(normalize(countyName));
+  const countyReferences = String(countyName || "").split("/").map((value) => value.trim()).filter(Boolean);
+  const countyRecords = countyReferences.map((value) => countyByName.get(normalize(value))).filter(Boolean);
+  const unique = (values) => [...new Set(values.filter(Boolean))];
+  const regions = unique(countyRecords.map((county) => county.Region));
+  const macroRegions = unique(countyRecords.map((county) => macroRegion(county.Region)));
+  const subRegions = unique(countyRecords.map((county) => county["Sub-Region"]));
   const id = type.toLowerCase() + ":" + (slug || slugify(name));
+  const isBorderReference = /\\b(border|nc border)\\b/i.test(String(countyName || ""));
   const entity = {
     id, type, name: String(name || "").trim(), slug: slug || slugify(name),
-    county: county?.County || (countyName ? String(countyName).trim() : null),
-    county_url: county ? "https://nctravelguide.us.mw/counties/" + county.Slug : null,
-    region: county?.Region || null,
-    macro_region: county ? macroRegion(county.Region) : null,
-    sub_region: county?.["Sub-Region"] || null,
+    county_reference: countyName ? String(countyName).trim() : null,
+    counties: countyRecords.map((county) => county.County),
+    county: countyRecords.length === 1 ? countyRecords[0].County : (countyRecords.length > 1 ? countyRecords.map((county) => county.County) : (countyName ? String(countyName).trim() : null)),
+    county_url: countyRecords.length === 1 ? "https://nctravelguide.us.mw/counties/" + countyRecords[0].Slug : null,
+    county_urls: countyRecords.map((county) => "https://nctravelguide.us.mw/counties/" + county.Slug),
+    region: regions.length === 1 ? regions[0] : regions,
+    macro_region: macroRegions.length === 1 ? macroRegions[0] : macroRegions,
+    sub_region: subRegions.length === 1 ? subRegions[0] : subRegions,
     city: city || null, category: category || null,
     description: description || null, address: address || null,
     coordinates: Number.isFinite(latitude) && Number.isFinite(longitude) ? { latitude, longitude } : null,
@@ -59,7 +70,7 @@ function addEntity({ type, sourceFile, sourceRow, name, slug, countyName, descri
   };
   entities.push(entity);
   if (!countyName) audit.checks.missing_county_reference.push(id);
-  else if (!county) audit.checks.unknown_county_reference.push({ id, county: countyName });
+  else if (!countyRecords.length && !isBorderReference) audit.checks.unknown_county_reference.push({ id, county: countyName });
   if (!description) audit.checks.missing_descriptions.push(id);
   if (!entity.external_url) audit.checks.missing_external_links.push(id);
 }
