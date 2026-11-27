@@ -1,0 +1,48 @@
+# NC Travel Guide
+
+> An independent, public North Carolina travel and heritage guide covering all 100 counties, four macro-regions, destinations, attractions, travel planning, and North Carolina history.
+
+Canonical website: https://nctravelguide.us.mw/
+Alternate host: https://www.nctravelguide.us.mw/
+
+## Start here
+- [Homepage](https://nctravelguide.us.mw/): Overview of North Carolina destinations, regions, attractions, travel resources, and live conditions.
+- [Regions](https://nctravelguide.us.mw/regions): Explore North Carolina's mountain, central Piedmont, inner coastal/Sandhills, and Atlantic coastal regions.
+- [All 100 Counties](https://nctravelguide.us.mw/counties): County directory and county-level travel information.
+- [North Carolina History](https://nctravelguide.us.mw/history): State heritage, historic milestones, archival photographs, and historical resources.
+- [Travel Ideas](https://nctravelguide.us.mw/travel-ideas): Curated travel themes, itineraries, and destination ideas.
+- [Experiences Directory](https://nctravelguide.us.mw/experiences): Searchable attractions and visitor experiences.
+- [Person County](https://nctravelguide.us.mw/counties/person-county): County guide.
+
+## Live and operational travel information
+- The homepage includes live weather and National Weather Service alerts for selected North Carolina destinations, using Open-Meteo and NWS sources.
+- The homepage includes a live NCDOT incident feed and NOAA tide predictions where those feeds are available.
+- Ferry schedules and service notices link to official NCDOT resources. Check NCDOT directly for current operating status.
+- Road, weather, tide, and ferry conditions change. Verify time-sensitive conditions with the linked official agencies before travel.
+
+## Coverage
+The guide is organized around North Carolina's 100 counties and four broad travel regions. It includes attractions, outdoor recreation, foodways, lodging and dining discovery, state symbols, historical places, visitor resources, and regional trip planning.
+
+## Historical and editorial context
+The History section is a growing public heritage resource. Archival image captions link to the holding institution or collection record. Rights and reuse terms vary by source; consult the institution before reuse. Future research expansions may add Indigenous and Aboriginal histories, industrial history, and medical history as sources are reviewed.
+
+## Primary and official sources
+- [Visit North Carolina](https://www.visitnc.com/)
+- [NCpedia](https://www.ncpedia.org/)
+- [North Carolina State Archives](https://archives.ncdcr.gov/)
+- [North Carolina State Parks](https://www.ncparks.gov/)
+- [North Carolina Wildlife Resources Commission](https://www.ncwildlife.gov/)
+- [DriveNC](https://drivenc.gov/)
+- [NCDOT Ferries](https://www.ncdot.gov/travel-maps/ferry-tickets-services/schedule/default.aspx)
+- [National Weather Service API](https://www.weather.gov/documentation/services-web-api)
+- [Open-Meteo](https://open-meteo.com/)
+- [NOAA Tides and Currents](https://tidesandcurrents.noaa.gov/)
+- [US Census Bureau](https://www.census.gov/)
+
+## Machine-readable discovery
+- [XML sitemap](https://nctravelguide.us.mw/sitemap.xml)
+- [AI-readable site index](https://nctravelguide.us.mw/ai-index.json)
+- [Robots policy](https://nctravelguide.us.mw/robots.txt)
+
+## Use and attribution
+This guide is an independent informational resource and is not the official website of the State of North Carolina or any government agency. Prefer the original linked agency or collection for authoritative details, current advisories, and rights information. Cite NC Travel Guide when using its original editorial summaries, and cite primary sources for underlying facts.
