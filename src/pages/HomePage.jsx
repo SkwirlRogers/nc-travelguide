@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Search, Compass, MapPin, History, Sparkles, ArrowRight, Heart, Star, ExternalLink, ShieldCheck, TreePine } from 'lucide-react';
-import { getMacroRegions, getAllCounties, searchExperiences } from '../utils/dataHelpers';
+import { getMacroRegions } from '../utils/regionHelpers';
+import { getAllCounties } from '../utils/countyDirectoryHelpers';
+import featuredAttractionsData from '../data/featured-attractions.json';
 import InteractiveTravelHub from '../components/InteractiveTravelHub';
 import InteractiveNCMap from '../components/InteractiveNCMap';
 import LiveWeatherConditions from '../components/LiveWeatherConditions';
@@ -14,7 +16,7 @@ export default function HomePage({ navigate, onToggleSave, isSaved }) {
   const allCounties = getAllCounties();
   
   // Featured top attractions
-  const featuredHotspots = searchExperiences({ type: 'attractions', limit: 6 });
+  const featuredHotspots = featuredAttractionsData;
 
   const handleHeroSearch = (e) => {
     e.preventDefault();

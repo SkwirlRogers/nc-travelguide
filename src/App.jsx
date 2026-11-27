@@ -2,7 +2,8 @@ import React, { lazy, Suspense, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 const SavedItineraryModal = lazy(() => import('./components/SavedItineraryModal'));
-import { getCountyDetails, getCountyHistory } from './utils/dataHelpers';
+import countiesData from './data/counties.json';
+import countyHistoryData from './data/county-history.json';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RegionsPage = lazy(() => import('./pages/RegionsPage'));
@@ -94,12 +95,14 @@ export default function App() {
     let page = pageDefinitions[path] || defaultPage;
     let canonicalPath = path;
     let countyRecord = null;
+    let countyHistoryRecord = null;
+    let countyName = null;
 
     const countyMatch = path.match(/^\/counties\/([^/]+)/);
     if (countyMatch) {
-      countyRecord = getCountyDetails(countyMatch[1]);
-      const countyHistoryRecord = getCountyHistory(countyMatch[1]);
-      const countyName = countyRecord?.rawCountyName || countyMatch[1].replace(/-county$/i, "").replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
+      countyRecord = countiesData.find((record) => record.Slug === countyMatch[1]) || null;
+      countyHistoryRecord = countyHistoryData.counties?.[countyMatch[1]] || null;
+      countyName = countyRecord?.County?.replace(/\s+County$/i, "").trim() || countyMatch[1].replace(/-county$/i, "").replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
       const tab = path.split("/")[3] || "guides";
       const tabNames = {
         guides: "Travel Guide",
@@ -171,7 +174,7 @@ export default function App() {
         "about": countyRecord
           ? {
               "@type": "AdministrativeArea",
-              "name": `${countyRecord.rawCountyName} County, North Carolina`,
+              "name": `${countyName} County, North Carolina`,
               "containedInPlace": { "@type": "State", "name": "North Carolina" }
             }
           : { "@type": "Thing", "name": page.about },

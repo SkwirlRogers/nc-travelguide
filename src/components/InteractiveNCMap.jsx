@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Navigation, Compass, Layers, ArrowRight } from 'lucide-react';
-import { getAllCounties } from '../utils/dataHelpers';
+import { getAllCounties } from '../utils/countyDirectoryHelpers';
 
 // Simplified representative coordinates/positions for key North Carolina counties across regions for SVG visualization
 const REGION_COLORS = {
