@@ -45,7 +45,7 @@ function addEntity({ type, sourceFile, sourceRow, name, slug, countyName, descri
   const macroRegions = unique(countyRecords.map((county) => macroRegion(county.Region)));
   const subRegions = unique(countyRecords.map((county) => county["Sub-Region"]));
   const id = type.toLowerCase() + ":" + (slug || slugify(name));
-  const isBorderReference = /\\b(border|nc border)\\b/i.test(String(countyName || ""));
+  const isBorderReference = /\b(border|nc border)\b/i.test(String(countyName || ""));
   const entity = {
     id, type, name: String(name || "").trim(), slug: slug || slugify(name),
     county_reference: countyName ? String(countyName).trim() : null,
