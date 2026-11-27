@@ -26,8 +26,6 @@ export function getCountyDetails(slugOrName) {
 
   if (!county) return null;
 
-  const rawName = county.rawCountyName.toLowerCase();
-
   // Filter associated entities
   const cities = citiesData.filter(c => 
     belongsToCounty(c.County, county)

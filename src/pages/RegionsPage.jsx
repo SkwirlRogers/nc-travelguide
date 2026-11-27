@@ -23,6 +23,9 @@ export default function RegionsPage({ navigate }) {
           <p style={{ color: 'var(--text-secondary)', maxWidth: '750px', margin: '0 auto', fontSize: '1.1rem' }}>
             From the high alpine ridges of the Blue Ridge Parkway down through the rolling Piedmont heartland to 300+ miles of Atlantic coastal barrier islands.
           </p>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '750px', margin: '0.75rem auto 0', fontSize: '0.9rem', lineHeight: 1.5 }}>
+            Regional totals overlap where counties bridge more than one macro-region. All 100 counties are represented; four cross-region counties are included in each applicable region.
+          </p>
         </div>
 
         {/* Filter Tabs */}
