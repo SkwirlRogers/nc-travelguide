@@ -6,7 +6,7 @@ const INCIDENT_FIELDS = [
   'Id', 'Location', 'Road', 'Direction', 'RouteType', 'CountyName', 'Reason',
   'EventType', 'EventSubType', 'Condition', 'Detour', 'LanesAffected',
   'IsFullClosure', 'DriveNCLink', 'StartDateTime', 'EndDateTime',
-  'LastUpdateDateTime', 'Severity'
+  'LastUpdateDateTime'
 ].join(',');
 
 const TIDE_STATIONS = [
@@ -51,7 +51,7 @@ function normalizeIncidents(payload) {
       condition: a.Condition || a.condition || '',
       detour: a.Detour || a.detour || '',
       lanes: a.LanesAffected || a.lanesAffected || '',
-      fullClosure: String(a.IsFullClosure || '').toLowerCase() === 'yes' || a.IsFullClosure === 1 || a.IsFullClosure === true,
+      fullClosure: ['yes', 'true', '1'].includes(String(a.IsFullClosure ?? '').toLowerCase()),
       severity: a.Severity ?? a.severity,
       updated: a.LastUpdateDateTime || a.lastUpdateDateTime,
       link: a.DriveNCLink || a.driveNCLink || 'https://drivenc.gov'
@@ -223,7 +223,7 @@ export default function LiveTravelConditions() {
             {tides.map(station => (
               <div key={station.id} style={{ padding: '0.8rem 0', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
                 <strong style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>{station.name}</strong>
-                <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>{station.area} · NOAA station {station.id} · local station time · feet above MLLW</div>
+                <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>{station.area} · NOAA station {station.id} · local station time · feet · MLLW datum</div>
                 {station.predictions.length ? (
                   <div style={{ overflowX: 'auto', marginTop: '0.55rem' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem', textAlign: 'left' }}>
