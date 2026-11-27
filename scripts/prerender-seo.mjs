@@ -6,9 +6,13 @@ const distDir = path.join(root, "dist");
 const baseHtml = await readFile(path.join(distDir, "index.html"), "utf8");
 const counties = JSON.parse(await readFile(path.join(root, "src/data/counties.json"), "utf8"));
 const historyVault = JSON.parse(await readFile(path.join(root, "src/data/county-history.json"), "utf8"));
+const cities = JSON.parse(await readFile(path.join(root, "src/data/cities.json"), "utf8"));
+const attractions = JSON.parse(await readFile(path.join(root, "src/data/attractions.json"), "utf8"));
 const sitemap = await readFile(path.join(distDir, "sitemap.xml"), "utf8");
 
 const countyBySlug = new Map(counties.map((county) => [county.Slug, county]));
+const cityBySlug = new Map(cities.map((city) => [city.Slug, city]));
+const normalizeCounty = (value) => String(value || "").toLowerCase().replace(/\\s+county$/i, "").replace(/[\\s_-]/g, "").trim();
 const siteRoot = "https://nctravelguide.us.mw";
 const sectionPages = {
   "/": {
@@ -125,6 +129,31 @@ function countyFallback(county, slug, historyRecord = null) {
   </main>`;
 }
 
+function townFallback(town, countyRecords, relatedAttractions) {
+  const countyLinks = countyRecords.map((county) =>
+    \`<li><a href="/counties/\${escapeHtml(county.Slug)}">\${escapeHtml(county.County)} county guide</a></li>\`
+  ).join("");
+  const attractionsHtml = relatedAttractions.map((item) =>
+    \`<li><strong>\${escapeHtml(item.Attractions)}</strong> — \${escapeHtml(item.Description || "")}</li>\`
+  ).join("");
+  const officialLink = /^https?:\/\//i.test(String(town["Tourism Website"] || ""))
+    ? sourceLink(town["Tourism Website"], "Official community website") : "";
+  const coordinates = Number.isFinite(Number(town.Latitude)) && Number.isFinite(Number(town.Longitude))
+    ? \`<p>Mapped coordinates: \${escapeHtml(town.Latitude)}, \${escapeHtml(town.Longitude)} · <a href="https://www.google.com/maps?q=\${encodeURIComponent(town.Latitude + "," + town.Longitude)}">View map</a></p>\` : "";
+  return \`<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f">
+    <p><a href="/counties">All North Carolina counties</a></p>
+    <h1>\${escapeHtml(town.City)}, North Carolina</h1>
+    <p>\${escapeHtml(town.Description)}</p>
+    <h2>County connections</h2><ul>\${countyLinks}</ul>
+    \${officialLink ? \`<p>\${officialLink}</p>\` : ""}
+    \${coordinates}
+    \${town.Population ? \`<p>Population figure in source directory: \${escapeHtml(String(town.Population).replace(/\.00$/, ""))}</p>\` : ""}
+    \${attractionsHtml ? \`<h2>More to explore in the connected county or counties</h2><p>These directory entries are associated with the same county or counties; they are not necessarily within town limits.</p><ul>\${attractionsHtml}</ul>\` : ""}
+    <p>Directory note: descriptions, population figures, and municipal links come from the guide's source dataset. Confirm current details with local sources before traveling.</p>
+    \${fallbackNavigation()}
+  </main>\`;
+}
+
 function routeDefinition(route) {
   if (sectionPages[route]) {
     const page = sectionPages[route];
@@ -153,6 +182,42 @@ function routeDefinition(route) {
   }
 
   const parts = route.split("/").filter(Boolean);
+  if (parts[0] === "towns" && parts[1]) {
+    const town = cityBySlug.get(parts[1]);
+    if (!town) return null;
+    const countyRefs = String(town.County || "").split("/").map((value) => value.trim()).filter(Boolean);
+    const countyRecords = countyRefs.map((reference) => counties.find((county) => normalizeCounty(county.County) === normalizeCounty(reference))).filter(Boolean);
+    if (!countyRecords.length || countyRecords.length !== countyRefs.length) return null;
+    const description = town.Description + " Explore county connections, regional context, and local visitor resources for " + town.City + ", North Carolina.";
+    const relatedAttractions = attractions.filter((item) => {
+      const refs = String(item.County || "").split("/").map((value) => normalizeCounty(value.trim()));
+      return refs.some((reference) => countyRecords.some((county) => normalizeCounty(county.County) === reference));
+    }).slice(0, 6);
+    const containedInPlace = countyRecords.map((county) => ({
+      "@type": "AdministrativeArea",
+      "name": county.County + ", North Carolina",
+      "url": siteRoot + "/counties/" + county.Slug
+    }));
+    const placeSchema = {
+      "@type": "City",
+      "name": town.City + ", North Carolina",
+      "description": town.Description,
+      "containedInPlace": containedInPlace.length === 1 ? containedInPlace[0] : containedInPlace,
+      "sameAs": /^https?:\/\//i.test(String(town["Tourism Website"] || "")) ? town["Tourism Website"] : undefined
+    };
+    if (Number.isFinite(Number(town.Latitude)) && Number.isFinite(Number(town.Longitude))) {
+      placeSchema.geo = { "@type": "GeoCoordinates", "latitude": Number(town.Latitude), "longitude": Number(town.Longitude) };
+    }
+    return {
+      title: town.City + ", NC Visitor Guide | NC Travel Guide",
+      description,
+      type: "City",
+      about: town.City + ", North Carolina",
+      canonicalPath: route,
+      placeSchema,
+      fallbackHtml: townFallback(town, countyRecords, relatedAttractions)
+    };
+  }
   if (parts[0] === "counties" && parts[1]) {
     const slug = parts[1];
     const county = countyBySlug.get(slug);
@@ -198,19 +263,23 @@ function renderStaticRoute(route, definition) {
     const filteredGraph = route === "/"
       ? graph
       : graph.filter((node) => !(node["@type"] === "WebPage" && node.url === siteRoot + "/"));
-    if (route !== "/") filteredGraph.push({
-      "@type": definition.type,
-      "@id": canonicalUrl + "#webpage",
-      "url": canonicalUrl,
-      "name": definition.title,
-      "description": definition.description,
-      "isPartOf": {"@id": siteRoot + "/#website"},
-      "author": {"@id": siteRoot + "/#creator"},
-      "about": definition.county
-        ? {"@type":"AdministrativeArea","name":definition.county.County + ", North Carolina","containedInPlace":{"@type":"State","name":"North Carolina"}}
-        : {"@type":"Thing","name":definition.about},
-      "inLanguage": "en-US"
-    });
+    if (route !== "/") {
+      const pageNode = {
+        "@type": definition.type,
+        "@id": canonicalUrl + "#webpage",
+        "url": canonicalUrl,
+        "name": definition.title,
+        "description": definition.description,
+        "isPartOf": {"@id": siteRoot + "/#website"},
+        "author": {"@id": siteRoot + "/#creator"},
+        "about": definition.county
+          ? {"@type":"AdministrativeArea","name":definition.county.County + ", North Carolina","containedInPlace":{"@type":"State","name":"North Carolina"}}
+          : {"@type":"Thing","name":definition.about},
+        "inLanguage": "en-US"
+      };
+      if (definition.placeSchema) Object.assign(pageNode, definition.placeSchema);
+      filteredGraph.push(pageNode);
+    }
     schema["@graph"] = filteredGraph;
     html = html.replace(schemaScript[0], `<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
   }
