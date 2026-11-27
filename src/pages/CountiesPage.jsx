@@ -1,12 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { MapPin, Search, ArrowRight, Building, Users, Compass, ExternalLink } from 'lucide-react';
 import { getAllCounties, formatNumber, makeSlug } from '../utils/countyDirectoryHelpers';
+import { getCountyMacroRegions } from '../utils/regionHelpers';
 
-export default function CountiesPage({ navigate }) {
+export default function CountiesPage({ navigate, initialRegion = 'all' }) {
   const allCounties = useMemo(() => getAllCounties(), []);
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [regionFilter, setRegionFilter] = useState('all');
+  const [regionFilter, setRegionFilter] = useState(initialRegion);
+
+  React.useEffect(() => setRegionFilter(initialRegion || 'all'), [initialRegion]);
   const [sortBy, setSortBy] = useState('name');
 
   const filteredCounties = useMemo(() => {
@@ -19,8 +22,7 @@ export default function CountiesPage({ navigate }) {
         (county['Sub-Region'] && county['Sub-Region'].toLowerCase().includes(q))
       );
 
-      const matchesRegion = regionFilter === 'all' || 
-        (county.Region && county.Region.toLowerCase().includes(regionFilter.toLowerCase()));
+      const matchesRegion = regionFilter === 'all' || getCountyMacroRegions(county).includes(regionFilter);
 
       return matchesSearch && matchesRegion;
     }).sort((a, b) => {
@@ -92,7 +94,7 @@ export default function CountiesPage({ navigate }) {
           {/* Region Tabs */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginRight: '0.5rem' }}>Region:</span>
-            {['all', 'Mountain', 'Central Piedmont', 'Atlantic Coastal', 'Sandhills', 'Inland-Inner Coastal'].map((reg) => (
+            {['all', 'Mountains', 'Central Piedmont', 'Atlantic Coastal', 'Sandhills / Inner Coastal'].map((reg) => (
               <button
                 key={reg}
                 onClick={() => setRegionFilter(reg)}

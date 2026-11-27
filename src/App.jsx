@@ -253,7 +253,7 @@ export default function App() {
     if (path.startsWith('/counties')) {
       const parts = path.split('/').filter(Boolean); // e.g. ['counties', 'wake-county', 'visit']
       if (parts.length === 1) {
-        return <CountiesPage navigate={navigate} />;
+        return <CountiesPage navigate={navigate} initialRegion={searchParams.get('region') || 'all'} />;
       }
       if (parts.length >= 2) {
         const countySlug = parts[1];
@@ -286,6 +286,7 @@ export default function App() {
       return (
         <ExperiencesPage
           initialQuery={initialQuery}
+          initialRegion={searchParams.get('region') || 'all'}
           navigate={navigate}
           onToggleSave={handleToggleSave}
           isSaved={isSaved}

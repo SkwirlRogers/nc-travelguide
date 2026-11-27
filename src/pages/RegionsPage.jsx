@@ -50,9 +50,7 @@ export default function RegionsPage({ navigate }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {filteredMacro.map((region) => {
             // Find associated sub-regions from dataset
-            const subRegs = subRegionsData.filter(sr => 
-              sr.Region && sr.Region.toLowerCase().includes(region.name.toLowerCase().split(' ')[0])
-            );
+            const subRegs = subRegionsData.filter(sr => region.sourceRegions.includes(sr.Region));
 
             return (
               <div 

@@ -3,10 +3,12 @@ import { Search, MapPin, Filter, ExternalLink, Heart, ArrowRight, Utensils, Hote
 import { searchExperiences } from '../utils/experienceHelpers';
 import { getAllCounties } from '../utils/countyDirectoryHelpers';
 
-export default function ExperiencesPage({ initialQuery = '', navigate, onToggleSave, isSaved }) {
+export default function ExperiencesPage({ initialQuery = '', initialRegion = 'all', navigate, onToggleSave, isSaved }) {
   const [query, setQuery] = useState(initialQuery);
   const [typeFilter, setTypeFilter] = useState('all');
-  const [regionFilter, setRegionFilter] = useState('all');
+  const [regionFilter, setRegionFilter] = useState(initialRegion);
+
+  useEffect(() => setRegionFilter(initialRegion || 'all'), [initialRegion]);
   const [countyFilter, setCountyFilter] = useState('all');
   const [categoryFilter, setCategoryFilter] = useState('all');
 
