@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Search, MapPin, Filter, ExternalLink, Heart, ArrowRight, Utensils, Hotel, Compass, CheckCircle2 } from 'lucide-react';
-import { searchExperiences, getAllCounties } from '../utils/dataHelpers';
+import { searchExperiences } from '../utils/experienceHelpers';
+import { getAllCounties } from '../utils/countyDirectoryHelpers';
 
 export default function ExperiencesPage({ initialQuery = '', navigate, onToggleSave, isSaved }) {
   const [query, setQuery] = useState(initialQuery);

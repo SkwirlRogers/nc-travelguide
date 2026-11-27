@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Users, Building, ExternalLink, Calendar, Compass, Plane, Sun, Utensils, Hotel, ArrowLeft, Heart, Star, Navigation, Search, History } from 'lucide-react';
-import { getCountyDetails, getCountyHistory, formatNumber } from '../utils/dataHelpers';
+import { getCountyDetails, getCountyHistory } from '../utils/countyDetailHelpers';
+import { formatNumber } from '../utils/countyDirectoryHelpers';
 
 export default function CountyDetailPage({ countySlug, subTab = 'guides', navigate, onToggleSave, isSaved }) {
   const county = getCountyDetails(countySlug);

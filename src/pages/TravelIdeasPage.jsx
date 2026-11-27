@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Utensils, Mountain, Sun, Heart, ExternalLink, ArrowRight, Compass, ShieldCheck } from 'lucide-react';
-import { searchExperiences } from '../utils/dataHelpers';
+import { searchExperiences } from '../utils/experienceHelpers';
 
 export default function TravelIdeasPage({ navigate, onToggleSave, isSaved }) {
   const [activeCategory, setActiveCategory] = useState('all');
