@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "cross_region_labels": {
+    "Mountain-Central Piedmont": [
+      "Mountains",
+      "Central Piedmont"
+    ],
+    "Piedmont-Mountain": [
+      "Central Piedmont",
+      "Mountains"
+    ]
+  },
+  "macro_regions": [
+    {
+      "name": "Mountains",
+      "slug": "mountains",
+      "direct_region_labels": [
+        "Mountain"
+      ],
+      "subregion_source_labels": [
+        "Mountain",
+        "Mountain-Central Piedmont",
+        "Piedmont-Mountain"
+      ],
+      "sub_regions": [
+        "Blue Ridge Mountains",
+        "Smoky Mountains",
+        "High Country",
+        "Foothills",
+        "Yadkin Valley"
+      ],
+      "description": "Towering peaks, the historic Blue Ridge Parkway, waterfalls, mountain communities, and dramatic ridgelines.",
+      "featured_cities": "Asheville, Boone, Blowing Rock, Hendersonville",
+      "image": "/images/hero-linn-cove.jpg"
+    },
+    {
+      "name": "Central Piedmont",
+      "slug": "central-piedmont",
+      "direct_region_labels": [
+        "Central Piedmont"
+      ],
+      "subregion_source_labels": [
+        "Central Piedmont",
+        "Mountain-Central Piedmont",
+        "Piedmont-Mountain"
+      ],
+      "sub_regions": [
+        "The Triangle",
+        "Charlotte Metro",
+        "The Triad",
+        "Lake Norman Region",
+        "Research Triangle Park",
+        "Yadkin Valley",
+        "Uwharrie Lakes"
+      ],
+      "description": "North Carolina's central urban and cultural corridor, including research, finance, education, manufacturing, and major city destinations.",
+      "featured_cities": "Raleigh, Charlotte, Durham, Winston-Salem, Cary",
+      "image": "/images/piedmont_cityscape.jpg"
+    },
+    {
+      "name": "Atlantic Coastal",
+      "slug": "atlantic-coastal",
+      "direct_region_labels": [
+        "Atlantic Coastal"
+      ],
+      "subregion_source_labels": [
+        "Atlantic Coastal"
+      ],
+      "sub_regions": [
+        "Outer Banks",
+        "Crystal Coast",
+        "Cape Fear Coast",
+        "Brunswick Islands",
+        "Inner Banks"
+      ],
+      "description": "Barrier islands, historic waterfronts, coastal communities, maritime heritage, beaches, and estuarine landscapes.",
+      "featured_cities": "Wilmington, Nags Head, Beaufort, Emerald Isle",
+      "image": "/images/coastal_lighthouse.jpg"
+    },
+    {
+      "name": "Sandhills / Inner Coastal",
+      "slug": "sandhills-inner-coastal",
+      "direct_region_labels": [
+        "Inland-Inner Coastal"
+      ],
+      "subregion_source_labels": [
+        "Inland-Inner Coastal"
+      ],
+      "sub_regions": [
+        "Sandhills"
+      ],
+      "description": "Longleaf pine landscapes, Sandhills communities, golf and equestrian destinations, agricultural heritage, and inland coastal corridors.",
+      "featured_cities": "Pinehurst, Southern Pines, Fayetteville",
+      "image": "/images/sandhills_golf.jpg"
+    }
+  ]
+}

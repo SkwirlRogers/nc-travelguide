@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Navigation, Compass, Layers, ArrowRight } from 'lucide-react';
 import { getAllCounties } from '../utils/countyDirectoryHelpers';
+import { getCountyMacroRegions } from '../utils/regionHelpers';
 
 // Simplified representative coordinates/positions for key North Carolina counties across regions for SVG visualization
 const MACRO_REGIONS = ['Mountains', 'Central Piedmont', 'Sandhills / Inner Coastal', 'Atlantic Coastal'];
@@ -12,20 +13,6 @@ const REGION_COLORS = {
   'Sandhills / Inner Coastal': '#8b5cf6'
 };
 
-// Keep the original county Region and Sub-Region values intact. These display
-// groups reconcile the four macro-regions while preserving cross-region counties.
-function getMacroRegions(county) {
-  switch (county.Region) {
-    case 'Mountain': return ['Mountains'];
-    case 'Central Piedmont': return ['Central Piedmont'];
-    case 'Atlantic Coastal': return ['Atlantic Coastal'];
-    case 'Inland-Inner Coastal': return ['Sandhills / Inner Coastal'];
-    case 'Mountain-Central Piedmont': return ['Mountains', 'Central Piedmont'];
-    case 'Piedmont-Mountain': return ['Central Piedmont', 'Mountains'];
-    default: return [];
-  }
-}
-
 export default function InteractiveNCMap({ navigate }) {
   const counties = getAllCounties();
   const [selectedRegion, setSelectedRegion] = useState('ALL');
@@ -33,7 +20,7 @@ export default function InteractiveNCMap({ navigate }) {
   const [filterQuery, setFilterQuery] = useState('');
 
   const filteredCounties = counties.filter(c => {
-    const matchesRegion = selectedRegion === 'ALL' || getMacroRegions(c).includes(selectedRegion);
+    const matchesRegion = selectedRegion === 'ALL' || getCountyMacroRegions(c).includes(selectedRegion);
     const matchesQuery = !filterQuery || c.County.toLowerCase().includes(filterQuery.toLowerCase()) || 
       (c['Major Cities'] && c['Major Cities'].toLowerCase().includes(filterQuery.toLowerCase()));
     return matchesRegion && matchesQuery;
@@ -246,10 +233,10 @@ export default function InteractiveNCMap({ navigate }) {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <span className="badge" style={{
                       fontSize: '0.7rem',
-                      background: `${REGION_COLORS[getMacroRegions(c)[0]] || '#3b82f6'}20`,
-                      color: REGION_COLORS[getMacroRegions(c)[0]] || '#3b82f6'
+                      background: `${REGION_COLORS[getCountyMacroRegions(c)[0]] || '#3b82f6'}20`,
+                      color: REGION_COLORS[getCountyMacroRegions(c)[0]] || '#3b82f6'
                     }}>
-                      {getMacroRegions(c).join(' / ') || c.Region}
+                      {getCountyMacroRegions(c).join(' / ') || c.Region}
                     </span>
                     <ArrowRight size={15} color="var(--text-muted)" />
                   </div>

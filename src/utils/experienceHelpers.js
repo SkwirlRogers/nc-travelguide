@@ -3,6 +3,7 @@ import hotelsData from "../data/hotels.json";
 import restaurantsData from "../data/restaurants.json";
 import { makeSlug } from "./countyDirectoryHelpers";
 import countiesData from "../data/counties.json";
+import { getCountyMacroRegions } from "./regionHelpers";
 
 const normalizeCountyReference = (value) => String(value || "").toLowerCase()
   .replaceAll(" county", "").replaceAll(" ", "").replaceAll("-", "").replaceAll("_", "").trim();
@@ -10,14 +11,7 @@ const countyByName = new Map(countiesData.map((county) => [normalizeCountyRefere
 const countyReferences = (value) => String(value || "").split("/").map((part) => part.trim()).filter(Boolean);
 const matchesCounty = (reference, selected) => countyReferences(reference)
   .some((part) => normalizeCountyReference(part) === normalizeCountyReference(selected));
-const macroRegionsForCounty = (county) => ({
-  "Mountain": ["Mountains"],
-  "Central Piedmont": ["Central Piedmont"],
-  "Atlantic Coastal": ["Atlantic Coastal"],
-  "Inland-Inner Coastal": ["Sandhills / Inner Coastal"],
-  "Mountain-Central Piedmont": ["Mountains", "Central Piedmont"],
-  "Piedmont-Mountain": ["Central Piedmont", "Mountains"]
-}[county?.Region] || []);
+const macroRegionsForCounty = (county) => getCountyMacroRegions(county);
 const matchesMacroRegion = (item, selected) => {
   if (selected === "all") return true;
   const related = countyReferences(item.County)

@@ -5,9 +5,9 @@ const root = process.cwd();
 const dataDir = path.join(root, "src/data");
 const publicDir = path.join(root, "public");
 const readJson = async (file) => JSON.parse(await readFile(path.join(dataDir, file), "utf8"));
-const [counties, cities, attractions, hotels, restaurants] = await Promise.all([
+const [counties, cities, attractions, hotels, restaurants, macroRegionData] = await Promise.all([
   readJson("counties.json"), readJson("cities.json"), readJson("attractions.json"),
-  readJson("hotels.json"), readJson("restaurants.json")
+  readJson("hotels.json"), readJson("restaurants.json"), readJson("macro-regions.json")
 ]);
 
 const normalize = (value) => String(value || "").toLowerCase().replace(/\s+county$/i, "").trim();
@@ -17,14 +17,8 @@ const isHttpUrl = (value) => /^https?:\/\//i.test(String(value || "").trim());
 const countyByName = new Map(counties.map((county) => [normalize(county.County), county]));
 // Known source-label variations; raw values remain available as county_reference.
 countyByName.set("new hanover", counties.find((county) => normalize(county.County) === "newhanover"));
-const macroRegion = (region) => ({
-  "Mountain": "Mountains",
-  "Central Piedmont": "Central Piedmont",
-  "Atlantic Coastal": "Atlantic Coastal",
-  "Inland-Inner Coastal": "Sandhills / Inner Coastal",
-  "Mountain-Central Piedmont": ["Mountains", "Central Piedmont"],
-  "Piedmont-Mountain": ["Central Piedmont", "Mountains"]
-}[region] || null);
+const macroRegion = (label) => macroRegionData.cross_region_labels[label]
+  || macroRegionData.macro_regions.filter((region) => region.direct_region_labels.includes(label)).map((region) => region.name);
 
 const entities = [];
 const audit = {
