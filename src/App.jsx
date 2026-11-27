@@ -115,7 +115,12 @@ export default function App() {
         about: `${countyName} County, North Carolina travel and visitor information`,
         keywords: [`${countyName} County NC`, `${countyName} County travel guide`, `${countyName} County attractions`]
       };
-      canonicalPath = `/counties/${countyMatch[1]}`;
+      canonicalPath = tab === "history" && countyMatch[1] === "dare-county"
+        ? path
+        : `/counties/${countyMatch[1]}`;
+      if (tab === "history" && countyMatch[1] === "dare-county") {
+        page.description = "Explore Dare County's Roanoke Island history, including the 1580s English expeditions and the Civil War-era Freedmen's Colony, with National Park Service sources and archival records.";
+      }
     }
 
     if (!pageDefinitions[path] && !countyMatch && path !== "/" && path !== "/index.html") {
