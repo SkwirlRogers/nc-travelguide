@@ -34,6 +34,76 @@ export default function App() {
     }
   }, [savedItems]);
 
+  // Keep route metadata and structured data aligned with the active SPA page.
+  useEffect(() => {
+    const pageDefinitions = {
+      "/history": {
+        title: "North Carolina History & Heritage | NC Travel Guide",
+        description: "Explore North Carolina history and heritage through historic milestones, archival photographs, primary-source records, and links to holding institutions.",
+        type: "CollectionPage",
+        about: "North Carolina history, historic places, and regional heritage",
+        keywords: ["North Carolina history", "North Carolina heritage", "historic places", "archival photographs", "primary sources"]
+      },
+      "/travel-ideas": {
+        title: "North Carolina Travel Ideas & Itineraries | NC Travel Guide",
+        description: "Explore North Carolina travel ideas, regional itineraries, attractions, and destination inspiration across the state's mountains, Piedmont, Sandhills, and coast.",
+        type: "CollectionPage",
+        about: "North Carolina destinations, travel ideas, and visitor experiences",
+        keywords: ["North Carolina travel", "North Carolina itineraries", "North Carolina destinations", "things to do in North Carolina"]
+      }
+    };
+    const path = currentPath.toLowerCase().replace(/\\/$/, "") || "/";
+    const page = pageDefinitions[path];
+    if (!page) return;
+
+    document.title = page.title;
+    let descriptionTag = document.querySelector('meta[name="description"]');
+    if (!descriptionTag) {
+      descriptionTag = document.createElement("meta");
+      descriptionTag.name = "description";
+      document.head.appendChild(descriptionTag);
+    }
+    descriptionTag.setAttribute("content", page.description);
+
+    let canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      document.head.appendChild(canonicalTag);
+    }
+    const canonicalUrl = `https://nctravelguide.us.mw${path}`;
+    canonicalTag.setAttribute("href", canonicalUrl);
+
+    const existingSchema = document.getElementById("nc-travel-guide-route-schema");
+    if (existingSchema) existingSchema.remove();
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": page.type,
+      "@id": `${canonicalUrl}#webpage`,
+      "url": canonicalUrl,
+      "name": page.title,
+      "description": page.description,
+      "isPartOf": { "@id": "https://nctravelguide.us.mw/#website" },
+      "author": { "@id": "https://nctravelguide.us.mw/#creator" },
+      "about": {
+        "@type": "Thing",
+        "name": page.about
+      },
+      "keywords": page.keywords.join(", "),
+      "inLanguage": "en-US"
+    };
+    const script = document.createElement("script");
+    script.id = "nc-travel-guide-route-schema";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      const activeSchema = document.getElementById("nc-travel-guide-route-schema");
+      if (activeSchema) activeSchema.remove();
+    };
+  }, [currentPath]);
+
   // Listen to popstate (browser back/forward buttons)
   useEffect(() => {
     const handlePopState = () => {
