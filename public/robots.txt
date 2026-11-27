@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nctravelguide.us.kg/sitemap.xml
+Sitemap: https://nctravelguide.us.mw/sitemap.xml
