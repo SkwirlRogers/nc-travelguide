@@ -64,6 +64,9 @@ export default function CountiesPage({ navigate, initialRegion = 'all' }) {
             <div style={{ flex: '1 1 300px', display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '0.6rem 1rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255,255,255,0.1)' }}>
               <Search size={20} color="var(--accent-amber)" style={{ marginRight: '0.6rem' }} />
               <input
+                id="counties-search"
+                name="county-search"
+                autoComplete="off"
                 type="text"
                 placeholder="Search by county name, city (e.g. Raleigh, Asheville, Charlotte), or sub-region..."
                 value={searchTerm}
@@ -76,6 +79,8 @@ export default function CountiesPage({ navigate, initialRegion = 'all' }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Sort By:</span>
               <select
+                id="counties-sort"
+                name="sort"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 style={{
