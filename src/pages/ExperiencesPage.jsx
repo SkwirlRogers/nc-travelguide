@@ -252,17 +252,28 @@ export default function ExperiencesPage({ initialQuery = '', initialRegion = 'al
                       {item.county} County Page
                     </button>
 
-                    {item.targetLink && (
-                      <a
-                        href={item.targetLink.startsWith('http') ? item.targetLink : `https://${item.targetLink}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-secondary"
-                        style={{ padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}
-                      >
-                        <ExternalLink size={14} /> Visit / Book
-                      </a>
-                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+                      {item.type === 'Attraction' && item.slug && /^https?:\/\//i.test(String(item.targetLink || '')) && (
+                        <button
+                          onClick={() => navigate('/attractions/' + item.slug)}
+                          className="btn btn-secondary"
+                          style={{ padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}
+                        >
+                          View profile
+                        </button>
+                      )}
+                      {item.targetLink && (
+                        <a
+                          href={item.targetLink.startsWith('http') ? item.targetLink : `https://${item.targetLink}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-secondary"
+                          style={{ padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}
+                        >
+                          <ExternalLink size={14} /> Visit / Book
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
