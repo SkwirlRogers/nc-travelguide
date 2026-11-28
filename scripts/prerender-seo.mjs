@@ -12,6 +12,7 @@ const sitemap = await readFile(path.join(distDir, "sitemap.xml"), "utf8");
 
 const countyBySlug = new Map(counties.map((county) => [county.Slug, county]));
 const cityBySlug = new Map(cities.map((city) => [city.Slug, city]));
+const attractionBySlug = new Map(attractions.map((item) => [item.Slug, item]));
 const normalizeCounty = (value) => String(value || "").toLowerCase().replace(/\s+county$/i, "").replace(/[\s_-]/g, "").trim();
 const siteRoot = "https://nctravelguide.us.mw";
 const sectionPages = {
@@ -160,6 +161,26 @@ function townFallback(town, countyRecords, relatedAttractions) {
   </main>`;
 }
 
+function attractionFallback(attraction, countyRecords) {
+  const countyLinks = countyRecords.map((county) =>
+    `<li><a href="/counties/${escapeHtml(county.Slug)}">${escapeHtml(county.County)} County guide</a></li>`
+  ).join("");
+  const website = /^https?:\/\//i.test(String(attraction["Website / Affiliate Link"] || ""))
+    ? sourceLink(attraction["Website / Affiliate Link"], "Visit listed website") : "";
+  const address = attraction.Address ? `<p><strong>Address:</strong> ${escapeHtml(attraction.Address)}</p><p><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(attraction.Address + ", North Carolina")}">Open map</a></p>` : "";
+  return `<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f">
+    <p><a href="/experiences">All experiences</a></p>
+    <h1>${escapeHtml(attraction.Attractions)}</h1>
+    <p>${escapeHtml(attraction.Description)}</p>
+    <p><strong>Category:</strong> ${escapeHtml(attraction.Category || "Attraction")} · <strong>City:</strong> ${escapeHtml(attraction.City || "North Carolina")}</p>
+    ${address}
+    <h2>County connections</h2><ul>${countyLinks}</ul>
+    ${website ? `<p>${website}</p>` : ""}
+    <p>Directory note: this listing is based on the guide's attraction dataset. Confirm current access, hours, admission, and operations with the destination before traveling. The website link is recorded, not independently verified.</p>
+    ${fallbackNavigation()}
+  </main>`;
+}
+
 function routeDefinition(route) {
   if (sectionPages[route]) {
     const page = sectionPages[route];
@@ -191,6 +212,43 @@ function routeDefinition(route) {
   }
 
   const parts = route.split("/").filter(Boolean);
+  if (parts[0] === "attractions" && parts[1]) {
+    const attraction = attractionBySlug.get(parts[1]);
+    if (!attraction) return null;
+    const refs = String(attraction.County || "").split("/").map((value) => value.trim()).filter(Boolean);
+    const countyRecords = refs.map((reference) => counties.find((county) => normalizeCounty(county.County) === normalizeCounty(reference))).filter(Boolean);
+    const website = String(attraction["Website / Affiliate Link"] || "");
+    if (!countyRecords.length || countyRecords.length !== refs.length || !/^https?:\/\//i.test(website)) return null;
+    const description = attraction.Description + " Explore this North Carolina attraction in " + (attraction.City || countyRecords[0].County) + ", with county connections and visitor resources.";
+    const placeSchema = {
+      "@type": "TouristAttraction",
+      "name": attraction.Attractions,
+      "description": attraction.Description,
+      "url": website,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": attraction.Address,
+        "addressLocality": attraction.City,
+        "addressRegion": "NC",
+        "addressCountry": "US"
+      },
+      "containedInPlace": countyRecords.map((county) => ({
+        "@type": "AdministrativeArea",
+        "name": county.County + ", North Carolina",
+        "url": siteRoot + "/counties/" + county.Slug
+      }))
+    };
+    if (countyRecords.length === 1) placeSchema.containedInPlace = placeSchema.containedInPlace[0];
+    return {
+      title: attraction.Attractions + " | North Carolina Attraction Guide",
+      description,
+      type: "TouristAttraction",
+      about: attraction.Attractions,
+      canonicalPath: route,
+      placeSchema,
+      fallbackHtml: attractionFallback(attraction, countyRecords)
+    };
+  }
   if (parts[0] === "towns" && parts[1]) {
     const town = cityBySlug.get(parts[1]);
     if (!town) return null;
