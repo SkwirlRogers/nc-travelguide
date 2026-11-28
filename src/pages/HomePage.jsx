@@ -446,6 +446,8 @@ export default function HomePage({ navigate, onToggleSave, isSaved }) {
               <img 
                 src="https://www.visitnc.com/img/visitnc-logo.svg" 
                 alt="VisitNC Logo" 
+                loading="lazy" 
+                decoding="async" 
                 style={{ width: '100%', maxWidth: '300px', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }} 
               />
             </div>
