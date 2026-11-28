@@ -9,6 +9,14 @@ const historyVault = JSON.parse(await readFile(path.join(root, "src/data/county-
 const cities = JSON.parse(await readFile(path.join(root, "src/data/cities.json"), "utf8"));
 const attractions = JSON.parse(await readFile(path.join(root, "src/data/attractions.json"), "utf8"));
 const sitemap = await readFile(path.join(distDir, "sitemap.xml"), "utf8");
+let countyMapSlugs = new Set();
+try {
+  const mapManifest = JSON.parse(await readFile(path.join(root, "public/county-maps/manifest.json"), "utf8"));
+  countyMapSlugs = new Set((mapManifest.counties || []).map((item) => item.slug));
+  console.log("[prerender-seo] Static county map assets available: " + countyMapSlugs.size);
+} catch {
+  console.warn("[prerender-seo] No static county map manifest; county pages retain their text fallback.");
+}
 
 const countyBySlug = new Map(counties.map((county) => [county.Slug, county]));
 const cityBySlug = new Map(cities.map((city) => [city.Slug, city]));
@@ -111,6 +119,17 @@ function fallbackNavigation() {
   </ul></nav>`;
 }
 
+
+function countyMapMarkup(county, compact = false) {
+  if (!countyMapSlugs.has(county.Slug)) return "";
+  const name = String(county.County || "").replace(/\\s+County$/i, "").trim();
+  const alt = "Boundary outline map of " + name + " County, North Carolina";
+  const style = compact
+    ? "display:block;width:112px;height:70px;object-fit:contain;border-radius:6px;background:#f4f7f5;margin:0.25rem 0;"
+    : "display:block;width:160px;height:100px;object-fit:contain;border-radius:8px;background:#f4f7f5;margin:0.75rem 0;";
+  return '<figure style="margin:0.75rem 0;"><img src="/county-maps/' + escapeHtml(county.Slug) + '.svg" alt="' + escapeHtml(alt) + '" width="' + (compact ? "112" : "160") + '" height="' + (compact ? "70" : "100") + '" loading="lazy" decoding="async" style="' + style + '"><figcaption style="font-size:.85rem;color:#53645d;">' + escapeHtml(name) + ' County boundary map</figcaption></figure>';
+}
+
 function countyFallback(county, slug, historyRecord = null) {
   const name = county.County;
   const details = [
@@ -134,6 +153,7 @@ function countyFallback(county, slug, historyRecord = null) {
       </article>`).join("");
     return `<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f">
       <h1>${escapeHtml(name)} History Vault | North Carolina Travel Guide</h1>
+      ${countyMapMarkup(county)}
       <p>A source-led county history collection. Entries identify the source institution or collection; the collection is growing and is not a claim that every aspect of county history is complete.</p>
       ${records}${assets}
       <p>Indigenous history is being developed through a dedicated source-review phase. Do not infer identity or community continuity from colonial labels alone.</p>
@@ -143,6 +163,7 @@ function countyFallback(county, slug, historyRecord = null) {
 
   return `<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f">
     <h1>${escapeHtml(name)} Travel Guide | North Carolina</h1>
+    ${countyMapMarkup(county)}
     <p>County travel hub for attractions, outdoor recreation, towns, travel ideas, lodging, dining, and visitor information.</p>
     ${details}
     ${slug === "dare-county" ? '<p><a href="/counties/dare-county/history">Explore the Dare County History Vault</a></p>' : ""}
@@ -216,7 +237,7 @@ function routeDefinition(route) {
       fallback += `<h2>North Carolina towns and communities</h2><ul>${cities.map((town) => `<li><a href="/towns/${escapeHtml(town.Slug)}">${escapeHtml(town.City)}</a> — ${escapeHtml(town.County)} County</li>`).join("")}</ul>`;
     }
     if (route === "/counties") {
-      fallback += `<h2>All 100 North Carolina counties</h2><ul>${counties.map((county) => `<li><a href="/counties/${escapeHtml(county.Slug)}">${escapeHtml(county.County)}</a> — ${escapeHtml(county.Region)} / ${escapeHtml(county["Sub-Region"])}</li>`).join("")}</ul>`;
+      fallback += `<h2>All 100 North Carolina counties</h2><ul>${counties.map((county) => `<li>${countyMapMarkup(county, true)}<a href="/counties/${escapeHtml(county.Slug)}">${escapeHtml(county.County)}</a> — ${escapeHtml(county.Region)} / ${escapeHtml(county["Sub-Region"])}</li>`).join("")}</ul>`;
     }
     if (route === "/regions") {
       const regions = [...new Set(counties.map((county) => county.Region))].sort();
