@@ -370,6 +370,7 @@ function renderStaticRoute(route, definition) {
   html = setMeta(html, "name", "twitter:title", definition.title);
   html = setMeta(html, "name", "twitter:description", definition.description);
   html = setCanonical(html, canonicalUrl);
+  if (route !== "/") html = html.replace(/<link\\s+rel="preload"\\s+as="image"\\s+href="\\/images\\/hero-linn-cove\\.jpg"[^>]*>/i, "");
   html = normalizeMetaDescription(html);
 
   const schemaScript = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
