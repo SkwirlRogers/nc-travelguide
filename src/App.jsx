@@ -14,6 +14,7 @@ const HistoryPage = lazy(() => import('./pages/HistoryPage'));
 const TravelIdeasPage = lazy(() => import('./pages/TravelIdeasPage'));
 const ExperiencesPage = lazy(() => import('./pages/ExperiencesPage'));
 const TownDetailPage = lazy(() => import('./pages/TownDetailPage'));
+const TownDirectoryPage = lazy(() => import('./pages/TownDirectoryPage'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -83,6 +84,13 @@ export default function App() {
         type: "CollectionPage",
         about: "North Carolina destinations, travel ideas, and visitor experiences",
         keywords: ["North Carolina travel", "North Carolina itineraries", "North Carolina destinations", "things to do in North Carolina"]
+      },
+      "/towns": {
+        title: "North Carolina Towns & Communities | NC Travel Guide",
+        description: "Search and explore 361 North Carolina town and community profiles connected to county guides, regional context, mapped coordinates, and local resources.",
+        type: "CollectionPage",
+        about: "North Carolina towns, cities, and communities",
+        keywords: ["North Carolina towns", "North Carolina cities", "towns and communities"]
       },
       "/experiences": {
         title: "North Carolina Attractions, Hotels & Dining | Experiences Directory",
@@ -307,7 +315,12 @@ export default function App() {
       return <TravelIdeasPage navigate={navigate} onToggleSave={handleToggleSave} isSaved={isSaved} />;
     }
 
-    // 6. Town and community profiles
+    // 6. Towns and communities directory
+    if (path === '/towns') {
+      return <TownDirectoryPage navigate={navigate} />;
+    }
+
+    // 7. Town and community profiles
     if (path.startsWith('/towns/')) {
       return <TownDetailPage townSlug={path.split('/')[2]} navigate={navigate} />;
     }
