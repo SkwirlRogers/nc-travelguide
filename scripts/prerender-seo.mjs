@@ -27,6 +27,12 @@ const sectionPages = {
     type: "CollectionPage",
     about: "North Carolina geographic regions and travel destinations"
   },
+  "/towns": {
+    title: "North Carolina Towns & Communities | NC Travel Guide",
+    description: "Search and explore 361 North Carolina town and community profiles connected to county guides, regional context, mapped coordinates, and local resources.",
+    type: "CollectionPage",
+    about: "North Carolina towns, cities, and communities"
+  },
   "/counties": {
     title: "All 100 North Carolina Counties | County Travel Guides",
     description: "Browse all 100 North Carolina counties with local hubs, regional context, attractions, itineraries, travel logistics, places to stay, and dining discovery.",
@@ -158,6 +164,9 @@ function routeDefinition(route) {
   if (sectionPages[route]) {
     const page = sectionPages[route];
     let fallback = `<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f"><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p>${fallbackNavigation()}`;
+    if (route === "/towns") {
+      fallback += `<h2>North Carolina towns and communities</h2><ul>${cities.map((town) => `<li><a href="/towns/${escapeHtml(town.Slug)}">${escapeHtml(town.City)}</a> — ${escapeHtml(town.County)} County</li>`).join("")}</ul>`;
+    }
     if (route === "/counties") {
       fallback += `<h2>All 100 North Carolina counties</h2><ul>${counties.map((county) => `<li><a href="/counties/${escapeHtml(county.Slug)}">${escapeHtml(county.County)}</a> — ${escapeHtml(county.Region)} / ${escapeHtml(county["Sub-Region"])}</li>`).join("")}</ul>`;
     }
