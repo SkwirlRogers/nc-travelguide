@@ -81,7 +81,7 @@ function escapeRegExp(value) {
 function setMeta(html, attribute, key, value) {
   const expression = new RegExp(`<meta\s+${attribute}="${escapeRegExp(key)}"[^>]*>`, "i");
   const tag = `<meta ${attribute}="${key}" content="${escapeHtml(value)}" />`;
-  return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\\n  </head>`);
+  return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\n  </head>`);
 }
 
 function normalizeMetaDescription(html) {
@@ -101,7 +101,7 @@ function normalizeMetaDescription(html) {
 function setCanonical(html, url) {
   const expression = /<link\s+rel="canonical"[^>]*>/i;
   const tag = `<link rel="canonical" href="${escapeHtml(url)}" />`;
-  return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\\n  </head>`);
+  return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\n  </head>`);
 }
 
 function sourceLink(url, label) {
