@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, MapPin, Landmark, History, Sparkles, Search, Heart, Menu, X, TreePine } from 'lucide-react';
+import { Compass, MapPin, Landmark, History, Sparkles, Search, Heart, Menu, X, TreePine, Building2 } from 'lucide-react';
 
 export default function Navbar({ currentPath, navigate, savedItemsCount, onOpenSaved }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -8,6 +8,7 @@ export default function Navbar({ currentPath, navigate, savedItemsCount, onOpenS
     { label: 'Home', path: '/', icon: Compass },
     { label: 'Regions', path: '/regions', icon: Compass },
     { label: '100 Counties', path: '/counties', icon: MapPin },
+    { label: 'Towns', path: '/towns', icon: Building2 },
     { label: 'NC History', path: '/history', icon: History },
     { label: 'Travel Ideas', path: '/travel-ideas', icon: Sparkles },
     { label: 'Experiences Directory', path: '/experiences', icon: Search },
