@@ -53,7 +53,7 @@ export default function InteractiveNCMap({ navigate, compact = false }) {
         <div className="nc-atlas-filters">
           <label className="nc-atlas-search">
             <Search size={18} />
-            <input value={filterQuery} onChange={(event) => setFilterQuery(event.target.value)} placeholder="Find a county or major city…" aria-label="Search North Carolina counties or cities" />
+            <input id="nc-atlas-search" name="county-search" autoComplete="off" value={filterQuery} onChange={(event) => setFilterQuery(event.target.value)} placeholder="Find a county or major city…" aria-label="Search North Carolina counties or cities" />
           </label>
           <div className="nc-atlas-region-filters" aria-label="Filter by macro-region">
             <button className={selectedRegion === "ALL" ? "active" : ""} onClick={() => setSelectedRegion("ALL")}>All 100</button>
