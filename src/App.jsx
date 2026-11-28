@@ -2,10 +2,6 @@ import React, { lazy, Suspense, useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 const SavedItineraryModal = lazy(() => import('./components/SavedItineraryModal'));
-import countiesData from './data/counties.json';
-import citiesData from './data/cities.json';
-import attractionsData from './data/attractions.json';
-import countyHistoryData from './data/county-history.json';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const RegionsPage = lazy(() => import('./pages/RegionsPage'));
@@ -49,8 +45,10 @@ export default function App() {
     return () => document.body.classList.remove("dark-archive");
   }, [currentPath]);
 
-  // Keep route metadata and structured data aligned with the active SPA page.
+  // Keep route metadata aligned while loading record datasets only for routes that need them.
   useEffect(() => {
+    let cancelled = false;
+    const updateRouteMetadata = async () => {
     const defaultPage = {
       title: "North Carolina Travel Guide | Explore All 100 Counties",
       description: "Plan your North Carolina trip with a guide to all 100 counties, mountain and coastal regions, attractions, places to stay, local dining, history, and travel ideas.",
@@ -113,6 +111,8 @@ export default function App() {
     let attractionRecord = null;
     const attractionMatch = path.match(/^\/attractions\/([^/]+)/);
     if (attractionMatch) {
+      const { default: attractionsData } = await import('./data/attractions.json');
+      if (cancelled) return;
       attractionRecord = attractionsData.find((record) => record.Slug === attractionMatch[1]) || null;
       if (attractionRecord) {
         page = {
@@ -127,6 +127,8 @@ export default function App() {
     }
     const townMatch = path.match(/^\/towns\/([^/]+)/);
     if (townMatch) {
+      const { default: citiesData } = await import('./data/cities.json');
+      if (cancelled) return;
       townRecord = citiesData.find((record) => record.Slug === townMatch[1]) || null;
       if (townRecord) {
         page = {
@@ -142,10 +144,16 @@ export default function App() {
 
     const countyMatch = path.match(/^\/counties\/([^/]+)/);
     if (countyMatch) {
-      countyRecord = countiesData.find((record) => record.Slug === countyMatch[1]) || null;
-      countyHistoryRecord = countyHistoryData.counties?.[countyMatch[1]] || null;
-      countyName = countyRecord?.County?.replace(/\s+County$/i, "").trim() || countyMatch[1].replace(/-county$/i, "").replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
       const tab = path.split("/")[3] || "guides";
+      const { default: countiesData } = await import('./data/counties.json');
+      if (cancelled) return;
+      countyRecord = countiesData.find((record) => record.Slug === countyMatch[1]) || null;
+      if (tab === "history") {
+        const { default: countyHistoryData } = await import('./data/county-history.json');
+        if (cancelled) return;
+        countyHistoryRecord = countyHistoryData.counties?.[countyMatch[1]] || null;
+      }
+      countyName = countyRecord?.County?.replace(/\s+County$/i, "").trim() || countyMatch[1].replace(/-county$/i, "").replace(/-/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
       const tabNames = {
         guides: "Travel Guide",
         history: "History Vault",
@@ -245,7 +253,14 @@ export default function App() {
       document.head.appendChild(script);
     }
 
+    };
+
+    updateRouteMetadata().catch((error) => {
+      if (!cancelled) console.error("[route-metadata] Could not update route metadata:", error);
+    });
+
     return () => {
+      cancelled = true;
       const activeSchema = document.getElementById("nc-travel-guide-route-schema");
       if (activeSchema) activeSchema.remove();
     };
