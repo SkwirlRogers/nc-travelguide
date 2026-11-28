@@ -54,6 +54,9 @@ export default function ExperiencesPage({ initialQuery = '', initialRegion = 'al
           <div style={{ display: 'flex', alignItems: 'center', background: 'rgba(255,255,255,0.05)', padding: '0.75rem 1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255,255,255,0.12)', marginBottom: '1.25rem' }}>
             <Search size={22} color="var(--accent-amber)" style={{ marginRight: '0.75rem' }} />
             <input
+              id="experiences-search"
+              name="search"
+              autoComplete="off"
               type="text"
               placeholder="Search by keyword, place name, city, county, or cuisine (e.g., Biltmore, Oceanfront, BBQ, Umstead)..."
               value={query}
@@ -79,6 +82,8 @@ export default function ExperiencesPage({ initialQuery = '', initialRegion = 'al
                 Category Type:
               </label>
               <select
+                id="experiences-type"
+                name="type"
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
                 style={{
@@ -105,6 +110,8 @@ export default function ExperiencesPage({ initialQuery = '', initialRegion = 'al
                 Macro Region:
               </label>
               <select
+                id="experiences-region"
+                name="region"
                 value={regionFilter}
                 onChange={(e) => setRegionFilter(e.target.value)}
                 style={{
@@ -132,6 +139,8 @@ export default function ExperiencesPage({ initialQuery = '', initialRegion = 'al
                 NC County (100):
               </label>
               <select
+                id="experiences-county"
+                name="county"
                 value={countyFilter}
                 onChange={(e) => setCountyFilter(e.target.value)}
                 style={{
