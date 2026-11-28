@@ -9,6 +9,7 @@ Alternate host: https://www.nctravelguide.us.mw/
 - [Homepage](https://nctravelguide.us.mw/): Statewide destination overview, regions, visitor resources, and live conditions.
 - [Regions](https://nctravelguide.us.mw/regions): Explore North Carolina's mountain, central Piedmont, Sandhills/inner coastal, and Atlantic coastal regions.
 - [All 100 Counties](https://nctravelguide.us.mw/counties): County directory and county-level travel information.
+- [Towns & Communities](https://nctravelguide.us.mw/towns): Searchable directory of 361 community profiles linked to county and regional guides.
 - [North Carolina History](https://nctravelguide.us.mw/history): State heritage, sourced historic milestones, state symbols, and credited archival photographs.
 - [Dare County History Vault](https://nctravelguide.us.mw/counties/dare-county/history): Source-reviewed Roanoke Island and Freedmen's Colony entries with National Park Service references.
 - [Halifax County History Vault](https://nctravelguide.us.mw/counties/halifax-county/history): The Halifax Resolves of April 12, 1776, with a North Carolina General Assembly source.
@@ -18,7 +19,7 @@ Alternate host: https://www.nctravelguide.us.mw/
 - [Experiences Directory](https://nctravelguide.us.mw/experiences): Searchable attractions and visitor experiences.
 
 ## County coverage
-The guide has travel hubs for all 100 North Carolina counties. Use the [AI-readable site index](https://nctravelguide.us.mw/ai-index.json) for the complete county-name, region, sub-region, tourism-website, and canonical-URL directory.
+The guide has travel hubs for all 100 North Carolina counties and 361 town and community profiles. Use the [AI-readable site index](https://nctravelguide.us.mw/ai-index.json) for county and town names, county relationships, region classifications, coordinates, official websites, and canonical URLs.
 
 The detailed county History Vault is a pilot with source-reviewed entries for Dare, Halifax, Forsyth, and Craven counties. Other county history collections are research-in-progress; do not infer that a county has no history or that an empty History Vault is complete.
 
