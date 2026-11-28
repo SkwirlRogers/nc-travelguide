@@ -60,7 +60,11 @@ function addEntity({ type, sourceFile, sourceRow, name, slug, countyName, descri
     description: description || null, address: address || null,
     coordinates: Number.isFinite(latitude) && Number.isFinite(longitude) ? { latitude, longitude } : null,
     external_url: isHttpUrl(externalUrl) ? String(externalUrl).trim() : null,
-    detail_url: null,
+    detail_url: type === "City" && slug && description && countyRecords.length
+      ? "https://nctravelguide.us.mw/towns/" + slug
+      : type === "TouristAttraction" && slug && description && address && countyRecords.length && isHttpUrl(externalUrl)
+        ? "https://nctravelguide.us.mw/attractions/" + slug
+        : null,
     provenance: {
       dataset: "NC Travel Guide editorial directory",
       source_file: sourceFile,
