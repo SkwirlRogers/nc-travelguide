@@ -95,6 +95,11 @@ aiIndex.town_directory = {
 };
 aiIndex.town_pages = eligible;
 aiIndex.attraction_pages = eligibleAttractions;
+aiIndex.attraction_directory = {
+  url: "https://nctravelguide.us.mw/experiences",
+  profile_count: eligibleAttractions.length,
+  description: "Attraction detail profiles are published when a listing has a substantive description, a resolved county relationship, an address, and an HTTP(S) directory link."
+};
 aiIndex.sections = aiIndex.sections || [];
 if (!aiIndex.sections.some((section) => section.url === directoryUrl)) {
   aiIndex.sections.push({ name: "Towns & Communities", url: directoryUrl, summary: "Searchable directory of North Carolina town and community profiles linked to county and regional guides." });
