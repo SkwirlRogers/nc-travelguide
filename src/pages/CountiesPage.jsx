@@ -2,6 +2,8 @@ import React, { useState, useMemo } from 'react';
 import { MapPin, Search, ArrowRight, Building, Users, Compass, ExternalLink } from 'lucide-react';
 import { getAllCounties, formatNumber, makeSlug } from '../utils/countyDirectoryHelpers';
 import { getCountyMacroRegions } from '../utils/regionHelpers';
+import InteractiveNCMap from '../components/InteractiveNCMap';
+import CountyOutlineMap from '../components/CountyOutlineMap';
 
 export default function CountiesPage({ navigate, initialRegion = 'all' }) {
   const allCounties = useMemo(() => getAllCounties(), []);
@@ -52,6 +54,8 @@ export default function CountiesPage({ navigate, initialRegion = 'all' }) {
             Direct access to county viewpoints, curated itineraries, fast facts, logistics, attractions, and 361 incorporated municipalities across NC.
           </p>
         </div>
+
+        <InteractiveNCMap navigate={navigate} compact />
 
         {/* Filter Controls Bar */}
         <div className="glass-panel" style={{ padding: '1.25rem', marginBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -146,6 +150,7 @@ export default function CountiesPage({ navigate, initialRegion = 'all' }) {
                 }}
               >
                 <div>
+                  <CountyOutlineMap countyName={county.rawCountyName || county.County.replace(/\\s+County$/i, '')} />
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
                     <span className="badge badge-amber">{county.Region || 'North Carolina'}</span>
                     {county['Sub-Region'] && (
