@@ -79,6 +79,22 @@ try {
     county_count: manifest.length,
     counties: manifest
   }, null, 2) + "\n", "utf8");
+
+  const sitemapPath = path.join(root, "public/sitemap.xml");
+  let sitemap = await readFile(sitemapPath, "utf8");
+  sitemap = sitemap.replace(
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+  );
+  for (const item of manifest) {
+    const pageUrl = "https://nctravelguide.us.mw/counties/" + item.slug;
+    const urlEntry = "<url><loc>" + pageUrl + "</loc></url>";
+    const imageEntry = '<url><loc>' + pageUrl + '</loc><image:image><image:loc>https://nctravelguide.us.mw' + item.file + '</image:loc><image:title>' + escapeXml(item.name + " County boundary map") + '</image:title></image:image></url>';
+    if (sitemap.includes(urlEntry) && !sitemap.includes("<image:loc>https://nctravelguide.us.mw" + item.file + "</image:loc>")) {
+      sitemap = sitemap.replace(urlEntry, imageEntry);
+    }
+  }
+  await writeFile(sitemapPath, sitemap, "utf8");
   console.log("[county-maps] Generated " + manifest.length + " individual county SVG maps.");
 } catch (error) {
   console.warn("[county-maps] Static map generation skipped; the interactive GIS map remains available. " + error.message);
