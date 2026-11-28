@@ -16,7 +16,7 @@ Alternate host: https://www.nctravelguide.us.mw/
 - [Forsyth County History Vault](https://nctravelguide.us.mw/counties/forsyth-county/history): Salem's 1766 founding as the central town of the Moravian Wachovia settlement.
 - [Craven County History Vault](https://nctravelguide.us.mw/counties/craven-county/history): Tryon Palace and colonial government in New Bern, 1770.
 - [Travel Ideas](https://nctravelguide.us.mw/travel-ideas): Curated travel themes, itineraries, and destination ideas.
-- [Experiences Directory](https://nctravelguide.us.mw/experiences): Searchable attractions and visitor experiences.
+- [Experiences Directory](https://nctravelguide.us.mw/experiences): Searchable attractions and visitor experiences, with individual attraction profiles where listing data supports them.
 
 ## County coverage
 The guide has travel hubs for all 100 North Carolina counties and 361 town and community profiles. Use the [AI-readable site index](https://nctravelguide.us.mw/ai-index.json) for county and town names, county relationships, region classifications, coordinates, official websites, and canonical URLs.
@@ -54,7 +54,7 @@ Historical claims should be read with their cited source and context. The guide 
 - [US Census Bureau](https://www.census.gov/)
 
 ## Machine-readable discovery
-- [Place entity index](https://nctravelguide.us.mw/place-entities.json): Structured records for counties, municipalities, attractions, lodging, and restaurants. External links are recorded, not independently verified.
+- [Place entity index](https://nctravelguide.us.mw/place-entities.json): Structured records for counties, municipalities, attractions, lodging, and restaurants, including available detail-page URLs. External links are recorded, not independently verified.
 - [Data quality report](https://nctravelguide.us.mw/data-quality-report.json): Automated checks for missing county relationships, duplicate IDs, descriptions, and external links.
 - [XML sitemap](https://nctravelguide.us.mw/sitemap.xml)
 - [AI-readable site index](https://nctravelguide.us.mw/ai-index.json)
