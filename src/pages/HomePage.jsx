@@ -87,6 +87,9 @@ export default function HomePage({ navigate, onToggleSave, isSaved }) {
             <div style={{ display: 'flex', alignItems: 'center', flex: 1, paddingLeft: '0.75rem', gap: '0.5rem' }}>
               <Search size={22} color="var(--accent-amber)" />
               <input
+                id="homepage-search"
+                name="query"
+                autoComplete="off"
                 type="text"
                 placeholder="Search counties (e.g. Wake, Dare, Buncombe) or attractions (Biltmore, Cape Hatteras)..."
                 value={searchQuery}
@@ -446,9 +449,11 @@ export default function HomePage({ navigate, onToggleSave, isSaved }) {
               <img 
                 src="https://www.visitnc.com/img/visitnc-logo.svg" 
                 alt="VisitNC Logo" 
-                loading="lazy" 
-                decoding="async" 
-                style={{ width: '100%', maxWidth: '300px', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }} 
+                loading="lazy"
+                decoding="async"
+                width="300"
+                height="78"
+                style={{ width: '100%', maxWidth: '300px', height: 'auto', aspectRatio: '300 / 78', filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }} 
               />
             </div>
           </div>
