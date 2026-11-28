@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/generate-light-data.mjs && vite",
-    "build": "node scripts/generate-light-data.mjs && node scripts/generate-place-entities.mjs && node scripts/generate-directory-routes.mjs && vite build && node scripts/prerender-seo.mjs",
+    "build": "node scripts/generate-light-data.mjs && node scripts/generate-place-entities.mjs && node scripts/generate-directory-routes.mjs && node scripts/generate-county-maps.mjs && vite build && node scripts/prerender-seo.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
