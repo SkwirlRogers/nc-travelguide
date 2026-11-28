@@ -186,6 +186,11 @@ export default function App() {
       tag.setAttribute("content", value);
     };
     setMeta('meta[name="description"]', "name", page.description);
+    // Keep one standards-based HTML description tag even if a prior render/plugin added duplicates.
+    const descriptionTags = document.head.querySelectorAll('meta[name="description"]');
+    descriptionTags.forEach((tag, index) => {
+      if (index > 0) tag.remove();
+    });
     setMeta('meta[property="og:title"]', "property", page.title);
     setMeta('meta[property="og:description"]', "property", page.description);
     setMeta('meta[property="og:url"]', "property", `https://nctravelguide.us.mw${canonicalPath}`);
