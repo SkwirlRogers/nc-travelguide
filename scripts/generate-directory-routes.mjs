@@ -55,7 +55,8 @@ if (skipped.length) {
 const sitemapPath = path.join(root, "public/sitemap.xml");
 let sitemap = await readFile(sitemapPath, "utf8");
 const existing = new Set([...sitemap.matchAll(/<loc>(https?:\/\/[^<]+)<\/loc>/g)].map((match) => match[1]));
-const newUrls = eligible.map((town) => town.url).filter((url) => !existing.has(url));
+const directoryUrl = "https://nctravelguide.us.mw/towns";
+const newUrls = [directoryUrl, ...eligible.map((town) => town.url)].filter((url) => !existing.has(url));
 if (newUrls.length) {
   sitemap = sitemap.replace("</urlset>", newUrls.map((url) => "  <url><loc>" + url + "</loc></url>").join("\n") + "\n</urlset>");
   await writeFile(sitemapPath, sitemap, "utf8");
@@ -66,6 +67,10 @@ aiIndex.town_directory = {
   description: "Town and community profiles linked to their source county records, regional context, coordinates, descriptions, and official municipal websites."
 };
 aiIndex.town_pages = eligible;
+aiIndex.sections = aiIndex.sections || [];
+if (!aiIndex.sections.some((section) => section.url === directoryUrl)) {
+  aiIndex.sections.push({ name: "Towns & Communities", url: directoryUrl, summary: "Searchable directory of North Carolina town and community profiles linked to county and regional guides." });
+}
 aiIndex.last_updated = new Date().toISOString().slice(0, 10);
 await writeFile(path.join(root, "public/ai-index.json"), JSON.stringify(aiIndex, null, 2) + "\n");
 console.log("[generate-directory-routes] " + eligible.length + " town profiles qualified; " + newUrls.length + " sitemap URLs added; " + skipped.length + " records skipped.");
