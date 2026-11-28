@@ -44,9 +44,8 @@ function geometryRings(feature) {
 
 function makeProjector(features, width, height, padding) {
   const points = features.flatMap((feature) => geometryRings(feature).flat());
-  const coordinates = points.flat();
-  const xs = coordinates.map((point) => point[0]);
-  const ys = coordinates.map((point) => point[1]);
+  const xs = points.map((point) => point[0]);
+  const ys = points.map((point) => point[1]);
   const minX = Math.min(...xs), maxX = Math.max(...xs);
   const minY = Math.min(...ys), maxY = Math.max(...ys);
   const scale = Math.min((width - padding * 2) / (maxX - minX), (height - padding * 2) / (maxY - minY));
