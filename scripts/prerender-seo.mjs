@@ -186,8 +186,17 @@ function routeDefinition(route) {
     const page = sectionPages[route];
     let fallback = `<main style="max-width:960px;margin:2rem auto;padding:1.25rem;font-family:system-ui,sans-serif;line-height:1.65;color:#18251f"><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p>${fallbackNavigation()}`;
     if (route === "/experiences") {
-      const profileAttractions = attractions.filter((item) => item.Slug && String(item.Description || "").trim().length >= 40 && String(item.Address || "").trim() && /^https?:\\/\\//i.test(String(item["Website / Affiliate Link"] || "")));
-      fallback += `<h2>Attraction profiles</h2><ul>${profileAttractions.map((item) => `<li><a href="/attractions/${escapeHtml(item.Slug)}">${escapeHtml(item.Attractions)}</a> — ${escapeHtml(item.City || "North Carolina")}</li>`).join("")}</ul>`;
+      const profileAttractions = attractions.filter((item) => {
+        const website = String(item["Website / Affiliate Link"] || "");
+        return item.Slug
+          && String(item.Description || "").trim().length >= 40
+          && String(item.Address || "").trim()
+          && (website.startsWith("https://") || website.startsWith("http://"));
+      });
+      const attractionLinks = profileAttractions.map((item) =>
+        '<li><a href="/attractions/' + escapeHtml(item.Slug) + '">' + escapeHtml(item.Attractions) + '</a> — ' + escapeHtml(item.City || "North Carolina") + '</li>'
+      ).join("");
+      fallback += '<h2>Attraction profiles</h2><ul>' + attractionLinks + '</ul>';
     }
     if (route === "/towns") {
       fallback += `<h2>North Carolina towns and communities</h2><ul>${cities.map((town) => `<li><a href="/towns/${escapeHtml(town.Slug)}">${escapeHtml(town.City)}</a> — ${escapeHtml(town.County)} County</li>`).join("")}</ul>`;
