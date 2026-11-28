@@ -28,7 +28,7 @@ for (const route of routes) {
   const canonicals = head.match(/<link\b[^>]*\brel\s*=\s*["']canonical["'][^>]*>/gi) || [];
   if (descriptions.length !== 1) failures.push(route + ": expected exactly one HTML meta description, found " + descriptions.length);
   if (canonicals.length !== 1) failures.push(route + ": expected exactly one canonical link, found " + canonicals.length);
-  if (/\\\\n/.test(head)) failures.push(route + ": literal backslash-n sequence found in HTML head");
+  if (/\\n/.test(head)) failures.push(route + ": literal backslash-n sequence found in HTML head");
   const canonicalUrl = canonicals[0]?.match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
   const expectedUrl = "https://nctravelguide.us.mw" + (route === "/" ? "/" : route);
   if (canonicalUrl !== expectedUrl) failures.push(route + ": canonical mismatch (expected " + expectedUrl + ", found " + (canonicalUrl || "none") + ")");
