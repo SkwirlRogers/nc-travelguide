@@ -58,17 +58,21 @@ def sitemap_urls(url: str, depth: int = 0) -> set[str]:
 
 def wait_for_live_sitemap() -> set[str]:
     last_error = None
-    for attempt in range(18):
+    key_url = f"{BASE}/{KEY}.txt"
+    for attempt in range(30):
         try:
+            hosted_key = get(key_url).decode("utf-8").strip()
+            if hosted_key != KEY:
+                raise RuntimeError("The public IndexNow verification key is not deployed yet")
             urls = sitemap_urls(SITEMAP)
             if urls:
                 return urls
             last_error = RuntimeError("The live sitemap contained no URLs")
-        except Exception as error:  # retry while Cloudflare Pages finishes deployment
+        except Exception as error:  # retry until the latest Pages deployment is live
             last_error = error
-        print(f"Waiting for the deployed sitemap ({attempt + 1}/18): {last_error}")
+        print(f"Waiting for the deployed key file and sitemap ({attempt + 1}/30): {last_error}")
         time.sleep(10)
-    raise RuntimeError(f"Could not read a populated live sitemap: {last_error}")
+    raise RuntimeError(f"Could not verify the live key file and sitemap: {last_error}")
 
 
 def submit(urls: list[str]) -> None:
