@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Users, Building, ExternalLink, Calendar, Compass, Plane, Sun, Utensils, Hotel, ArrowLeft, Heart, Star, Navigation, Search, History } from 'lucide-react';
 import { getCountyDetails, getCountyHistory } from '../utils/countyDetailHelpers';
 import { formatNumber } from '../utils/countyDirectoryHelpers';
+import CountyOutlineMap from '../components/CountyOutlineMap';
 
 export default function CountyDetailPage({ countySlug, subTab = 'guides', navigate, onToggleSave, isSaved }) {
   const county = getCountyDetails(countySlug);
@@ -139,6 +140,13 @@ export default function CountyDetailPage({ countySlug, subTab = 'guides', naviga
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="county-detail-map-section">
+        <div className="container county-detail-map-layout">
+          <div><span className="badge badge-amber">County boundary locator</span><h2>{county.rawCountyName} County map</h2><p>Explore this county within North Carolina’s statewide county map.</p></div>
+          <CountyOutlineMap countyName={county.rawCountyName} className="county-detail-outline" />
         </div>
       </section>
 
