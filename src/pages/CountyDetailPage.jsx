@@ -424,16 +424,26 @@ export default function CountyDetailPage({ countySlug, subTab = 'guides', naviga
                       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '0.85rem' }}>
                         {city.Description || `Historic municipality in ${county.County}, North Carolina.`}
                       </p>
-                      {city['Tourism Website'] && (
-                        <a
-                          href={city['Tourism Website'].startsWith('http') ? city['Tourism Website'] : `https://${city['Tourism Website']}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ fontSize: '0.8rem', color: 'var(--accent-blue-light)', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
-                        >
-                          Town Portal <ExternalLink size={12} />
-                        </a>
-                      )}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.9rem' }}>
+                        {city.Slug && (
+                          <button
+                            onClick={() => navigate('/towns/' + city.Slug)}
+                            style={{ fontSize: '0.82rem', color: 'var(--accent-amber-light)', fontWeight: 700 }}
+                          >
+                            Open town profile →
+                          </button>
+                        )}
+                        {city['Tourism Website'] && (
+                          <a
+                            href={city['Tourism Website'].startsWith('http') ? city['Tourism Website'] : 'https://' + city['Tourism Website']}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: '0.8rem', color: 'var(--accent-blue-light)', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}
+                          >
+                            Town Portal <ExternalLink size={12} />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
