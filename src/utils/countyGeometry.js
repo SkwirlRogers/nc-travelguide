@@ -3,7 +3,7 @@ const COUNTY_GEOJSON_URL = "https://services1.arcgis.com/YBWrN5qiESVpqi92/arcgis
 let countyGeometryPromise;
 
 export function normalizeCountyMapName(value = "") {
-  return String(value).toLowerCase().replace(/\\s+county$/i, "").replace(/[^a-z0-9]/g, "");
+  return String(value).toLowerCase().replace(/\s+county$/i, "").replace(/[^a-z0-9]/g, "");
 }
 
 export function getCountyGeometryCollection() {
