@@ -28,9 +28,7 @@ jobs:
           restore-keys: |
             indexnow-sitemap-
 
-      - name: Wait for Cloudflare Pages deployment
-        run: sleep 75
-
+      - name: Wait for live deployment and submit changed URLs
       - name: Submit newly published and removed URLs
         run: python3 scripts/submit-indexnow.py
 
