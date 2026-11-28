@@ -122,7 +122,7 @@ function fallbackNavigation() {
 
 function countyMapMarkup(county, compact = false) {
   if (!countyMapSlugs.has(county.Slug)) return "";
-  const name = String(county.County || "").replace(/\\s+County$/i, "").trim();
+  const name = String(county.County || "").replace(/\s+County$/i, "").trim();
   const alt = "Boundary outline map of " + name + " County, North Carolina";
   const style = compact
     ? "display:block;width:112px;height:70px;object-fit:contain;border-radius:6px;background:#f4f7f5;margin:0.25rem 0;"
