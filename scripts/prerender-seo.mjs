@@ -76,6 +76,20 @@ function setMeta(html, attribute, key, value) {
   return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\\n  </head>`);
 }
 
+function normalizeMetaDescription(html) {
+  let kept = false;
+  const normalized = html.replace(/<meta\b[^>]*>/gi, (tag) => {
+    if (!/\bname\s*=\s*["']description["']/i.test(tag)) return tag;
+    if (kept) return "";
+    kept = true;
+    return tag;
+  });
+  if (!kept) {
+    throw new Error("[prerender-seo] A page is missing its single HTML meta description.");
+  }
+  return normalized;
+}
+
 function setCanonical(html, url) {
   const expression = /<link\s+rel="canonical"[^>]*>/i;
   const tag = `<link rel="canonical" href="${escapeHtml(url)}" />`;
@@ -335,6 +349,7 @@ function renderStaticRoute(route, definition) {
   html = setMeta(html, "name", "twitter:title", definition.title);
   html = setMeta(html, "name", "twitter:description", definition.description);
   html = setCanonical(html, canonicalUrl);
+  html = normalizeMetaDescription(html);
 
   const schemaScript = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
   if (schemaScript) {
