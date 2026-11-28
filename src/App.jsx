@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 const SavedItineraryModal = lazy(() => import('./components/SavedItineraryModal'));
 import countiesData from './data/counties.json';
 import citiesData from './data/cities.json';
+import attractionsData from './data/attractions.json';
 import countyHistoryData from './data/county-history.json';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -15,6 +16,7 @@ const TravelIdeasPage = lazy(() => import('./pages/TravelIdeasPage'));
 const ExperiencesPage = lazy(() => import('./pages/ExperiencesPage'));
 const TownDetailPage = lazy(() => import('./pages/TownDetailPage'));
 const TownDirectoryPage = lazy(() => import('./pages/TownDirectoryPage'));
+const AttractionDetailPage = lazy(() => import('./pages/AttractionDetailPage'));
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -108,6 +110,21 @@ export default function App() {
     let countyHistoryRecord = null;
     let countyName = null;
     let townRecord = null;
+    let attractionRecord = null;
+    const attractionMatch = path.match(/^\/attractions\/([^/]+)/);
+    if (attractionMatch) {
+      attractionRecord = attractionsData.find((record) => record.Slug === attractionMatch[1]) || null;
+      if (attractionRecord) {
+        page = {
+          title: `${attractionRecord.Attractions} | North Carolina Attraction Guide`,
+          description: attractionRecord.Description || `Explore ${attractionRecord.Attractions} in North Carolina.`,
+          type: "TouristAttraction",
+          about: attractionRecord.Attractions,
+          keywords: [attractionRecord.Attractions, `${attractionRecord.City || "North Carolina"} attractions`, "North Carolina attractions"]
+        };
+        canonicalPath = `/attractions/${attractionMatch[1]}`;
+      }
+    }
     const townMatch = path.match(/^\/towns\/([^/]+)/);
     if (townMatch) {
       townRecord = citiesData.find((record) => record.Slug === townMatch[1]) || null;
@@ -152,7 +169,7 @@ export default function App() {
       }
     }
 
-    if (!pageDefinitions[path] && !countyMatch && !townMatch && path !== "/" && path !== "/index.html") {
+    if (!pageDefinitions[path] && !countyMatch && !townMatch && !attractionMatch && path !== "/" && path !== "/index.html") {
       page = defaultPage;
       canonicalPath = "/";
     }
@@ -315,7 +332,12 @@ export default function App() {
       return <TravelIdeasPage navigate={navigate} onToggleSave={handleToggleSave} isSaved={isSaved} />;
     }
 
-    // 6. Towns and communities directory
+    // 6. Attraction detail profiles
+    if (path.startsWith("/attractions/")) {
+      return <AttractionDetailPage attractionSlug={path.split("/")[2]} navigate={navigate} />;
+    }
+
+    // 7. Towns and communities directory
     if (path === '/towns') {
       return <TownDirectoryPage navigate={navigate} />;
     }
