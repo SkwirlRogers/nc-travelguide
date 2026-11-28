@@ -108,7 +108,8 @@ export default function App() {
           title: `${townRecord.City}, NC Visitor Guide | NC Travel Guide`,
           description: townRecord.Description || `Explore ${townRecord.City}, North Carolina, with county connections, local resources, and regional travel context.`,
           type: "City",
-          about: `${townRecord.City}, North Carolina`
+          about: `${townRecord.City}, North Carolina`,
+          keywords: [`${townRecord.City} NC`, `${townRecord.City} visitor guide`, "North Carolina towns"]
         };
         canonicalPath = `/towns/${townMatch[1]}`;
       }
@@ -187,16 +188,26 @@ export default function App() {
         "description": page.description,
         "isPartOf": { "@id": "https://nctravelguide.us.mw/#website" },
         "author": { "@id": "https://nctravelguide.us.mw/#creator" },
-        "about": countyRecord
+        "about": townRecord
           ? {
-              "@type": "AdministrativeArea",
-              "name": `${countyName} County, North Carolina`,
-              "containedInPlace": { "@type": "State", "name": "North Carolina" }
+              "@type": "City",
+              "name": `${townRecord.City}, North Carolina`,
+              "containedInPlace": String(townRecord.County || "").split("/").map((reference) => reference.trim() + " County, North Carolina")
             }
-          : { "@type": "Thing", "name": page.about },
+          : countyRecord
+            ? {
+                "@type": "AdministrativeArea",
+                "name": `${countyName} County, North Carolina`,
+                "containedInPlace": { "@type": "State", "name": "North Carolina" }
+              }
+            : { "@type": "Thing", "name": page.about },
         "keywords": page.keywords.join(", "),
         "inLanguage": "en-US"
       };
+      if (townRecord && Number.isFinite(Number(townRecord.Latitude)) && Number.isFinite(Number(townRecord.Longitude))) {
+        schema.geo = { "@type": "GeoCoordinates", latitude: Number(townRecord.Latitude), longitude: Number(townRecord.Longitude) };
+        schema.sameAs = townRecord["Tourism Website"];
+      }
       const script = document.createElement("script");
       script.id = "nc-travel-guide-route-schema";
       script.type = "application/ld+json";
