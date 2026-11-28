@@ -1,0 +1,42 @@
+name: Search discovery and IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  submit-indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Restore prior public sitemap snapshot
+        uses: actions/cache/restore@v4
+        with:
+          path: .indexnow/sitemap-snapshot.txt
+          key: indexnow-sitemap-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            indexnow-sitemap-
+
+      - name: Wait for Cloudflare Pages deployment
+        run: sleep 75
+
+      - name: Submit newly published and removed URLs
+        run: python3 scripts/submit-indexnow.py
+
+      - name: Save current sitemap snapshot
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: .indexnow/sitemap-snapshot.txt
+          key: indexnow-sitemap-${{ github.run_id }}-${{ github.run_attempt }}
