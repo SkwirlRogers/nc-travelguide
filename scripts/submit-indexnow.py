@@ -86,16 +86,23 @@ def submit(urls: list[str]) -> None:
             headers={"Content-Type": "application/json; charset=utf-8"},
             method="POST",
         )
-        try:
-            with urllib.request.urlopen(request, timeout=45) as response:
-                status = response.status
-        except urllib.error.HTTPError as error:
-            status = error.code
-            body = error.read().decode("utf-8", errors="replace")
-            raise RuntimeError(f"IndexNow rejected batch ({status}): {body}") from error
-        if status not in (200, 202):
-            raise RuntimeError(f"IndexNow returned unexpected HTTP {status}")
-        print(f"IndexNow accepted batch {offset // 10000 + 1}: {len(batch)} URLs (HTTP {status})")
+        for attempt in range(10):
+            try:
+                with urllib.request.urlopen(request, timeout=45) as response:
+                    status = response.status
+                body = ""
+            except urllib.error.HTTPError as error:
+                status = error.code
+                body = error.read().decode("utf-8", errors="replace")
+                if status == 403 and "SiteVerificationNotCompleted" in body and attempt < 9:
+                    print(f"IndexNow key verification is still pending; retrying in 20 seconds ({attempt + 1}/10).", flush=True)
+                    time.sleep(20)
+                    continue
+                raise RuntimeError(f"IndexNow rejected batch ({status}): {body}") from error
+            if status not in (200, 202):
+                raise RuntimeError(f"IndexNow returned unexpected HTTP {status}: {body}")
+            print(f"IndexNow accepted batch {offset // 10000 + 1}: {len(batch)} URLs (HTTP {status})", flush=True)
+            break
 
 
 def main() -> int:
