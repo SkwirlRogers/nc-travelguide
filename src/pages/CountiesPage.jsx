@@ -150,7 +150,7 @@ export default function CountiesPage({ navigate, initialRegion = 'all' }) {
                 }}
               >
                 <div>
-                  <CountyOutlineMap countyName={county.rawCountyName || county.County.replace(/\\s+County$/i, '')} />
+                  <CountyOutlineMap countyName={county.rawCountyName || county.County.replace(/\s+County$/i, '')} />
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
                     <span className="badge badge-amber">{county.Region || 'North Carolina'}</span>
                     {county['Sub-Region'] && (
